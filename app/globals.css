@@ -1,0 +1,16 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    background: theme("colors.bg");
+  }
+
+  body {
+    margin: 0;
+    background: theme("colors.bg");
+    color: theme("colors.text");
+    font-family: theme("fontFamily.sans");
+  }
+}
