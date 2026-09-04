@@ -13,4 +13,14 @@
     color: theme("colors.text");
     font-family: theme("fontFamily.sans");
   }
+
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  :focus-visible {
+    outline: 2px solid theme("colors.accent");
+    outline-offset: 4px;
+  }
 }
