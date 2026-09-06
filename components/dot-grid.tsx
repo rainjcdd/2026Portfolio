@@ -3,8 +3,8 @@
 import { useEffect, useRef } from "react";
 
 const GRID_GAP = 32;
-const INFLUENCE_RADIUS = 210;
-const MAX_SHIFT = 18;
+const INFLUENCE_RADIUS = 245;
+const MAX_SHIFT = 28;
 
 export function DotGrid() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
