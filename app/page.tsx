@@ -36,7 +36,7 @@ export default function Home() {
         </section>
 
         <section className="featured-panel bg-bg">
-          <div className="mx-auto max-w-content px-gutter py-section-mobile lg:py-section">
+          <div className="featured-content mx-auto max-w-content py-section-mobile lg:py-section">
             <div className="mb-12 flex items-end justify-between gap-6 border-b border-border pb-5 lg:mb-16">
               <div>
                 <p className="mb-2 text-small uppercase tracking-[0.12em] text-text-muted">Selected projects</p>
