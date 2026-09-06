@@ -22,6 +22,7 @@ const config: Config = {
       },
       fontFamily: {
         sans: ["var(--font-inter)", "sans-serif"],
+        display: ["var(--font-manrope)", "var(--font-inter)", "sans-serif"],
       },
       fontSize: {
         hero: ["clamp(2.25rem, 6vw, 4rem)", { lineHeight: "1", letterSpacing: "-0.04em", fontWeight: "700" }],

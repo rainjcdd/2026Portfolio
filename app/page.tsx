@@ -9,18 +9,19 @@ export default function Home() {
 
   return (
     <>
-      <section className="relative flex min-h-[calc(100svh-8rem)] overflow-hidden border-y border-border sm:min-h-[calc(100svh-6.5rem)]">
+      <section className="relative flex min-h-[calc(100svh-8rem)] overflow-hidden border-y border-white/10 bg-bg-inverse text-white sm:min-h-[calc(100svh-6.5rem)]">
+        <div className="sunset-mesh" aria-hidden="true" />
         <DotGrid />
-        <div className="pointer-events-none relative z-10 mx-auto flex w-full max-w-content items-center px-gutter py-section-mobile lg:py-section">
-          <h1 className="max-w-[11ch] text-hero">
-            Curiosity.
+        <div className="pointer-events-none relative z-10 flex w-full items-center px-[clamp(1.5rem,2.8vw,2.5rem)] py-section-mobile lg:py-section">
+          <h1 className="font-display text-[clamp(3.2rem,10vw,8.8rem)] font-extrabold leading-[0.82] tracking-[-0.065em]">
+            curiosity,
             <br />
-            Aesthetics.
+            aesthetics,
             <br />
-            <span className="text-accent">Integration.</span>
+            integration
           </h1>
         </div>
-        <p className="pointer-events-none absolute bottom-6 right-gutter z-10 text-small uppercase tracking-[0.12em] text-text-muted">
+        <p className="pointer-events-none absolute bottom-6 right-[clamp(1.5rem,2.8vw,2.5rem)] z-10 text-small uppercase tracking-[0.12em] text-white/45">
           Move to explore
         </p>
       </section>
