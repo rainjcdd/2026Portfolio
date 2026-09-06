@@ -12,17 +12,17 @@ export default function Home() {
       <div className="home-page relative isolate">
         <section className="hero-reveal relative flex overflow-hidden bg-bg-inverse text-white">
           <DotGrid />
-          <div className="pointer-events-none relative z-10 flex w-full items-center px-[clamp(1.5rem,2.8vw,2.5rem)] py-section-mobile lg:py-section">
+          <div className="pointer-events-none relative z-10 flex w-full items-center px-gutter py-section-mobile lg:py-section">
             <div className="translate-y-12">
               <h1 className="font-display text-[clamp(3.2rem,10vw,8.8rem)] font-extrabold leading-[0.94] tracking-[-0.065em]">
                 <span className="hero-line-mask mb-[0.08em]">
-                  <span className="hero-line-reveal hero-line-reveal-1">Curiosity.</span>
+                  <span className="hero-line-reveal hero-line-reveal-1">Curiosity</span>
                 </span>
                 <span className="hero-line-mask">
-                  <span className="hero-line-reveal hero-line-reveal-2">Aesthetics.</span>
+                  <span className="hero-line-reveal hero-line-reveal-2">Creativity</span>
                 </span>
                 <span className="hero-line-mask">
-                  <span className="hero-line-reveal hero-line-reveal-3">Integration.</span>
+                  <span className="hero-line-reveal hero-line-reveal-3">&amp; Connection</span>
                 </span>
               </h1>
               <p className="ml-1 mt-8 max-w-full text-left text-[20px] font-light leading-snug tracking-[-0.02em] text-[#A3A3A3]">
@@ -30,7 +30,7 @@ export default function Home() {
               </p>
             </div>
           </div>
-          <p className="pointer-events-none absolute bottom-6 right-[clamp(1.5rem,2.8vw,2.5rem)] z-10 text-small uppercase tracking-[0.12em] text-white/45">
+          <p className="pointer-events-none absolute bottom-6 right-gutter z-10 text-small uppercase tracking-[0.12em] text-white/45">
             Move to explore
           </p>
         </section>

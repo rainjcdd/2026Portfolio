@@ -33,12 +33,12 @@ const config: Config = {
       },
       spacing: {
         unit: "0.5rem",
-        gutter: "1.5rem",
+        gutter: "clamp(1.5rem, 2.8vw, 4rem)",
         "section-mobile": "4rem",
         section: "7.5rem",
       },
       maxWidth: {
-        content: "75rem",
+        content: "108rem",
       },
       gridTemplateColumns: {
         layout: "repeat(12, minmax(0, 1fr))",
