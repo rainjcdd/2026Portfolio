@@ -2,6 +2,7 @@ import Link from "next/link";
 
 import { DotGrid } from "@/components/dot-grid";
 import { ProjectCard } from "@/components/project-card";
+import { TypewriterSubline } from "@/components/typewriter-subline";
 import { projects } from "@/data/projects";
 
 export default function Home() {
@@ -25,9 +26,7 @@ export default function Home() {
                   <span className="hero-line-reveal hero-line-reveal-3">&amp; Connection</span>
                 </span>
               </h1>
-              <p className="ml-1 mt-8 max-w-full text-left text-[20px] font-light leading-snug tracking-[-0.02em] text-[#A3A3A3]">
-                Product x Design x Business
-              </p>
+              <TypewriterSubline />
             </div>
           </div>
           <p className="pointer-events-none absolute bottom-6 right-gutter z-10 text-small uppercase tracking-[0.12em] text-white/45">

@@ -14,6 +14,24 @@
   }
 }
 
+@keyframes typewriter-cursor-blink {
+  0%,
+  45% {
+    opacity: 1;
+  }
+
+  55%,
+  100% {
+    opacity: 0;
+  }
+}
+
+.typewriter-cursor {
+  display: inline-block;
+  margin-left: 0.08em;
+  animation: typewriter-cursor-blink 850ms steps(1, end) infinite;
+}
+
 .hero-line-mask,
 .hero-line-reveal {
   display: block;
