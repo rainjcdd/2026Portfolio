@@ -24,7 +24,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
               <span>{project.timeframe}</span>
             </div>
           </div>
-          <p className="max-w-[60ch] text-body text-text-muted">{project.summary}</p>
+          <p className="max-w-text-measure text-body text-text-muted">{project.summary}</p>
         </div>
       </Link>
     </article>

@@ -63,7 +63,7 @@ export default function WorkPage() {
                             </span>
                           ) : null}
                         </div>
-                        <p className="max-w-[62ch] text-body text-text-muted">{project.summary}</p>
+                        <p className="max-w-text-measure text-body text-text-muted">{project.summary}</p>
                       </div>
                       <span className="hidden text-body group-hover:text-accent sm:block" aria-hidden="true">
                         ↗
