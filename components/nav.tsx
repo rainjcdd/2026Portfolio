@@ -11,14 +11,14 @@ export function Nav() {
       <ul className="flex flex-col items-end gap-2 text-body sm:flex-row sm:items-center sm:gap-8">
         {navigation.map((item) => (
           <li key={item.href}>
-            <Link className="hover:text-accent" href={item.href}>
+            <Link className="site-nav-link hover:text-accent" href={item.href}>
               {item.label}
             </Link>
           </li>
         ))}
         <li>
           <a
-            className="hover:text-accent"
+            className="site-nav-link hover:text-accent"
             href="https://www.linkedin.com/"
             target="_blank"
             rel="noreferrer"

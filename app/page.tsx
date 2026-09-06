@@ -9,8 +9,9 @@ export default function Home() {
 
   return (
     <>
-      <div className="relative isolate">
-        <section className="hero-reveal relative flex overflow-hidden border-y border-white/10 bg-bg-inverse text-white">
+      <div className="home-page relative isolate">
+        <section className="hero-reveal relative flex overflow-hidden bg-bg-inverse text-white">
+          <div className="sunset-mesh" aria-hidden="true" />
           <DotGrid />
           <div className="pointer-events-none relative z-10 flex w-full items-center px-[clamp(1.5rem,2.8vw,2.5rem)] py-section-mobile lg:py-section">
             <h1 className="font-display text-[clamp(3.2rem,10vw,8.8rem)] font-extrabold leading-[0.82] tracking-[-0.065em]">

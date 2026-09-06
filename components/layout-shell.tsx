@@ -11,7 +11,7 @@ type LayoutShellProps = {
 export function LayoutShell({ children }: LayoutShellProps) {
   return (
     <div className="flex min-h-screen flex-col">
-      <header>
+      <header className="site-header">
         <div className="flex w-full items-start justify-between px-[clamp(1.5rem,2.8vw,2.5rem)] py-6 sm:items-center sm:py-8">
           <Logo />
           <Nav />
