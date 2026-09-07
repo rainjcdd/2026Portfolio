@@ -68,7 +68,7 @@ export function TypewriterSubline() {
   const visibleText = prefersReducedMotion ? sentences[0] : text;
 
   return (
-    <div className="ml-1 mt-8 min-h-[1.4em] max-w-full text-left font-display text-[22px] font-extrabold leading-snug tracking-[-0.02em] text-white">
+    <div className="ml-1 mt-8 min-h-[1.4em] max-w-full text-left font-display text-[24px] font-extrabold leading-snug tracking-[-0.02em] text-white">
       <span className="sr-only">{sentences.join(" ")}</span>
       <span aria-hidden="true">
         {visibleText}

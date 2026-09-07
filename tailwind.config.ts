@@ -39,7 +39,6 @@ const config: Config = {
       },
       maxWidth: {
         content: "108rem",
-        "text-measure": "45rem",
       },
       gridTemplateColumns: {
         layout: "repeat(12, minmax(0, 1fr))",

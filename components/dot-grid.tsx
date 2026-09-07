@@ -5,6 +5,7 @@ import { useEffect, useRef } from "react";
 const GRID_GAP = 32;
 const INFLUENCE_RADIUS = 255;
 const MAX_SHIFT = 40;
+const HEADLINE_CURSOR_EVENT = "headline-flower-cursor";
 
 export function DotGrid() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -23,6 +24,7 @@ export function DotGrid() {
     let height = 0;
     let frameId = 0;
     let pointer: { x: number; y: number } | null = null;
+    let headlineCursorActive = false;
 
     const draw = () => {
       context.clearRect(0, 0, width, height);
@@ -90,10 +92,19 @@ export function DotGrid() {
       const bounds = canvas.getBoundingClientRect();
       pointer = { x: event.clientX - bounds.left, y: event.clientY - bounds.top };
       if (cursorRef.current) {
-        cursorRef.current.style.opacity = "1";
+        cursorRef.current.style.opacity = headlineCursorActive ? "0" : "1";
         cursorRef.current.style.transform = `translate3d(${event.clientX}px, ${event.clientY}px, 0)`;
       }
       requestDraw();
+    };
+
+    const handleHeadlineCursor = (event: Event) => {
+      const customEvent = event as CustomEvent<{ active: boolean }>;
+      headlineCursorActive = customEvent.detail.active;
+
+      if (cursorRef.current) {
+        cursorRef.current.style.opacity = headlineCursorActive || !pointer ? "0" : "1";
+      }
     };
 
     const handlePointerLeave = () => {
@@ -106,12 +117,14 @@ export function DotGrid() {
     resizeObserver.observe(canvas);
     canvas.addEventListener("pointermove", handlePointerMove);
     canvas.addEventListener("pointerleave", handlePointerLeave);
+    window.addEventListener(HEADLINE_CURSOR_EVENT, handleHeadlineCursor);
 
     return () => {
       cancelAnimationFrame(frameId);
       resizeObserver.disconnect();
       canvas.removeEventListener("pointermove", handlePointerMove);
       canvas.removeEventListener("pointerleave", handlePointerLeave);
+      window.removeEventListener(HEADLINE_CURSOR_EVENT, handleHeadlineCursor);
     };
   }, []);
 
