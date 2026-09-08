@@ -4,7 +4,6 @@ import { useEffect, useState } from "react";
 
 const sentences = [
   "I'm Shu Tang.",
-  "I think like a business owner.",
   "I build like an entrepreneur.",
   "I stay curious like a creator.",
 ] as const;

@@ -1,6 +1,7 @@
 import Link from "next/link";
 
 import Aurora from "@/components/Aurora";
+import { ConsultingCarousel } from "@/components/consulting-carousel";
 import { DotGrid } from "@/components/dot-grid";
 import { HeadlineFlowerCursor } from "@/components/headline-flower-cursor";
 import { ProjectCard } from "@/components/project-card";
@@ -15,14 +16,14 @@ export default function Home() {
       <div className="home-page relative isolate">
         <section className="hero-reveal relative flex overflow-hidden bg-bg-inverse text-white">
           <div
-            className="pointer-events-none absolute inset-0 z-[1] origin-center scale-y-[-1] opacity-25"
+            className="pointer-events-none absolute inset-x-0 bottom-0 z-[1] h-[78%] origin-center scale-y-[-1] opacity-[0.52] sm:h-[84%]"
             aria-hidden="true"
           >
             <Aurora
-              colorStops={["#1e3a8a", "#71364e", "#4c1d95"]}
-              amplitude={0.65}
-              blend={0.45}
-              speed={0.35}
+              colorStops={["#e93434", "#ff6a34", "#ffad7a"]}
+              amplitude={1.12}
+              blend={0.5}
+              speed={0.72}
             />
           </div>
           <DotGrid />
@@ -46,23 +47,22 @@ export default function Home() {
           </div>
         </section>
 
-        <section className="featured-panel bg-bg">
+        <section className="featured-panel bg-[#f2f2f1]">
           <div className="featured-content mx-auto max-w-content py-section-mobile lg:py-section">
             <div className="mb-12 flex items-end justify-between gap-6 border-b border-border pb-5 lg:mb-16">
-              <div>
-                <p className="mb-2 text-small uppercase tracking-[0.12em] text-text-muted">Selected projects</p>
-                <h2 className="text-h2">Featured work</h2>
-              </div>
+              <h2 className="text-h2 text-[#C4C4C1]">2024 – 2026</h2>
               <Link href="/work" className="shrink-0 text-body hover:text-accent">
                 View all <span aria-hidden="true">→</span>
               </Link>
             </div>
 
-            <div className="grid gap-x-8 gap-y-16 md:grid-cols-2">
+            <div>
               {featuredProjects.map((project) => (
-                <ProjectCard key={project.slug} project={project} />
+                <ProjectCard key={project.slug} project={project} layout="split" />
               ))}
             </div>
+
+            <ConsultingCarousel />
           </div>
         </section>
       </div>

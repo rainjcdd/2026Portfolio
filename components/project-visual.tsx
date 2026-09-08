@@ -1,7 +1,12 @@
+import Image from "next/image";
+
 import type { Project } from "@/data/projects";
 
 type ProjectVisualProps = {
   variant: Project["visual"];
+  image?: string;
+  alt?: string;
+  device?: Project["device"];
 };
 
 const variantStyles: Record<Project["visual"], string> = {
@@ -15,13 +20,47 @@ const variantStyles: Record<Project["visual"], string> = {
   archive: "bg-[repeating-linear-gradient(0deg,#111_0_1px,transparent_1px_24px)]",
 };
 
-export function ProjectVisual({ variant }: ProjectVisualProps) {
+export function ProjectVisual({ variant, image, alt = "", device }: ProjectVisualProps) {
+  const screen = (
+    <div className={`relative h-full w-full overflow-hidden bg-white ${variantStyles[variant]}`}>
+      {image ? (
+        <Image
+          src={image}
+          alt={alt}
+          fill
+          sizes="(min-width: 768px) 48vw, 90vw"
+          className="object-cover transition-transform duration-700 ease-out group-hover:scale-[1.015]"
+        />
+      ) : (
+        <div className="h-full w-full bg-[radial-gradient(circle_at_50%_50%,transparent_0_30%,rgba(250,250,249,0.72)_72%)]" />
+      )}
+    </div>
+  );
+
   return (
     <div
-      className={`aspect-[4/3] overflow-hidden border border-border bg-bg ${variantStyles[variant]}`}
-      aria-hidden="true"
+      className="relative flex aspect-[4/3] items-center justify-center overflow-hidden"
+      aria-hidden={image ? undefined : "true"}
     >
-      <div className="h-full w-full bg-[radial-gradient(circle_at_50%_50%,transparent_0_30%,rgba(250,250,249,0.72)_72%)]" />
+      {device === "phone" ? (
+        <div className="relative h-[88%] aspect-[9/19] rounded-[2rem] bg-[#111] p-[5px] shadow-[0_24px_55px_rgba(17,17,17,0.24)] sm:rounded-[2.5rem] sm:p-[7px]">
+          <div className="relative h-full overflow-hidden rounded-[1.7rem] bg-white sm:rounded-[2.15rem]">
+            <div className="absolute left-1/2 top-2 z-10 h-3 w-12 -translate-x-1/2 rounded-full bg-[#111] sm:h-4 sm:w-16" />
+            {screen}
+          </div>
+        </div>
+      ) : device === "desktop" ? (
+        <div className="w-[88%] overflow-hidden rounded-lg border-[5px] border-[#222] bg-[#222] shadow-[0_24px_55px_rgba(17,17,17,0.2)] sm:rounded-xl sm:border-[7px]">
+          <div className="flex h-5 items-center gap-1.5 bg-[#222] px-2 sm:h-7 sm:px-3">
+            <span className="h-1.5 w-1.5 rounded-full bg-white/35" />
+            <span className="h-1.5 w-1.5 rounded-full bg-white/35" />
+            <span className="h-1.5 w-1.5 rounded-full bg-white/35" />
+          </div>
+          <div className="aspect-[16/9]">{screen}</div>
+        </div>
+      ) : (
+        screen
+      )}
     </div>
   );
 }

@@ -38,8 +38,12 @@ export function HeadlineFlowerCursor({ children }: HeadlineFlowerCursorProps) {
         return;
       }
 
-      const bounds = headline.getBoundingClientRect();
+      const headlineText = headline.querySelector("h1") ?? headline;
+      const bounds = headlineText.getBoundingClientRect();
+      const topmostElement = document.elementFromPoint(event.clientX, event.clientY);
+      const headlineIsTopmost = Boolean(topmostElement && headline.contains(topmostElement));
       const isInside =
+        headlineIsTopmost &&
         event.clientX >= bounds.left &&
         event.clientX <= bounds.right &&
         event.clientY >= bounds.top &&

@@ -3,8 +3,8 @@
 import { useEffect, useRef } from "react";
 
 const GRID_GAP = 32;
-const INFLUENCE_RADIUS = 255;
-const MAX_SHIFT = 40;
+const INFLUENCE_RADIUS = 275;
+const MAX_SHIFT = 50;
 const HEADLINE_CURSOR_EVENT = "headline-flower-cursor";
 
 export function DotGrid() {
@@ -66,7 +66,7 @@ export function DotGrid() {
           context.beginPath();
           context.fillStyle =
             strength > 0.35 ? "rgba(105, 105, 105, 0.42)" : "rgba(75, 75, 75, 0.22)";
-          context.arc(drawX, drawY, 1.2 + strength * 1.3, 0, Math.PI * 2);
+          context.arc(drawX, drawY, 1.25 + strength * 1.75, 0, Math.PI * 2);
           context.fill();
         }
       }
