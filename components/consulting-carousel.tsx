@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { type PointerEvent, useCallback, useEffect, useRef, useState } from "react";
+import { type CSSProperties, type PointerEvent, useCallback, useEffect, useRef, useState } from "react";
 
 import { consultingProjects } from "@/data/consulting-projects";
 
@@ -30,6 +30,39 @@ export function ConsultingCarousel() {
 
     return () => resizeObserver.disconnect();
   }, [updateControls]);
+
+  useEffect(() => {
+    const track = trackRef.current;
+    if (!track) return;
+
+    const cards = Array.from(track.querySelectorAll<HTMLElement>("[data-carousel-card]"));
+    const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+    cards.forEach((card) => {
+      card.dataset.revealReady = "true";
+      card.dataset.revealVisible = prefersReducedMotion ? "true" : "false";
+    });
+
+    if (prefersReducedMotion) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+
+          (entry.target as HTMLElement).dataset.revealVisible = "true";
+          observer.unobserve(entry.target);
+        });
+      },
+      {
+        root: null,
+        threshold: 0.18,
+      },
+    );
+
+    cards.forEach((card) => observer.observe(card));
+    return () => observer.disconnect();
+  }, []);
 
   const scrollByCard = (direction: -1 | 1) => {
     const track = trackRef.current;
@@ -110,17 +143,22 @@ export function ConsultingCarousel() {
         onPointerUp={endDrag}
         onPointerCancel={endDrag}
       >
-        {consultingProjects.map((project) => (
+        {consultingProjects.map((project, index) => (
           <Link
             key={project.title}
             href={project.href}
             data-carousel-card
-            className="group w-[82vw] max-w-[34rem] shrink-0 snap-start select-none sm:w-[62vw] lg:w-[38vw]"
+            className="consulting-card-reveal group w-[82vw] max-w-[34rem] shrink-0 snap-start select-none sm:w-[62vw] lg:w-[38vw]"
+            style={
+              {
+                "--consulting-reveal-delay": `${Math.min(index, 3) * 90}ms`,
+              } as CSSProperties
+            }
             onClick={(event) => {
               if (dragRef.current.moved) event.preventDefault();
             }}
           >
-            <div className="relative aspect-[4/3] overflow-hidden bg-border">
+            <div className="relative aspect-[4/3] overflow-hidden rounded-2xl bg-border sm:rounded-3xl">
               <Image
                 src={project.image}
                 alt={`${project.title} project thumbnail`}

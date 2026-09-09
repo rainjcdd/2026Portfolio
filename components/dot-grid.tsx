@@ -137,15 +137,17 @@ export function DotGrid() {
       />
       <div
         ref={cursorRef}
-        className="pointer-events-none fixed left-0 top-0 z-[60] -ml-12 -mt-12 hidden h-24 w-24 opacity-0 transition-opacity duration-200 md:block"
+        className="pointer-events-none fixed left-0 top-0 z-[60] -ml-16 -mt-16 hidden h-32 w-32 opacity-0 transition-opacity duration-200 md:block"
         aria-hidden="true"
       >
-        <svg className="h-full w-full animate-[spin_9s_linear_infinite] motion-reduce:animate-none" viewBox="0 0 96 96">
+        <svg className="h-full w-full animate-[spin_9s_linear_infinite] motion-reduce:animate-none" viewBox="0 0 128 128">
           <defs>
-            <path id="cursor-path" d="M 48,48 m -33,0 a 33,33 0 1,1 66,0 a 33,33 0 1,1 -66,0" />
+            <path id="cursor-path" d="M 64,64 m -46,0 a 46,46 0 1,1 92,0 a 46,46 0 1,1 -92,0" />
           </defs>
-          <text fill="white" fontSize="8" fontWeight="700" letterSpacing="2.15">
-            <textPath href="#cursor-path">UX • PRODUCT • SYSTEMS • </textPath>
+          <text fill="white" fontSize="9.5" fontWeight="700">
+            <textPath href="#cursor-path" startOffset="8.5" textLength="272" lengthAdjust="spacing">
+              PRODUCT • UX DESIGN • BUSINESS •
+            </textPath>
           </text>
         </svg>
         <span className="absolute left-1/2 top-1/2 h-3 w-3 -translate-x-1/2 -translate-y-1/2 rounded-full bg-white shadow-[0_0_0_5px_rgba(255,255,255,0.12)]" />

@@ -1,33 +1,48 @@
 import Link from "next/link";
 
 import { ProjectVisual } from "@/components/project-visual";
+import { ScrollReveal } from "@/components/scroll-reveal";
 import type { Project } from "@/data/projects";
 
 type ProjectCardProps = {
   project: Project;
   layout?: "card" | "split";
+  showDivider?: boolean;
+  reverse?: boolean;
 };
 
-export function ProjectCard({ project, layout = "card" }: ProjectCardProps) {
+export function ProjectCard({
+  project,
+  layout = "card",
+  showDivider = true,
+  reverse = false,
+}: ProjectCardProps) {
   if (layout === "split") {
     return (
-      <article className="overflow-hidden border-b border-black/5 last:border-b-0">
+      <article className={`overflow-hidden ${showDivider ? "border-b border-black/5" : ""}`}>
         <Link
           href={`/work/${project.slug}`}
           className="group grid md:min-h-[34rem] md:grid-cols-2 lg:min-h-[42rem]"
         >
-          <div className="flex items-center justify-center p-5 sm:p-8 md:p-10 lg:p-14">
-            <div className="w-full max-w-[46rem]">
+          <div
+            className={`flex items-center justify-center p-5 sm:p-8 md:p-10 lg:p-14 ${reverse ? "md:order-2" : "md:order-1"}`}
+          >
+            <ScrollReveal
+              className="w-full max-w-[46rem]"
+              direction={reverse ? "right" : "left"}
+            >
               <ProjectVisual
                 variant={project.visual}
                 image={project.image}
                 alt={`${project.title} project preview`}
                 device={project.device}
               />
-            </div>
+            </ScrollReveal>
           </div>
 
-          <div className="flex flex-col justify-center px-6 pb-10 pt-4 sm:px-10 md:px-12 md:py-16 lg:px-20">
+          <div
+            className={`flex flex-col justify-center px-6 pb-10 pt-4 sm:px-10 md:px-12 md:py-16 lg:px-20 ${reverse ? "md:order-1" : "md:order-2"}`}
+          >
             <div className="mb-7 flex flex-wrap items-center gap-3 text-small font-medium text-text">
               {project.tag ? (
                 <span className="rounded-full border border-border px-2 py-1 uppercase tracking-[0.08em]">

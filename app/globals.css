@@ -142,6 +142,33 @@ body:has(.home-page) .site-nav-social:hover {
   padding-inline: theme("spacing.gutter");
 }
 
+.project-visual-reveal {
+  opacity: 1;
+  transform: translate3d(0, 0, 0) rotate(0deg);
+  transform-origin: 50% 55%;
+}
+
+.project-visual-reveal[data-reveal-ready="true"][data-reveal-visible="false"] {
+  opacity: 0;
+  transform: translate3d(-3rem, 0, 0) rotate(-9deg);
+}
+
+.project-visual-reveal[data-reveal-direction="right"][data-reveal-ready="true"][data-reveal-visible="false"] {
+  transform: translate3d(3rem, 0, 0) rotate(9deg);
+}
+
+.project-visual-reveal[data-reveal-ready="true"] {
+  transition:
+    opacity 900ms cubic-bezier(0.16, 1, 0.3, 1),
+    transform 1100ms cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+
+.project-visual-reveal[data-reveal-visible="true"] {
+  opacity: 1;
+  transform: translate3d(0, 0, 0) rotate(0deg);
+}
+
 .consulting-carousel {
   scrollbar-width: none;
   overscroll-behavior-inline: contain;
@@ -150,6 +177,28 @@ body:has(.home-page) .site-nav-social:hover {
 
 .consulting-carousel::-webkit-scrollbar {
   display: none;
+}
+
+.consulting-card-reveal {
+  opacity: 1;
+  transform: translate3d(0, 0, 0);
+}
+
+.consulting-card-reveal[data-reveal-ready="true"][data-reveal-visible="false"] {
+  opacity: 0;
+  transform: translate3d(0, 1.75rem, 0);
+}
+
+.consulting-card-reveal[data-reveal-ready="true"] {
+  transition:
+    opacity 750ms cubic-bezier(0.16, 1, 0.3, 1) var(--consulting-reveal-delay, 0ms),
+    transform 850ms cubic-bezier(0.16, 1, 0.3, 1) var(--consulting-reveal-delay, 0ms);
+  will-change: opacity, transform;
+}
+
+.consulting-card-reveal[data-reveal-visible="true"] {
+  opacity: 1;
+  transform: translate3d(0, 0, 0);
 }
 
 .mobile-nav-toggle {
@@ -219,6 +268,14 @@ body:has(.home-page) .mobile-nav-menu {
 }
 
 @media (min-width: 768px) {
+  .project-visual-reveal[data-reveal-ready="true"][data-reveal-visible="false"] {
+    transform: translate3d(clamp(-14rem, -14vw, -5rem), 0, 0) rotate(-18deg);
+  }
+
+  .project-visual-reveal[data-reveal-direction="right"][data-reveal-ready="true"][data-reveal-visible="false"] {
+    transform: translate3d(clamp(5rem, 14vw, 14rem), 0, 0) rotate(18deg);
+  }
+
   .featured-content {
     padding-inline: calc(theme("spacing.gutter") + 2rem);
   }
@@ -259,6 +316,20 @@ body:has(.home-page) .mobile-nav-menu {
     opacity: 1;
     transform: none;
     animation: none;
+  }
+
+  .project-visual-reveal,
+  .project-visual-reveal[data-reveal-ready="true"][data-reveal-visible="false"] {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  .consulting-card-reveal,
+  .consulting-card-reveal[data-reveal-ready="true"][data-reveal-visible="false"] {
+    opacity: 1;
+    transform: none;
+    transition: none;
   }
 }
 

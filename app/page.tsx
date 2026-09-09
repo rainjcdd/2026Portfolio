@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { Fragment } from "react";
 
 import Aurora from "@/components/Aurora";
 import { ConsultingCarousel } from "@/components/consulting-carousel";
@@ -20,10 +21,10 @@ export default function Home() {
             aria-hidden="true"
           >
             <Aurora
-              colorStops={["#e93434", "#ff6a34", "#ffad7a"]}
-              amplitude={1.12}
+              colorStops={["#ff2d24", "#ff6a34", "#ffad7a"]}
+              amplitude={1.26}
               blend={0.5}
-              speed={0.72}
+              speed={0.82}
             />
           </div>
           <DotGrid />
@@ -57,8 +58,29 @@ export default function Home() {
             </div>
 
             <div>
-              {featuredProjects.map((project) => (
-                <ProjectCard key={project.slug} project={project} layout="split" />
+              {featuredProjects.map((project, index) => (
+                <Fragment key={project.slug}>
+                  {project.slug === "hapio-app" ? (
+                    <div className="mb-8 mt-14 border-b border-border pb-5 lg:mb-10 lg:mt-20">
+                      <h2 className="text-h2 text-[#C4C4C1]">Hobby Project: Vibe coding</h2>
+                    </div>
+                  ) : null}
+
+                  {project.slug === "navigation-redesign" ? (
+                    <div className="mb-12 mt-section-mobile border-b border-border pb-5 lg:mb-16 lg:mt-section">
+                      <h2 className="text-h2 text-[#C4C4C1]">2021 – 2024</h2>
+                    </div>
+                  ) : null}
+
+                  <ProjectCard
+                    project={project}
+                    layout="split"
+                    showDivider={
+                      project.slug !== "ai-powered-design-system" && project.slug !== "hapio-app"
+                    }
+                    reverse={index % 2 === 1}
+                  />
+                </Fragment>
               ))}
             </div>
 
