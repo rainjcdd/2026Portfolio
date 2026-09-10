@@ -23,7 +23,7 @@ export default async function WorkDetailPage({ params }: WorkDetailPageProps) {
 
   return (
     <article className="bg-bg pb-section-mobile lg:pb-section">
-      <header className="mx-auto max-w-content px-gutter pb-section-mobile pt-12 lg:pb-section lg:pt-20">
+      <header className="featured-content mx-auto max-w-content pb-section-mobile pt-12 lg:pb-section lg:pt-20">
         <div className="mb-10 flex flex-wrap items-center gap-3 text-small font-medium text-text-muted lg:mb-14">
           {project.tag ? (
             <span className="rounded-full border border-border px-2 py-1 uppercase tracking-[0.08em]">
@@ -43,30 +43,40 @@ export default async function WorkDetailPage({ params }: WorkDetailPageProps) {
         </div>
       </header>
 
-      <div className="mx-auto max-w-content px-gutter">
+      <div className="featured-content mx-auto max-w-content">
         <div className="mb-section-mobile lg:mb-section">
           <ProjectVisual
             variant={project.visual}
             image={project.image}
+            desktopImage={project.desktopImage}
+            mobileImage={project.mobileImage}
             alt={`${project.title} hero image`}
             device={project.device}
             size="large"
           />
         </div>
 
-        <dl className="grid gap-7 border-y border-border py-7 sm:grid-cols-3 lg:py-9">
-          <div>
-            <dt className="mb-2 text-small uppercase tracking-[0.12em] text-text-muted">Role</dt>
-            <dd className="text-body">{project.role}</dd>
-          </div>
-          <div>
-            <dt className="mb-2 text-small uppercase tracking-[0.12em] text-text-muted">Timeframe</dt>
-            <dd className="text-body">{project.timeframe}</dd>
-          </div>
-          <div>
-            <dt className="mb-2 text-small uppercase tracking-[0.12em] text-text-muted">Tools</dt>
-            <dd className="text-body">{project.tools.join(", ")}</dd>
-          </div>
+        <dl
+          className={`grid gap-x-8 gap-y-10 border-y border-border py-10 lg:py-14 ${
+            project.details ? "sm:grid-cols-2 lg:grid-cols-4" : "sm:grid-cols-3"
+          }`}
+        >
+          {(project.details ?? [
+            { label: "Role", items: [project.role] },
+            { label: "Timeframe", items: [project.timeframe] },
+            { label: "Tools", items: [project.tools.join(", ")] },
+          ]).map((detail) => (
+            <div key={detail.label}>
+              <dt className="mb-5 text-small font-medium text-text">{detail.label}</dt>
+              <dd>
+                <ul className="space-y-1 text-body font-light leading-relaxed text-text-muted">
+                  {detail.items.map((item) => (
+                    <li key={item}>{item}</li>
+                  ))}
+                </ul>
+              </dd>
+            </div>
+          ))}
         </dl>
 
         <div className="py-section-mobile lg:py-section">

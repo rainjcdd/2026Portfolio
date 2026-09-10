@@ -7,6 +7,10 @@ export type Project = {
   summary: string;
   role: string;
   tools: string[];
+  details?: Array<{
+    label: string;
+    items: string[];
+  }>;
   caseStudy: {
     problem: string;
     process: string;
@@ -19,7 +23,9 @@ export type Project = {
   featured?: boolean;
   tag?: string;
   image?: string;
-  device?: "phone" | "desktop";
+  desktopImage?: string;
+  mobileImage?: string;
+  device?: "phone" | "desktop" | "responsive";
   visual: ProjectVisualVariant;
 };
 
@@ -32,6 +38,24 @@ export const projects: Project[] = [
       "A field-operations tracking tool redesigned for clarity under pressure — simplifying a dense data interface into something usable in the field, one-handed, in under 3 seconds.",
     role: "Lead Product Designer",
     tools: ["Figma", "FigJam", "Maze"],
+    details: [
+      {
+        label: "Role",
+        items: ["Product Design", "Product Strategy"],
+      },
+      {
+        label: "Key Milestone",
+        items: ["2025 Q1 Kickoff", "2026 Q2 Commercialization"],
+      },
+      {
+        label: "Key Tasks",
+        items: ["User Interview", "User Testing", "UX Design", "Product Onboarding"],
+      },
+      {
+        label: "Tools",
+        items: ["Figma / Figma Make", "HeyMarvin", "Copilot"],
+      },
+    ],
     caseStudy: {
       problem:
         "Field teams were navigating dense tables and ambiguous status controls while moving between sites. Important updates took too many taps, and the interface demanded more attention than the environment allowed.",
@@ -46,7 +70,9 @@ export const projects: Project[] = [
       { label: "Final system states", visual: "orbit" },
     ],
     featured: true,
-    device: "phone",
+    desktopImage: "/images/projects/trackpoint/desktop-navigation.png",
+    mobileImage: "/images/projects/trackpoint/mobile-navigation.png",
+    device: "responsive",
     visual: "grid",
   },
   {

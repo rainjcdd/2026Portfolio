@@ -32,7 +32,7 @@ export default function WorkPage() {
         <p className="mb-4 text-small uppercase tracking-[0.12em] text-text-muted md:col-span-3">
           Selected projects
         </p>
-        <h1 className="text-hero md:col-span-9">WORK</h1>
+        <h1 className="font-display text-hero font-extrabold md:col-span-9">WORK</h1>
       </header>
 
       <div className="space-y-section-mobile lg:space-y-section">

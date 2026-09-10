@@ -88,14 +88,14 @@ Monochrome base + one accent, minimal palette:
     - Short-Form Video
   - **2021 & Before**
     - Agency Work (single grouped entry, expandable or single card)
-- Each item → generic `/work/[slug]` template page (all slugs point to same template structure with different fake content)
+- Each item → `/work/[slug]` detail page. Routes share foundational layout primitives, but each case study is designed and populated page-by-page so its narrative, metadata, imagery, and presentation can fit the project.
 
 ### Work detail (`/work/[slug]`)
-Generic case study template:
-- Hero image + project title + one-line summary
-- Meta row: role, timeframe, tools (fake values)
-- Sections: Problem → Process → Outcome (fake paragraph content each)
-- 2–3 placeholder image blocks
+Shared case-study foundation with project-specific composition:
+- Project title, one-line summary, and a responsive hero presentation
+- Flexible metadata row (for example: role, milestones, key tasks, and tools)
+- Project-specific narrative sections and real content added one case study at a time
+- Real desktop/mobile mockups and supporting image assets where available; placeholders remain acceptable for unfinished projects
 - Next project link at bottom
 
 ### Me (`/me`)
@@ -153,7 +153,7 @@ Generic case study template:
 2. Build global layout shell: nav, footer, logo, page wrapper
 3. Build Home page: static layout first, then layer in interactive hero
 4. Build Work page: grouped list, static (no interactivity yet)
-5. Build `/work/[slug]` generic template, wire up fake data so all Work items route correctly
+5. Build the shared `/work/[slug]` foundation, wire all Work items to valid routes, then refine each project detail page individually with its own content and visual structure
 6. Build Me page: portrait, bio, education, resume button (timeline as static list for now)
 7. Responsive pass across all pages (test at 375px, 768px, 1440px)
 8. Add motion: scroll reveals, hover states, nav underline, page transitions
@@ -166,7 +166,7 @@ Commit after each numbered step with a message describing what was done.
 
 ## 7. Explicitly Out of Scope (v1)
 
-- Real content/images
+- Real content/images for unfinished pages (case studies may adopt real content and assets incrementally)
 - CMS or data fetching
 - Actual resume PDF
 - SEO/meta tags polish
