@@ -7,6 +7,7 @@ type ProjectVisualProps = {
   image?: string;
   alt?: string;
   device?: Project["device"];
+  size?: "default" | "large";
 };
 
 const variantStyles: Record<Project["visual"], string> = {
@@ -20,7 +21,13 @@ const variantStyles: Record<Project["visual"], string> = {
   archive: "bg-[repeating-linear-gradient(0deg,#111_0_1px,transparent_1px_24px)]",
 };
 
-export function ProjectVisual({ variant, image, alt = "", device }: ProjectVisualProps) {
+export function ProjectVisual({
+  variant,
+  image,
+  alt = "",
+  device,
+  size = "default",
+}: ProjectVisualProps) {
   const screen = (
     <div className={`relative h-full w-full overflow-hidden bg-white ${variantStyles[variant]}`}>
       {image ? (
@@ -43,14 +50,22 @@ export function ProjectVisual({ variant, image, alt = "", device }: ProjectVisua
       aria-hidden={image ? undefined : "true"}
     >
       {device === "phone" ? (
-        <div className="relative h-[88%] aspect-[9/19] rounded-[2rem] bg-[#111] p-[5px] shadow-[0_24px_55px_rgba(17,17,17,0.24)] sm:rounded-[2.5rem] sm:p-[7px]">
+        <div
+          className={`relative aspect-[9/19] rounded-[2rem] bg-[#111] p-[5px] shadow-[0_24px_55px_rgba(17,17,17,0.24)] sm:rounded-[2.5rem] sm:p-[7px] ${
+            size === "large" ? "h-[96%]" : "h-[88%]"
+          }`}
+        >
           <div className="relative h-full overflow-hidden rounded-[1.7rem] bg-white sm:rounded-[2.15rem]">
             <div className="absolute left-1/2 top-2 z-10 h-3 w-12 -translate-x-1/2 rounded-full bg-[#111] sm:h-4 sm:w-16" />
             {screen}
           </div>
         </div>
       ) : device === "desktop" ? (
-        <div className="w-[88%] overflow-hidden rounded-lg border-[5px] border-[#222] bg-[#222] shadow-[0_24px_55px_rgba(17,17,17,0.2)] sm:rounded-xl sm:border-[7px]">
+        <div
+          className={`overflow-hidden rounded-lg border-[5px] border-[#222] bg-[#222] shadow-[0_24px_55px_rgba(17,17,17,0.2)] sm:rounded-xl sm:border-[7px] ${
+            size === "large" ? "w-[96%]" : "w-[88%]"
+          }`}
+        >
           <div className="flex h-5 items-center gap-1.5 bg-[#222] px-2 sm:h-7 sm:px-3">
             <span className="h-1.5 w-1.5 rounded-full bg-white/35" />
             <span className="h-1.5 w-1.5 rounded-full bg-white/35" />

@@ -76,7 +76,13 @@ export default function Home() {
                     project={project}
                     layout="split"
                     showDivider={
-                      project.slug !== "ai-powered-design-system" && project.slug !== "hapio-app"
+                      project.slug !== "trackpoint" &&
+                      project.slug !== "ai-powered-design-system" &&
+                      project.slug !== "hapio-app" &&
+                      project.slug !== "navigation-redesign"
+                    }
+                    addSpacingAfter={
+                      project.slug === "trackpoint" || project.slug === "navigation-redesign"
                     }
                     reverse={index % 2 === 1}
                   />
