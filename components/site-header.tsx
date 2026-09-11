@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import { usePathname } from "next/navigation";
 
 import { Logo } from "@/components/logo";
 import { Nav } from "@/components/nav";
@@ -8,6 +9,7 @@ import { Nav } from "@/components/nav";
 export function SiteHeader() {
   const headerRef = useRef<HTMLElement>(null);
   const [hasScrolledPastHero, setHasScrolledPastHero] = useState(false);
+  const pathname = usePathname();
 
   useEffect(() => {
     let frameId = 0;
@@ -17,12 +19,18 @@ export function SiteHeader() {
       const header = headerRef.current;
       const featuredPanel = document.querySelector<HTMLElement>(".featured-panel");
 
-      if (!header || !featuredPanel) {
-        setHasScrolledPastHero(false);
+      if (!header) {
         return;
       }
 
-      setHasScrolledPastHero(featuredPanel.getBoundingClientRect().top <= header.offsetHeight);
+      const hasCrossedPageThreshold =
+        window.scrollY > Math.max(24, header.offsetHeight * 0.5);
+
+      setHasScrolledPastHero(
+        featuredPanel
+          ? featuredPanel.getBoundingClientRect().top <= header.offsetHeight
+          : hasCrossedPageThreshold,
+      );
     };
 
     const requestUpdate = () => {
@@ -38,7 +46,7 @@ export function SiteHeader() {
       window.removeEventListener("scroll", requestUpdate);
       window.removeEventListener("resize", requestUpdate);
     };
-  }, []);
+  }, [pathname]);
 
   return (
     <header ref={headerRef} className={`site-header ${hasScrolledPastHero ? "site-header-scrolled" : ""}`}>

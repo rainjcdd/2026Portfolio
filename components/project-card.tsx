@@ -28,7 +28,11 @@ export function ProjectCard({
       >
         <Link
           href={`/work/${project.slug}`}
-          className="group grid md:min-h-[34rem] md:grid-cols-2 lg:min-h-[42rem]"
+          className={`group grid md:grid-cols-2 ${
+            project.homepageImage
+              ? "md:min-h-[30rem] lg:min-h-[34rem]"
+              : "md:min-h-[34rem] lg:min-h-[42rem]"
+          }`}
         >
           <div
             className={`flex items-center justify-center py-4 sm:py-6 md:py-7 lg:py-9 ${
@@ -41,10 +45,13 @@ export function ProjectCard({
             >
               <ProjectVisual
                 variant={project.visual}
-                image={project.image}
+                image={project.homepageImage ?? project.image}
+                desktopImage={project.desktopImage}
+                mobileImage={project.mobileImage}
                 alt={`${project.title} project preview`}
-                device={project.device}
+                device={project.homepageImage ? undefined : project.device}
                 size="large"
+                preserveImageAspect={Boolean(project.homepageImage)}
               />
             </ScrollReveal>
           </div>
@@ -84,9 +91,12 @@ export function ProjectCard({
       <Link href={`/work/${project.slug}`} className="group block">
         <ProjectVisual
           variant={project.visual}
-          image={project.image}
+          image={project.homepageImage ?? project.image}
+          desktopImage={project.desktopImage}
+          mobileImage={project.mobileImage}
           alt={`${project.title} project preview`}
-          device={project.device}
+          device={project.homepageImage ? undefined : project.device}
+          preserveImageAspect={Boolean(project.homepageImage)}
         />
         <div className="border-b border-border py-5">
           <div className="mb-3 flex flex-wrap items-center justify-between gap-2">

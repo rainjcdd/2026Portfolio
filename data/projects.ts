@@ -11,10 +11,32 @@ export type Project = {
     label: string;
     items: string[];
   }>;
+  overview?: {
+    heading: string;
+    copy: string;
+  };
+  problemPoints?: Array<{
+    title: string;
+    copy: string;
+  }>;
+  processTitle?: string;
+  processImage?: string;
+  outcomeTitle?: string;
+  solutionImage?: {
+    src: string;
+    alt: string;
+    width: number;
+    height: number;
+  };
+  personas?: Array<{
+    title: string;
+    copy: string;
+  }>;
   caseStudy: {
     problem: string;
     process: string;
     outcome: string;
+    solution?: string;
   };
   gallery: Array<{
     label: string;
@@ -23,6 +45,7 @@ export type Project = {
   featured?: boolean;
   tag?: string;
   image?: string;
+  homepageImage?: string;
   desktopImage?: string;
   mobileImage?: string;
   device?: "phone" | "desktop" | "responsive";
@@ -56,13 +79,56 @@ export const projects: Project[] = [
         items: ["Figma / Figma Make", "HeyMarvin", "Copilot"],
       },
     ],
+    overview: {
+      heading: "B2B SaaS Web & Mobile Application",
+      copy: "A self-service inventory tracking and ordering system built from 0 to 1 for small-to-medium healthcare providers. Grounded in user research, it turns complex supply workflows into clear, simple tasks designed for the pace of everyday care.",
+    },
+    problemPoints: [
+      {
+        title: "Limited inventory visibility",
+        copy: "Staff struggle to know what’s available and where supplies are stored across locations.",
+      },
+      {
+        title: "Manual, fragmented workflows",
+        copy: "Spreadsheets, paper logs, and disconnected systems make tracking and reordering supplies time-consuming and error-prone.",
+      },
+      {
+        title: "Difficult patient usage tracking",
+        copy: "Recording supplies and services used by each patient takes extra effort, complicating reconciliation and accurate billing.",
+      },
+    ],
+    processTitle: "Our Customer & User",
+    processImage: "/images/projects/trackpoint/customer-segments.png",
+    outcomeTitle: "Challenge",
+    solutionImage: {
+      src: "/images/projects/trackpoint/solution/solution-device-composition.png",
+      alt: "TrackPoint desktop item details and mobile dispensing interfaces",
+      width: 1672,
+      height: 941,
+    },
+    personas: [
+      {
+        title: "Admin Adam",
+        copy: "A materials manager balancing supply availability and costs. Needs clearer stock visibility and reliable ordering information.",
+      },
+      {
+        title: "Clinician Claire",
+        copy: "A clinician juggling patient care and inventory tasks. Needs a simple way to find supplies and track changes without relying on memory or manual notes.",
+      },
+      {
+        title: "Director Dan",
+        copy: "A leadership persona representing oversight of care teams and facility operations.",
+      },
+    ],
     caseStudy: {
       problem:
-        "Field teams were navigating dense tables and ambiguous status controls while moving between sites. Important updates took too many taps, and the interface demanded more attention than the environment allowed.",
+        "Small and medium-sized healthcare providers rely on manual processes and disconnected tools to manage supplies and track patient usage. Limited visibility and fragmented workflows create extra work, make reordering harder, and increase the risk of inventory and billing errors.",
       process:
-        "I mapped the highest-frequency field tasks, observed where operators paused or backtracked, and reduced the experience to a small set of glanceable states. Rapid prototypes were tested one-handed and in short, interruption-heavy sessions.",
+        "We conducted multiple rounds of one-on-one user interviews across non-acute care settings, including nursing homes, assisted living facilities, surgery centers, and a physician office. We explored their daily responsibilities and how they manage supplies, uncovering friction in inventory tracking, ordering, and staff communication.",
       outcome:
-        "The redesigned workflow made critical status changes faster to find and easier to confirm. The resulting interaction model also gave the product team a clearer foundation for future field tools.",
+        "The challenge was designing a simple, consistent experience amid complexity inside and outside the organization. Internally, we had to navigate fragmented data and a complex technology stack without compromising usability. Externally, differences in facility environments, supply organization, and daily routines required a solution flexible enough to support varied workflows.",
+      solution:
+        "We expanded beyond the screen to connect digital workflows with the physical work of managing supplies across care locations. By grounding the experience in how users understand locations, units of measure, and patient information, we designed a system that fits how they organize and carry out their daily work.",
     },
     gallery: [
       { label: "Field workflow map", visual: "path" },
@@ -148,6 +214,7 @@ export const projects: Project[] = [
     ],
     featured: true,
     image: "/images/projects/navigation-redesign.webp",
+    homepageImage: "/images/projects/navigation-redesign-thumbnail.jpg",
     device: "desktop",
     visual: "path",
   },

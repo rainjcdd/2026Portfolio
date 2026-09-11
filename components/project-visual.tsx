@@ -10,6 +10,7 @@ type ProjectVisualProps = {
   alt?: string;
   device?: Project["device"];
   size?: "default" | "large";
+  preserveImageAspect?: boolean;
 };
 
 const variantStyles: Record<Project["visual"], string> = {
@@ -31,6 +32,7 @@ export function ProjectVisual({
   alt = "",
   device,
   size = "default",
+  preserveImageAspect = false,
 }: ProjectVisualProps) {
   const renderScreen = (
     imageSizes = "(min-width: 768px) 48vw, 90vw",
@@ -50,7 +52,11 @@ export function ProjectVisual({
           alt={alt}
           fill
           sizes={imageSizes}
-          className="scale-[1.008] object-cover object-top transition-transform duration-700 ease-out group-hover:scale-[1.02]"
+          className={`${
+            preserveImageAspect
+              ? "object-contain"
+              : "scale-[1.008] object-cover object-top group-hover:scale-[1.02]"
+          } transition-transform duration-700 ease-out`}
         />
       ) : (
         <div className="h-full w-full bg-[radial-gradient(circle_at_50%_50%,transparent_0_30%,rgba(250,250,249,0.72)_72%)]" />
@@ -61,7 +67,9 @@ export function ProjectVisual({
 
   return (
     <div
-      className="relative flex aspect-[4/3] items-center justify-center overflow-hidden"
+      className={`relative flex items-center justify-center overflow-hidden ${
+        preserveImageAspect ? "aspect-[645/572]" : "aspect-[4/3]"
+      }`}
       aria-hidden={image || desktopImage || mobileImage ? undefined : "true"}
     >
       {device === "phone" ? (
