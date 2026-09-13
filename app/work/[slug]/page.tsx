@@ -3,6 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 
 import { ProjectVisual } from "@/components/project-visual";
+import { ScrollReveal } from "@/components/scroll-reveal";
 import { projects } from "@/data/projects";
 
 type WorkDetailPageProps = {
@@ -21,6 +22,7 @@ export default async function WorkDetailPage({ params }: WorkDetailPageProps) {
 
   const project = projects[projectIndex];
   const nextProject = projects[(projectIndex + 1) % projects.length];
+  const isTrackPoint = project.slug === "trackpoint";
 
   return (
     <article className="bg-bg pb-section-mobile lg:pb-section">
@@ -46,12 +48,24 @@ export default async function WorkDetailPage({ params }: WorkDetailPageProps) {
               project.overview ? "text-[#333333] lg:col-span-7" : "lg:col-span-8"
             }`}
           >
-            {project.title}
+            {isTrackPoint ? (
+              <span className="hero-line-mask">
+                <span className="trackpoint-intro-title block">{project.title}</span>
+              </span>
+            ) : (
+              project.title
+            )}
           </h1>
           <div className={`max-w-text-measure lg:pb-2 ${project.overview ? "lg:col-span-5" : "lg:col-span-4"}`}>
             {project.overview ? (
               <p className="text-h3 font-light leading-[1.45] text-text-muted">
-                {project.overview.copy}
+                {isTrackPoint ? (
+                  <span className="hero-line-mask">
+                    <span className="trackpoint-intro-copy block">{project.overview.copy}</span>
+                  </span>
+                ) : (
+                  project.overview.copy
+                )}
               </p>
             ) : (
               <p className="text-body leading-relaxed text-text-muted lg:text-[1.125rem]">
@@ -64,15 +78,17 @@ export default async function WorkDetailPage({ params }: WorkDetailPageProps) {
 
       <div className="featured-content mx-auto max-w-content">
         <div className="mb-section-mobile lg:mb-section">
-          <ProjectVisual
-            variant={project.visual}
-            image={project.image}
-            desktopImage={project.desktopImage}
-            mobileImage={project.mobileImage}
-            alt={`${project.title} hero image`}
-            device={project.device}
-            size="large"
-          />
+          <ScrollReveal direction="up" animateOnLoad={isTrackPoint}>
+            <ProjectVisual
+              variant={project.visual}
+              image={project.image}
+              desktopImage={project.desktopImage}
+              mobileImage={project.mobileImage}
+              alt={`${project.title} hero image`}
+              device={project.device}
+              size="large"
+            />
+          </ScrollReveal>
         </div>
 
         <dl
@@ -174,14 +190,16 @@ export default async function WorkDetailPage({ params }: WorkDetailPageProps) {
                 ) : null}
                 {key === "process" && project.processImage ? (
                   <figure className="mt-10 flex justify-start lg:mt-14">
-                    <Image
-                      src={project.processImage}
-                      alt="Healthcare settings prioritized for TrackPoint customer research"
-                      width={2282}
-                      height={1278}
-                      sizes="(max-width: 1024px) 100vw, 80vw"
-                      className="h-auto w-full max-w-[760px]"
-                    />
+                    <ScrollReveal direction="up" className="w-full max-w-[760px]">
+                      <Image
+                        src={project.processImage}
+                        alt="Healthcare settings prioritized for TrackPoint customer research"
+                        width={2282}
+                        height={1278}
+                        sizes="(max-width: 1024px) 100vw, 80vw"
+                        className="h-auto w-full"
+                      />
+                    </ScrollReveal>
                   </figure>
                 ) : null}
                 {key === "process" && project.personas ? (
@@ -203,14 +221,16 @@ export default async function WorkDetailPage({ params }: WorkDetailPageProps) {
           ))}
           {project.solutionImage ? (
             <figure>
-              <Image
-                src={project.solutionImage.src}
-                alt={project.solutionImage.alt}
-                width={project.solutionImage.width}
-                height={project.solutionImage.height}
-                sizes="(max-width: 1024px) 100vw, 90vw"
-                className="h-auto w-full"
-              />
+              <ScrollReveal direction="up">
+                <Image
+                  src={project.solutionImage.src}
+                  alt={project.solutionImage.alt}
+                  width={project.solutionImage.width}
+                  height={project.solutionImage.height}
+                  sizes="(max-width: 1024px) 100vw, 90vw"
+                  className="h-auto w-full"
+                />
+              </ScrollReveal>
             </figure>
           ) : project.caseStudy.solution ? (
             <div
@@ -228,7 +248,13 @@ export default async function WorkDetailPage({ params }: WorkDetailPageProps) {
         >
           {project.gallery.map((visual, index) => (
             <figure key={visual.label}>
-              <ProjectVisual variant={visual.visual} />
+              {isTrackPoint ? (
+                <ScrollReveal direction="up">
+                  <ProjectVisual variant={visual.visual} />
+                </ScrollReveal>
+              ) : (
+                <ProjectVisual variant={visual.visual} />
+              )}
               <figcaption className="mt-4 flex items-center justify-between gap-4 border-t border-border pt-4 text-small text-text-muted">
                 <span>{visual.label}</span>
                 <span>{String(index + 1).padStart(2, "0")} / 03</span>

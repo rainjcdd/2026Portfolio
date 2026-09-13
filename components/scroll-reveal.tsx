@@ -1,17 +1,25 @@
 "use client";
 
-import type { ReactNode } from "react";
+import type { CSSProperties, ReactNode } from "react";
 import { useEffect, useRef, useState } from "react";
 
 type ScrollRevealProps = {
   children: ReactNode;
   className?: string;
-  direction?: "left" | "right";
+  direction?: "left" | "right" | "up";
+  animateOnLoad?: boolean;
+  delay?: number;
 };
 
-export function ScrollReveal({ children, className = "", direction = "left" }: ScrollRevealProps) {
+export function ScrollReveal({
+  children,
+  className = "",
+  direction = "left",
+  animateOnLoad = false,
+  delay = 0,
+}: ScrollRevealProps) {
   const elementRef = useRef<HTMLDivElement>(null);
-  const [isReady, setIsReady] = useState(false);
+  const [isReady, setIsReady] = useState(animateOnLoad);
   const [hasEntered, setHasEntered] = useState(false);
 
   useEffect(() => {
@@ -26,6 +34,13 @@ export function ScrollReveal({ children, className = "", direction = "left" }: S
 
     const bounds = element.getBoundingClientRect();
     if (bounds.top < window.innerHeight * 0.88 && bounds.bottom > 0) {
+      if (animateOnLoad) {
+        const frame = window.requestAnimationFrame(() => {
+          window.requestAnimationFrame(() => setHasEntered(true));
+        });
+        return () => window.cancelAnimationFrame(frame);
+      }
+
       const frame = window.requestAnimationFrame(() => setHasEntered(true));
       return () => window.cancelAnimationFrame(frame);
     }
@@ -49,7 +64,7 @@ export function ScrollReveal({ children, className = "", direction = "left" }: S
       window.cancelAnimationFrame(readyFrame);
       observer.disconnect();
     };
-  }, []);
+  }, [animateOnLoad]);
 
   return (
     <div
@@ -58,6 +73,7 @@ export function ScrollReveal({ children, className = "", direction = "left" }: S
       data-reveal-direction={direction}
       data-reveal-ready={isReady ? "true" : "false"}
       data-reveal-visible={hasEntered ? "true" : "false"}
+      style={{ "--reveal-delay": `${delay}ms` } as CSSProperties}
     >
       {children}
     </div>

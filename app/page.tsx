@@ -11,6 +11,17 @@ import { projects } from "@/data/projects";
 
 export default function Home() {
   const featuredProjects = projects.filter((project) => project.featured);
+  const designSystemIndex = featuredProjects.findIndex(
+    (project) => project.slug === "ai-powered-design-system",
+  );
+  const hapioIndex = featuredProjects.findIndex((project) => project.slug === "hapio-app");
+
+  if (designSystemIndex !== -1 && hapioIndex !== -1) {
+    [featuredProjects[designSystemIndex], featuredProjects[hapioIndex]] = [
+      featuredProjects[hapioIndex],
+      featuredProjects[designSystemIndex],
+    ];
+  }
 
   return (
     <>
@@ -60,12 +71,6 @@ export default function Home() {
             <div>
               {featuredProjects.map((project, index) => (
                 <Fragment key={project.slug}>
-                  {project.slug === "hapio-app" ? (
-                    <div className="mb-8 mt-14 border-b border-border pb-5 lg:mb-10 lg:mt-20">
-                      <h2 className="text-h2 text-[#C4C4C1]">Hobby Project: Vibe coding</h2>
-                    </div>
-                  ) : null}
-
                   {project.slug === "navigation-redesign" ? (
                     <div className="mb-12 mt-section-mobile border-b border-border pb-5 lg:mb-16 lg:mt-section">
                       <h2 className="text-h2 text-[#C4C4C1]">2021 – 2024</h2>
@@ -79,10 +84,14 @@ export default function Home() {
                       project.slug !== "trackpoint" &&
                       project.slug !== "ai-powered-design-system" &&
                       project.slug !== "hapio-app" &&
-                      project.slug !== "navigation-redesign"
+                      project.slug !== "navigation-redesign" &&
+                      project.slug !== "short-form-video"
                     }
                     addSpacingAfter={
-                      project.slug === "trackpoint" || project.slug === "navigation-redesign"
+                      project.slug === "trackpoint" ||
+                      project.slug === "hapio-app" ||
+                      project.slug === "navigation-redesign" ||
+                      project.slug === "short-form-video"
                     }
                     reverse={index % 2 === 1}
                   />

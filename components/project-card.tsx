@@ -22,7 +22,7 @@ export function ProjectCard({
   if (layout === "split") {
     return (
       <article
-        className={`overflow-hidden ${showDivider ? "border-b border-black/5" : ""} ${
+        className={`${showDivider ? "border-b border-black/5" : ""} ${
           addSpacingAfter ? "mb-14 md:mb-20 lg:mb-28" : ""
         }`}
       >
@@ -43,16 +43,29 @@ export function ProjectCard({
               className="w-full max-w-[60rem]"
               direction={reverse ? "right" : "left"}
             >
-              <ProjectVisual
-                variant={project.visual}
-                image={project.homepageImage ?? project.image}
-                desktopImage={project.desktopImage}
-                mobileImage={project.mobileImage}
-                alt={`${project.title} project preview`}
-                device={project.homepageImage ? undefined : project.device}
-                size="large"
-                preserveImageAspect={Boolean(project.homepageImage)}
-              />
+              <div
+                className={`transition-transform duration-700 ease-out ${
+                  project.homepageScreens
+                    ? "md:scale-[1.16] lg:scale-[1.24] xl:scale-[1.3]"
+                    : project.slug === "hapio-app"
+                      ? "md:scale-[1.16] lg:scale-[1.24] xl:scale-[1.28]"
+                    : "md:scale-[1.1] lg:scale-[1.16] xl:scale-[1.2]"
+                } ${
+                  reverse ? "origin-left" : "origin-right"
+                }`}
+              >
+                <ProjectVisual
+                  variant={project.visual}
+                  image={project.homepageImage ?? project.image}
+                  desktopImage={project.desktopImage}
+                  mobileImage={project.mobileImage}
+                  flatPhoneScreens={project.homepageScreens}
+                  alt={`${project.title} project preview`}
+                  device={project.homepageImage ? undefined : project.device}
+                  size="large"
+                  preserveImageAspect={Boolean(project.homepageImage)}
+                />
+              </div>
             </ScrollReveal>
           </div>
 

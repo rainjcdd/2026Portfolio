@@ -7,6 +7,7 @@ type ProjectVisualProps = {
   image?: string;
   desktopImage?: string;
   mobileImage?: string;
+  flatPhoneScreens?: [string, string];
   alt?: string;
   device?: Project["device"];
   size?: "default" | "large";
@@ -29,6 +30,7 @@ export function ProjectVisual({
   image,
   desktopImage,
   mobileImage,
+  flatPhoneScreens,
   alt = "",
   device,
   size = "default",
@@ -67,12 +69,34 @@ export function ProjectVisual({
 
   return (
     <div
-      className={`relative flex items-center justify-center overflow-hidden ${
+      className={`relative flex items-center justify-center ${
+        flatPhoneScreens ? "overflow-visible" : "overflow-hidden"
+      } ${
         preserveImageAspect ? "aspect-[645/572]" : "aspect-[4/3]"
       }`}
       aria-hidden={image || desktopImage || mobileImage ? undefined : "true"}
     >
-      {device === "phone" ? (
+      {flatPhoneScreens ? (
+        <div className="flex h-[90%] w-full items-center justify-center gap-[5%]">
+          {flatPhoneScreens.map((screen) => (
+            <div
+              key={screen}
+              className="relative aspect-[9/19] h-full rounded-[2rem] bg-[#111] p-[5px] shadow-[0_24px_55px_rgba(17,17,17,0.24)] sm:rounded-[2.5rem] sm:p-[7px]"
+            >
+              <div className="relative h-full overflow-hidden rounded-[1.7rem] bg-white sm:rounded-[2.15rem]">
+                <Image
+                  src={screen}
+                  alt=""
+                  fill
+                  sizes="(min-width: 768px) 22vw, 42vw"
+                  className="object-contain object-top"
+                />
+                <div className="absolute left-1/2 top-2 z-10 h-3 w-12 -translate-x-1/2 rounded-full bg-[#111] sm:h-4 sm:w-16" />
+              </div>
+            </div>
+          ))}
+        </div>
+      ) : device === "phone" ? (
         <div
           className={`relative aspect-[9/19] rounded-[2rem] bg-[#111] p-[5px] shadow-[0_24px_55px_rgba(17,17,17,0.24)] sm:rounded-[2.5rem] sm:p-[7px] ${
             size === "large" ? "h-[96%]" : "h-[88%]"

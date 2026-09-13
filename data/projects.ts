@@ -46,6 +46,7 @@ export type Project = {
   tag?: string;
   image?: string;
   homepageImage?: string;
+  homepageScreens?: [string, string];
   desktopImage?: string;
   mobileImage?: string;
   device?: "phone" | "desktop" | "responsive";
@@ -163,6 +164,7 @@ export const projects: Project[] = [
       { label: "Pattern library", visual: "grid" },
     ],
     featured: true,
+    image: "/images/projects/design-system-tokenization.png",
     device: "desktop",
     visual: "system",
   },
@@ -189,6 +191,7 @@ export const projects: Project[] = [
     ],
     featured: true,
     tag: "Vibe coded",
+    image: "/images/projects/hapio-matches-screen.png",
     device: "phone",
     visual: "orbit",
   },
@@ -240,6 +243,10 @@ export const projects: Project[] = [
     ],
     featured: true,
     image: "/images/projects/short-form-video.webp",
+    homepageScreens: [
+      "/images/projects/sfv-home-screen-final-v4.png",
+      "/images/projects/sfv-products-screen-final-v2.png",
+    ],
     device: "phone",
     visual: "video",
   },
