@@ -1,4 +1,5 @@
 import Link from "next/link";
+import type { ReactNode } from "react";
 
 import { ProjectVisual } from "@/components/project-visual";
 import { ScrollReveal } from "@/components/scroll-reveal";
@@ -10,7 +11,21 @@ type ProjectCardProps = {
   showDivider?: boolean;
   addSpacingAfter?: boolean;
   reverse?: boolean;
+  comingSoon?: boolean;
 };
+
+function CardLink({ href, className, children, disabled }: {
+  href: string;
+  className: string;
+  children: ReactNode;
+  disabled: boolean;
+}) {
+  return disabled ? (
+    <div className={className}>{children}</div>
+  ) : (
+    <Link href={href} className={className}>{children}</Link>
+  );
+}
 
 export function ProjectCard({
   project,
@@ -18,6 +33,7 @@ export function ProjectCard({
   showDivider = true,
   addSpacingAfter = false,
   reverse = false,
+  comingSoon = false,
 }: ProjectCardProps) {
   if (layout === "split") {
     return (
@@ -26,7 +42,8 @@ export function ProjectCard({
           addSpacingAfter ? "mb-14 md:mb-20 lg:mb-28" : ""
         }`}
       >
-        <Link
+        <CardLink
+          disabled={comingSoon}
           href={`/work/${project.slug}`}
           className={`group grid md:grid-cols-2 ${
             project.homepageImage
@@ -90,18 +107,18 @@ export function ProjectCard({
             <p className="mt-8 max-w-[36rem] text-body leading-relaxed text-text-muted lg:text-[1.25rem]">
               {project.summary}
             </p>
-            <span className="mt-10 inline-flex w-fit items-center rounded-full border border-text bg-text px-6 py-2 text-body font-normal text-white transition-colors duration-300 hover:bg-transparent hover:text-text">
-              View project <span aria-hidden="true">&nbsp;→</span>
+            <span className={`mt-10 inline-flex w-fit items-center rounded-full border px-6 py-2 text-body font-normal ${comingSoon ? "border-border bg-transparent text-text-muted" : "border-text bg-text text-white transition-colors duration-300 hover:bg-transparent hover:text-text"}`}>
+              {comingSoon ? "Coming soon" : <>View project <span aria-hidden="true">&nbsp;→</span></>}
             </span>
           </div>
-        </Link>
+        </CardLink>
       </article>
     );
   }
 
   return (
     <article>
-      <Link href={`/work/${project.slug}`} className="group block">
+      <CardLink disabled={comingSoon} href={`/work/${project.slug}`} className="group block">
         <ProjectVisual
           variant={project.visual}
           image={project.homepageImage ?? project.image}
@@ -125,7 +142,7 @@ export function ProjectCard({
           </div>
           <p className="max-w-[60ch] text-body text-text-muted">{project.summary}</p>
         </div>
-      </Link>
+      </CardLink>
     </article>
   );
 }

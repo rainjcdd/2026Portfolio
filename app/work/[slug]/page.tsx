@@ -1,7 +1,9 @@
 import Image from "next/image";
 import Link from "next/link";
-import { notFound } from "next/navigation";
+import { notFound, redirect } from "next/navigation";
 
+import { NavigationCaseStudy, NavigationCaseStudyHero } from "@/components/navigation-case-study";
+import { SfvCaseStudy, SfvCaseStudyHero } from "@/components/sfv-case-study";
 import { ProjectVisual } from "@/components/project-visual";
 import { ScrollReveal } from "@/components/scroll-reveal";
 import { projects } from "@/data/projects";
@@ -16,13 +18,16 @@ export function generateStaticParams() {
 
 export default async function WorkDetailPage({ params }: WorkDetailPageProps) {
   const { slug } = await params;
+  if (slug === "agency-work") redirect("/work#agency-work");
   const projectIndex = projects.findIndex((item) => item.slug === slug);
 
   if (projectIndex === -1) notFound();
 
   const project = projects[projectIndex];
   const nextProject = projects[(projectIndex + 1) % projects.length];
-  const isTrackPoint = project.slug === "trackpoint";
+  const isNavigationRedesign = project.slug === "navigation-redesign";
+  const isShortFormVideo = project.slug === "short-form-video";
+  const usesAlternatingLayout = project.detailLayout === "alternating";
 
   return (
     <article className="bg-bg pb-section-mobile lg:pb-section">
@@ -48,7 +53,7 @@ export default async function WorkDetailPage({ params }: WorkDetailPageProps) {
               project.overview ? "text-[#333333] lg:col-span-7" : "lg:col-span-8"
             }`}
           >
-            {isTrackPoint ? (
+            {usesAlternatingLayout ? (
               <span className="hero-line-mask">
                 <span className="trackpoint-intro-title block">{project.title}</span>
               </span>
@@ -59,7 +64,7 @@ export default async function WorkDetailPage({ params }: WorkDetailPageProps) {
           <div className={`max-w-text-measure lg:pb-2 ${project.overview ? "lg:col-span-5" : "lg:col-span-4"}`}>
             {project.overview ? (
               <p className="text-h3 font-light leading-[1.45] text-text-muted">
-                {isTrackPoint ? (
+                {usesAlternatingLayout ? (
                   <span className="hero-line-mask">
                     <span className="trackpoint-intro-copy block">{project.overview.copy}</span>
                   </span>
@@ -78,7 +83,8 @@ export default async function WorkDetailPage({ params }: WorkDetailPageProps) {
 
       <div className="featured-content mx-auto max-w-content">
         <div className="mb-section-mobile lg:mb-section">
-          <ScrollReveal direction="up" animateOnLoad={isTrackPoint}>
+          <ScrollReveal direction="up" animateOnLoad={usesAlternatingLayout}>
+            {isNavigationRedesign ? <NavigationCaseStudyHero /> : isShortFormVideo ? <SfvCaseStudyHero /> : (
             <ProjectVisual
               variant={project.visual}
               image={project.image}
@@ -88,6 +94,7 @@ export default async function WorkDetailPage({ params }: WorkDetailPageProps) {
               device={project.device}
               size="large"
             />
+            )}
           </ScrollReveal>
         </div>
 
@@ -116,6 +123,8 @@ export default async function WorkDetailPage({ params }: WorkDetailPageProps) {
           ))}
         </dl>
 
+        {isNavigationRedesign ? <NavigationCaseStudy /> : isShortFormVideo ? <SfvCaseStudy /> : (
+          <>
         <div className="py-section-mobile lg:py-section">
           {[
             { key: "problem", title: "Problem", copy: project.caseStudy.problem },
@@ -243,25 +252,69 @@ export default async function WorkDetailPage({ params }: WorkDetailPageProps) {
 
         <div
           className={`space-y-section-mobile lg:space-y-section ${
-            project.details ? "lg:ml-[20%]" : ""
+            project.details && !usesAlternatingLayout ? "lg:ml-[20%]" : ""
           }`}
         >
-          {project.gallery.map((visual, index) => (
-            <figure key={visual.label}>
-              {isTrackPoint ? (
-                <ScrollReveal direction="up">
-                  <ProjectVisual variant={visual.visual} />
+          {project.gallery.filter((visual) => !visual.hidden).map((visual, index) => (
+            usesAlternatingLayout ? (
+              <section
+                key={visual.label}
+                aria-labelledby={`${project.slug}-feature-${index}`}
+                className="grid items-center gap-8 md:grid-cols-2 md:gap-12 lg:gap-20"
+              >
+                <div className={index % 2 === 1 ? "md:col-start-2 md:row-start-1" : ""}>
+                  <h3 id={`${project.slug}-feature-${index}`} className="text-h2">
+                    {visual.label}
+                  </h3>
+                  <p className="mt-6 max-w-text-measure text-body leading-relaxed text-text-muted lg:text-[1.125rem]">
+                    {visual.copy}
+                  </p>
+                </div>
+                <ScrollReveal
+                  direction="up"
+                  className={index % 2 === 1 ? "md:col-start-1 md:row-start-1" : ""}
+                >
+                  {visual.image ? (
+                    <a href={visual.image.src} target="_blank" rel="noreferrer" aria-label={`Open full-size image: ${visual.image.alt}`}>
+                      <Image {...visual.image} alt={visual.image.alt} sizes="(max-width: 767px) 90vw, 45vw" className="h-auto w-full" />
+                    </a>
+                  ) : <ProjectVisual variant={visual.visual} />}
                 </ScrollReveal>
-              ) : (
-                <ProjectVisual variant={visual.visual} />
-              )}
+                {visual.supportingImages ? (
+                  <div className="grid grid-cols-2 items-start gap-4 md:col-span-2 md:gap-12 lg:gap-20">
+                    {visual.supportingImages.map((img) => (
+                      <a key={img.src} href={img.src} target="_blank" rel="noreferrer" aria-label={`Open full-size image: ${img.alt}`}>
+                        <Image {...img} alt={img.alt} sizes="45vw" className="h-auto w-full" />
+                      </a>
+                    ))}
+                  </div>
+                ) : index < 2 ? (
+                  <div className="grid grid-cols-2 gap-4 md:col-span-2 md:gap-12 lg:gap-20">
+                    {[1, 2].map((number) => (
+                      <div
+                        key={number}
+                        className="aspect-[4/3] w-full bg-[#e7e7e4]"
+                        role="img"
+                        aria-label={`${visual.label} image placeholder ${number}`}
+                      />
+                    ))}
+                  </div>
+                ) : null}
+              </section>
+            ) : (
+            <figure key={visual.label}>
+              <ProjectVisual variant={visual.visual} />
               <figcaption className="mt-4 flex items-center justify-between gap-4 border-t border-border pt-4 text-small text-text-muted">
                 <span>{visual.label}</span>
                 <span>{String(index + 1).padStart(2, "0")} / 03</span>
               </figcaption>
             </figure>
+            )
           ))}
         </div>
+
+          </>
+        )}
 
         <nav
           className={`mt-section-mobile border-t border-border pt-10 lg:mt-section lg:pt-14 ${
@@ -271,11 +324,11 @@ export default async function WorkDetailPage({ params }: WorkDetailPageProps) {
         >
           <p className="mb-4 text-small uppercase tracking-[0.12em] text-text-muted">Next project</p>
           <Link
-            href={`/work/${nextProject.slug}`}
+            href={isShortFormVideo ? "/portfolio/unilever" : `/work/${nextProject.slug}`}
             className="group flex items-end justify-between gap-8"
           >
             <span className="max-w-[14ch] text-h2 transition-opacity duration-300 group-hover:opacity-55 lg:text-[3.5rem]">
-              {nextProject.title}
+              {isShortFormVideo ? "Unilever" : nextProject.title}
             </span>
             <span className="pb-1 text-h3 transition-transform duration-300 group-hover:translate-x-1" aria-hidden="true">
               →

@@ -1,0 +1,74 @@
+[
+  {
+    "url": "https://images.squarespace-cdn.com/content/v1/607f8cd14e662821bf16d0f4/1891419b-dd7d-41ec-be2a-356aeec478bb/MMCD+Banner+01.png",
+    "width": 2880,
+    "height": 1308,
+    "src": "/images/consulting/mrs-meyer/hero.png"
+  },
+  {
+    "url": "https://images.squarespace-cdn.com/content/v1/607f8cd14e662821bf16d0f4/39c0d698-2263-4902-b9de-486f4d988a3b/Banner+02.png",
+    "width": 2878,
+    "height": 1600,
+    "src": "/images/consulting/mrs-meyer/experience-banner.png"
+  },
+  {
+    "url": "https://images.squarespace-cdn.com/content/v1/607f8cd14e662821bf16d0f4/1624831005470-OBTB02A3F2UAWIG0732C/Screen+Shot+2021-06-27+at+4.51.58+PM.png",
+    "width": 2500,
+    "height": 1406,
+    "src": "/images/consulting/mrs-meyer/objectives.png"
+  },
+  {
+    "url": "https://images.squarespace-cdn.com/content/v1/607f8cd14e662821bf16d0f4/1624831040949-D3B0BONAM6YRIHO9OSK5/Screen+Shot+2021-06-27+at+4.52.46+PM.png",
+    "width": 2500,
+    "height": 1407,
+    "src": "/images/consulting/mrs-meyer/guiding-principles.png"
+  },
+  {
+    "url": "https://images.squarespace-cdn.com/content/v1/607f8cd14e662821bf16d0f4/1624831112706-GPSK2FJC7LYVWY92WQGD/Screen+Shot+2021-06-27+at+4.52.56+PM.png",
+    "width": 2500,
+    "height": 1408,
+    "src": "/images/consulting/mrs-meyer/understand-users.png"
+  },
+  {
+    "url": "https://images.squarespace-cdn.com/content/v1/607f8cd14e662821bf16d0f4/1624831132316-EQGER87VPYXVP2ZLN4S4/Screen+Shot+2021-06-27+at+4.53.18+PM.png",
+    "width": 2500,
+    "height": 1405,
+    "src": "/images/consulting/mrs-meyer/user-behavior.png"
+  },
+  {
+    "url": "https://images.squarespace-cdn.com/content/v1/607f8cd14e662821bf16d0f4/1624831204871-WRKZMRHNPDY6WWDOR8UN/Screen+Shot+2021-06-27+at+4.53.36+PM.png",
+    "width": 2500,
+    "height": 1403,
+    "src": "/images/consulting/mrs-meyer/primary-persona.png"
+  },
+  {
+    "url": "https://images.squarespace-cdn.com/content/v1/607f8cd14e662821bf16d0f4/1624831254351-UV6DLJF2477GJBNBKIWZ/Screen+Shot+2021-06-27+at+4.53.49+PM.png",
+    "width": 2500,
+    "height": 1407,
+    "src": "/images/consulting/mrs-meyer/secondary-persona.png"
+  },
+  {
+    "url": "https://images.squarespace-cdn.com/content/v1/607f8cd14e662821bf16d0f4/1624831307659-DPVJMIGOAMGU9YIDEN3W/Screen+Shot+2021-06-27+at+4.54.03+PM.png",
+    "width": 2500,
+    "height": 1403,
+    "src": "/images/consulting/mrs-meyer/persona-description.png"
+  },
+  {
+    "url": "https://images.squarespace-cdn.com/content/v1/607f8cd14e662821bf16d0f4/1624831333644-8LW3E03NVVREDZM94E6G/Screen+Shot+2021-06-27+at+4.54.40+PM.png",
+    "width": 2500,
+    "height": 1404,
+    "src": "/images/consulting/mrs-meyer/customer-journey.png"
+  },
+  {
+    "url": "https://images.squarespace-cdn.com/content/v1/607f8cd14e662821bf16d0f4/1624821160121-KKC72RJBZJ6B7J6RYIH6/MMCD_Nav.gif",
+    "width": 2500,
+    "height": 1594,
+    "src": "/images/consulting/mrs-meyer/navigation.gif"
+  },
+  {
+    "url": "https://images.squarespace-cdn.com/content/v1/607f8cd14e662821bf16d0f4/1624825214043-O8YC27N9S763YKHKYK3A/MMCD_BuildABundle.gif",
+    "width": 2500,
+    "height": 1594,
+    "src": "/images/consulting/mrs-meyer/build-a-bundle.gif"
+  }
+]

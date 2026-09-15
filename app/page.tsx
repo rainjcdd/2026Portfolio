@@ -79,6 +79,7 @@ export default function Home() {
 
                   <ProjectCard
                     project={project}
+                    comingSoon={project.slug === "hapio-app" || project.slug === "ai-powered-design-system"}
                     layout="split"
                     showDivider={
                       project.slug !== "trackpoint" &&

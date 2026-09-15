@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 import { projects } from "@/data/projects";
+import { consultingProjects } from "@/data/consulting-projects";
 
 export const metadata: Metadata = {
   title: "Work | UX Portfolio",
@@ -11,17 +12,17 @@ const projectGroups = [
   {
     id: "2024-2026",
     label: "2024 — 2026",
-    projects: projects.filter((project) => project.timeframe === "2024–2026"),
+    projects: projects.filter((project) => project.timeframe === "2024–2026").map((project) => ({ ...project, href: `/work/${project.slug}` })),
   },
   {
     id: "2021-2024",
     label: "2021 — 2024",
-    projects: projects.filter((project) => project.timeframe === "2021–2024"),
+    projects: projects.filter((project) => project.timeframe === "2021–2024").map((project) => ({ ...project, href: `/work/${project.slug}` })),
   },
   {
-    id: "before-2021",
-    label: "2021 & Before",
-    projects: projects.filter((project) => project.timeframe === "Pre-2021"),
+    id: "agency-work",
+    label: "Design Consulting / Agency Work",
+    projects: consultingProjects.map((project) => ({ ...project, summary: project.subtitle, tag: undefined })),
   },
 ] as const;
 
@@ -37,7 +38,7 @@ export default function WorkPage() {
 
       <div className="space-y-section-mobile lg:space-y-section">
         {projectGroups.map((group) => (
-          <section key={group.id} aria-labelledby={`era-${group.id}`}>
+          <section key={group.id} id={group.id} className="scroll-mt-28" aria-labelledby={`era-${group.id}`}>
             <div className="grid gap-8 md:grid-cols-layout">
               <h2
                 id={`era-${group.id}`}
@@ -50,7 +51,7 @@ export default function WorkPage() {
                 {group.projects.map((project, index) => (
                   <li key={project.slug}>
                     <Link
-                      href={`/work/${project.slug}`}
+                      href={project.href}
                       className="group grid gap-4 border-b border-border py-6 sm:grid-cols-[2rem_1fr_auto] sm:items-start lg:py-8"
                     >
                       <span className="text-small text-text-muted">{String(index + 1).padStart(2, "0")}</span>

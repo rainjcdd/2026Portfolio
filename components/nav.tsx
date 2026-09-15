@@ -8,13 +8,16 @@ const navigation = [
   { label: "Me", href: "/me" },
 ] as const;
 
+// Restore these links when the Work and Me pages are ready.
+const showPageLinks = false;
+
 export function Nav() {
   const [isOpen, setIsOpen] = useState(false);
 
   const linkedInLink = (
     <a
       className="site-nav-social"
-      href="https://www.linkedin.com/"
+      href="https://www.linkedin.com/in/shutang/"
       target="_blank"
       rel="noreferrer"
       aria-label="LinkedIn (opens in a new tab)"
@@ -62,7 +65,7 @@ export function Nav() {
         id="mobile-navigation"
         className={`mobile-nav-menu absolute right-0 top-12 flex min-w-40 flex-col items-end gap-1 rounded-2xl p-3 text-body transition-all duration-300 sm:hidden ${isOpen ? "visible translate-y-0 opacity-100" : "invisible -translate-y-2 opacity-0"}`}
       >
-        {navigation.map((item) => (
+        {showPageLinks && navigation.map((item) => (
           <li key={item.href}>
             <Link className="site-nav-link" href={item.href} onClick={() => setIsOpen(false)}>
               {item.label}
@@ -73,7 +76,7 @@ export function Nav() {
       </ul>
 
       <ul className="hidden items-center gap-4 text-body sm:flex">
-        {navigation.map((item) => (
+        {showPageLinks && navigation.map((item) => (
           <li key={item.href}>
             <Link className="site-nav-link" href={item.href}>
               {item.label}

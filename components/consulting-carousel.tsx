@@ -77,6 +77,8 @@ export function ConsultingCarousel() {
   };
 
   const handlePointerDown = (event: PointerEvent<HTMLDivElement>) => {
+    dragRef.current.moved = false;
+    if (event.button !== 0) return;
     if (event.pointerType === "touch") return;
     const track = trackRef.current;
     if (!track) return;
@@ -87,7 +89,6 @@ export function ConsultingCarousel() {
       scrollLeft: track.scrollLeft,
       moved: false,
     };
-    track.setPointerCapture(event.pointerId);
   };
 
   const handlePointerMove = (event: PointerEvent<HTMLDivElement>) => {
@@ -95,7 +96,11 @@ export function ConsultingCarousel() {
     if (!track || !dragRef.current.active) return;
 
     const distance = event.clientX - dragRef.current.startX;
-    if (Math.abs(distance) > 5) dragRef.current.moved = true;
+    if (!dragRef.current.moved) {
+      if (Math.abs(distance) <= 5) return;
+      dragRef.current.moved = true;
+      track.setPointerCapture(event.pointerId);
+    }
     track.scrollLeft = dragRef.current.scrollLeft - distance;
   };
 
@@ -155,7 +160,7 @@ export function ConsultingCarousel() {
               } as CSSProperties
             }
             onClick={(event) => {
-              if (dragRef.current.moved) event.preventDefault();
+              if (dragRef.current.moved && event.detail !== 0) event.preventDefault();
             }}
           >
             <div className="relative aspect-[4/3] overflow-hidden rounded-2xl bg-border sm:rounded-3xl">

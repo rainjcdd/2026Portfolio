@@ -3,6 +3,11 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 
 import { consultingProjects } from "@/data/consulting-projects";
+import { UnileverCaseStudy } from "@/components/unilever-case-study";
+import { MercedesCaseStudy } from "@/components/mercedes-case-study";
+import { MeyerCaseStudy } from "@/components/meyer-case-study";
+import { FrontierCaseStudy } from "@/components/frontier-case-study";
+import { PlexusCaseStudy } from "@/components/plexus-case-study";
 
 type ConsultingProjectPageProps = {
   params: Promise<{ slug: string }>;
@@ -17,6 +22,11 @@ export default async function ConsultingProjectPage({ params }: ConsultingProjec
   const project = consultingProjects.find((item) => item.slug === slug);
 
   if (!project) notFound();
+  if (project.slug === "unilever") return <UnileverCaseStudy />;
+  if (project.slug === "mercedes-benz") return <MercedesCaseStudy />;
+  if (project.slug === "mrs-meyer") return <MeyerCaseStudy />;
+  if (project.slug === "frontier-coop") return <FrontierCaseStudy />;
+  if (project.slug === "plexus") return <PlexusCaseStudy />;
 
   return (
     <article className="min-h-[70svh] bg-bg px-gutter py-section-mobile lg:py-section">
