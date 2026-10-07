@@ -6,14 +6,14 @@ import { NavigationCaseStudy, NavigationCaseStudyHero } from "@/components/navig
 import { SfvCaseStudy, SfvCaseStudyHero } from "@/components/sfv-case-study";
 import { ProjectVisual } from "@/components/project-visual";
 import { ScrollReveal } from "@/components/scroll-reveal";
-import { projects } from "@/data/projects";
+import { projects, isProjectAvailable } from "@/data/projects";
 
 type WorkDetailPageProps = {
   params: Promise<{ slug: string }>;
 };
 
 export function generateStaticParams() {
-  return projects.map(({ slug }) => ({ slug }));
+  return projects.filter(({ slug }) => isProjectAvailable(slug)).map(({ slug }) => ({ slug }));
 }
 
 export default async function WorkDetailPage({ params }: WorkDetailPageProps) {
@@ -21,10 +21,12 @@ export default async function WorkDetailPage({ params }: WorkDetailPageProps) {
   if (slug === "agency-work") redirect("/work#agency-work");
   const projectIndex = projects.findIndex((item) => item.slug === slug);
 
-  if (projectIndex === -1) notFound();
+  if (projectIndex === -1 || !isProjectAvailable(slug)) notFound();
 
   const project = projects[projectIndex];
-  const nextProject = projects[(projectIndex + 1) % projects.length];
+  const availableProjects = projects.filter(({ slug }) => isProjectAvailable(slug));
+  const availableIndex = availableProjects.findIndex((item) => item.slug === slug);
+  const nextProject = availableProjects[(availableIndex + 1) % availableProjects.length];
   const isNavigationRedesign = project.slug === "navigation-redesign";
   const isShortFormVideo = project.slug === "short-form-video";
   const usesAlternatingLayout = project.detailLayout === "alternating";

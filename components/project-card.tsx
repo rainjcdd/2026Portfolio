@@ -3,7 +3,7 @@ import type { ReactNode } from "react";
 
 import { ProjectVisual } from "@/components/project-visual";
 import { ScrollReveal } from "@/components/scroll-reveal";
-import type { Project } from "@/data/projects";
+import { isProjectAvailable, type Project } from "@/data/projects";
 
 type ProjectCardProps = {
   project: Project;
@@ -35,6 +35,7 @@ export function ProjectCard({
   reverse = false,
   comingSoon = false,
 }: ProjectCardProps) {
+  comingSoon = comingSoon || !isProjectAvailable(project.slug);
   if (layout === "split") {
     return (
       <article

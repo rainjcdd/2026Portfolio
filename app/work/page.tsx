@@ -1,7 +1,8 @@
+import type { ReactNode } from "react";
 import type { Metadata } from "next";
 import Link from "next/link";
 
-import { projects } from "@/data/projects";
+import { projects, isProjectAvailable } from "@/data/projects";
 import { consultingProjects } from "@/data/consulting-projects";
 
 export const metadata: Metadata = {
@@ -25,6 +26,11 @@ const projectGroups = [
     projects: consultingProjects.map((project) => ({ ...project, summary: project.subtitle, tag: undefined })),
   },
 ] as const;
+
+function ProjectRow({ slug, href, children }: { slug: string; href: string; children: ReactNode }) {
+  const className = "group grid gap-4 border-b border-border py-6 sm:grid-cols-[2rem_1fr_auto] sm:items-start lg:py-8";
+  return isProjectAvailable(slug) ? <Link href={href} className={className}>{children}</Link> : <div className={className}>{children}</div>;
+}
 
 export default function WorkPage() {
   return (
@@ -50,10 +56,7 @@ export default function WorkPage() {
               <ol className="border-t border-border md:col-span-9">
                 {group.projects.map((project, index) => (
                   <li key={project.slug}>
-                    <Link
-                      href={project.href}
-                      className="group grid gap-4 border-b border-border py-6 sm:grid-cols-[2rem_1fr_auto] sm:items-start lg:py-8"
-                    >
+                    <ProjectRow slug={project.slug} href={project.href}>
                       <span className="text-small text-text-muted">{String(index + 1).padStart(2, "0")}</span>
                       <div>
                         <div className="mb-3 flex flex-wrap items-center gap-3">
@@ -66,10 +69,8 @@ export default function WorkPage() {
                         </div>
                         <p className="max-w-[62ch] text-body text-text-muted">{project.summary}</p>
                       </div>
-                      <span className="hidden text-body group-hover:text-accent sm:block" aria-hidden="true">
-                        ↗
-                      </span>
-                    </Link>
+                      {isProjectAvailable(project.slug) ? <span className="hidden text-body group-hover:text-accent sm:block" aria-hidden="true">↗</span> : <span className="text-body text-text-muted">Coming soon</span>}
+                    </ProjectRow>
                   </li>
                 ))}
               </ol>

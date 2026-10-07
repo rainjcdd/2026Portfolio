@@ -407,3 +407,8 @@ export const projects: Project[] = [
     visual: "archive",
   },
 ];
+
+// Preserve draft projects while disabling their public navigation and routes.
+export function isProjectAvailable(slug: string): boolean {
+  return !["hapio-app", "ai-powered-design-system"].includes(slug);
+}
