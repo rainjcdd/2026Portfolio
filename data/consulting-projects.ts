@@ -8,6 +8,13 @@ export type ConsultingProject = {
 
 export const consultingProjects: ConsultingProject[] = [
   {
+    slug: "mrs-meyer",
+    title: "Mrs. Meyer's Clean Day (SCJ)",
+    subtitle: "Experience Design, Research",
+    image: "/images/consulting/mrs-meyer.png",
+    href: "/portfolio/mrs-meyer",
+  },
+  {
     slug: "unilever",
     title: "Unilever",
     subtitle: "Design Strategy, Creative Direction, UX",
@@ -20,13 +27,6 @@ export const consultingProjects: ConsultingProject[] = [
     subtitle: "Experience Design, Research",
     image: "/images/consulting/mercedes-benz.png",
     href: "/portfolio/mercedes-benz",
-  },
-  {
-    slug: "mrs-meyer",
-    title: "Mrs. Meyer's Clean Day (SCJ)",
-    subtitle: "Experience Design, Research",
-    image: "/images/consulting/mrs-meyer.png",
-    href: "/portfolio/mrs-meyer",
   },
   {
     slug: "frontier-coop",

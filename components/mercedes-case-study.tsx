@@ -180,7 +180,7 @@ export function MercedesCaseStudy() {
 
           <nav aria-label="Project navigation" className="flex flex-wrap justify-between gap-8 border-t border-border pt-10 lg:pt-14">
             <Link href="/portfolio/unilever" className="group"><p className="mb-4 text-small text-text-muted">Previous project</p><span className="text-h3 transition-opacity group-hover:opacity-55">← Unilever</span></Link>
-            <Link href="/portfolio/mrs-meyer" className="group"><p className="mb-4 text-small text-text-muted">Next project</p><span className="text-h3 transition-opacity group-hover:opacity-55">Mrs. Meyer’s Clean Day →</span></Link>
+            <Link href="/portfolio/frontier-coop" className="group"><p className="mb-4 text-small text-text-muted">Next project</p><span className="text-h3 transition-opacity group-hover:opacity-55">Frontier Co-op →</span></Link>
           </nav>
         </div>
       </div>

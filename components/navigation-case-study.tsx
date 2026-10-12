@@ -1,6 +1,7 @@
 import Image from "next/image";
 import type { ReactNode } from "react";
 import assets from "@/data/navigation-assets.json";
+import { NavigationInspirationWireframes } from "@/components/navigation-inspiration-wireframes";
 
 function Asset({ index, alt, priority = false, sizes = "90vw" }: {
   index: number; alt: string; caption?: string; priority?: boolean; sizes?: string;
@@ -45,7 +46,7 @@ export function NavigationCaseStudy() {
           {[
             ["Sep 2021", "Benchmark tree test"], ["Nov 2021", "Browse Aisles diary study"], ["Dec 2021", "Benchmark usability test"],
             ["Feb 2022", "A/B copy test"], ["Feb 2022", "Browse Aisles open card sort"], ["Apr 2022", "Tree tests to inform IA"],
-          ].map(([date, title]) => <li key={title} className="border-t border-border pt-6"><p className="mb-3 text-small text-text-muted">{date}</p><h3 className="text-body font-medium leading-snug text-text">{title}</h3></li>)}
+          ].map(([date, title]) => <li key={title} className="border-t border-border pt-6"><p className="mb-3 text-small text-text-muted">{date}</p><h3 className="text-h3 text-text">{title}</h3></li>)}
         </ol>
         </div>
       </section>
@@ -58,7 +59,7 @@ export function NavigationCaseStudy() {
             ["Low findability", "Mission-critical pages received insufficient within-site traffic because they were difficult to find in the navigation.", "The Recommended for You page received less than 1% of site traffic."],
             ["Lacking inspiration", "There were limited opportunities for cross-category exploration and insufficient traffic to seasonal or inspirational content.", "Over 80% of add-to-carts came through direct search."],
             ["Complex IA", "Confusing information architecture and taxonomy made it difficult for customers to find products and stay oriented.", "In the taxonomy test, the control group performed significantly worse than the alternatives."],
-          ].map(([title, copy, evidence]) => <div key={title} className="border-t border-border pt-6"><h3 className="text-body font-medium leading-snug text-text">{title}</h3><p className="mt-4 text-body leading-relaxed text-text-muted">{copy}</p><p className="mt-6 text-body font-medium">{evidence}</p></div>)}
+          ].map(([title, copy, evidence]) => <div key={title} className="border-t border-border pt-6"><h3 className="text-h3 text-text">{title}</h3><p className="mt-3 text-body font-light leading-relaxed text-text-muted">{copy}</p><p className="mt-4 text-body font-light leading-relaxed text-text-muted">{evidence}</p></div>)}
         </div>
         </div>
       </section>
@@ -87,16 +88,49 @@ export function NavigationCaseStudy() {
           <p>My favorite UX exercise is whiteboarding, whether in FigJam or on a physical board. It helps designers get ideas out quickly without getting caught in the details.</p>
           <p>We began with a team-wide whiteboarding session and narrowed the ideas to four approaches. A quick round of unmoderated usability testing identified two winning directions, which we developed into high-fidelity design mockups.</p>
         </SectionIntro>
-        <Asset index={6} alt="Four wireframe approaches: Inspiration Focus, Tab Approach, Personalization Focus, and Mega Menu" caption="Four directions for the first round of usability testing" />
+        <div className="grid md:grid-cols-4 md:gap-10 lg:gap-14">
+          <figure className="min-w-0 md:col-span-3 md:col-start-2">
+            <div className="relative aspect-[1900/630] overflow-hidden">
+              <Image
+                src="/images/projects/navigation-redesign/exploration-approaches-transparent.png"
+                alt="Four navigation approaches: Inspiration Focus, Tab Focus, Personalization Focus, and Mega Menu"
+                width={1945}
+                height={809}
+                sizes="(max-width: 767px) 90vw, 67vw"
+                className="absolute left-[-1.263%] top-[-17.46%] h-auto w-[102.37%] max-w-none"
+              />
+            </div>
+          </figure>
+        </div>
         <div className="space-y-12 lg:space-y-20">
           {[
             ["Inspire our customers", 7],
             ["Improve discoverability & findability", 8],
             ["Improve accuracy and clarity of taxonomy", 9],
-          ].map(([title, index], row) => (
+          ].map(([title], row) => (
             <div key={title} className="grid items-center gap-8 md:grid-cols-2 md:gap-12 lg:gap-20">
-              <div className={row % 2 === 1 ? "md:col-start-2 md:row-start-1" : ""}><p className="mb-5 text-small text-text-muted">Design goal · {String(row + 1).padStart(2, "0")}</p><h3 className="text-h2">{title}</h3></div>
-              <div className={row % 2 === 1 ? "md:col-start-1 md:row-start-1" : ""}><Asset index={index as number} alt={`Navigation exploration: ${title}`} sizes="(max-width: 767px) 90vw, 45vw" /></div>
+              <div className={row % 2 === 1 ? "md:col-start-2 md:row-start-1" : ""}><p className="mb-3 text-small text-text-muted">Design goal · {String(row + 1).padStart(2, "0")}</p><h3 className="text-h3 text-text">{title}</h3>
+                <ol className="mt-6 max-w-text-measure list-decimal space-y-5 pl-5 text-body leading-relaxed text-text-muted lg:text-[1.125rem]">
+                  {[
+                    [
+                      "Establish a Recipes & Inspiration hub with curated content that encourages browsing and discovery.",
+                      "Layer collections within categories to inspire customers as they browse the site.",
+                      "Surface Collections in the main menu, linking to a dedicated landing page where customers can explore curated products.",
+                    ],
+                    [
+                      "Improve discoverability with persistent navigation that surfaces Recommended for You, Featured Collections, and Categories.",
+                      "Introduce a mega menu to make subcategories more accessible and help customers reach specific products faster.",
+                      "Speed up shopping with immediate access to categories, Recommended for You, New Arrivals, and Sales & Promotions.",
+                    ],
+                    [
+                      "Group sections around customer needs while keeping high-traffic pages such as Weekly Ad and Past Purchases visible.",
+                      "Introduce a clear hierarchy and straightforward language to make categories and browsing more accessible.",
+                      "Simplify the path to personalized shopping and savings, or to Browse Aisles and Collections for discovery and inspiration.",
+                    ],
+                  ][row].map(copy => <li key={copy}>{copy}</li>)}
+                </ol>
+              </div>
+              <div className={row % 2 === 1 ? "md:col-start-1 md:row-start-1" : ""}><NavigationInspirationWireframes goal={row} /></div>
             </div>
           ))}
         </div>
@@ -116,17 +150,19 @@ export function NavigationCaseStudy() {
         <SectionIntro number="07" label="The Impact" title="Measured through three rounds of A/B testing.">
           <p>We worked closely with engineering and analytics teams to launch three rounds of full-stack A/B tests. Each test split site traffic equally between control and test groups.</p>
         </SectionIntro>
-        <dl className="grid gap-5 py-6 sm:grid-cols-2 lg:grid-cols-4 lg:gap-6 lg:py-10">
-          {[["+12.48%", "Primary navigation click-through"], ["+73.19%", "Category page views"], ["+48%", "Category page add-to-carts"], ["+4.12%", "Seasonal page views"]].map(([value, label]) => <div key={label} className="flex flex-col gap-6 rounded-2xl border border-border bg-white px-6 py-10 lg:px-8 lg:py-14"><dt className="text-small leading-relaxed text-text-muted">{label}</dt><dd className="order-first font-display text-[clamp(2rem,3.5vw,3.5rem)] font-bold leading-none tracking-[-0.05em]">{value}</dd></div>)}
-        </dl>
-        <div className="grid gap-x-12 gap-y-8 md:grid-cols-2 lg:gap-x-20">
+        <div className="grid md:grid-cols-4 md:gap-10 lg:gap-14">
+          <div className="grid gap-8 md:col-span-3 md:col-start-2 md:grid-cols-2 lg:gap-10">
           {[
             ["Way finding", "Measure click-through rates, especially in underperforming areas."],
             ["Purchase behavior", "Track add-to-cart behavior to understand how users find products and where they add them to their carts."],
             ["General metrics", "Monitor whether the new design negatively affects overall site performance."],
             ["Business metrics", "Monitor conversion rate, basket size, average order value, and revenue per visitor to guard against negative commerce impacts."],
-          ].map(([title, copy]) => <div key={title} className="border-t border-border pt-6"><h3 className="text-h3">{title}</h3><p className="mt-4 text-body leading-relaxed text-text-muted">{copy}</p></div>)}
+          ].map(([title, copy]) => <div key={title} className="border-t border-border pt-6"><h3 className="text-body font-semibold text-text">{title}</h3><p className="mt-3 text-body font-light leading-relaxed text-text-muted">{copy}</p></div>)}
         </div>
+        </div>
+        <dl className="grid gap-5 py-6 sm:grid-cols-2 lg:grid-cols-4 lg:gap-6 lg:py-10">
+          {[["+12.48%", "Primary navigation click-through"], ["+73.19%", "Category page views"], ["+48%", "Category page add-to-carts"], ["+4.12%", "Seasonal page views"]].map(([value, label]) => <div key={label} className="flex flex-col gap-6 rounded-2xl border border-border bg-white px-6 py-10 lg:px-8 lg:py-14"><dt className="text-small leading-relaxed text-text-muted">{label}</dt><dd className="order-first font-display text-[clamp(2rem,3.5vw,3.5rem)] font-bold leading-none tracking-[-0.05em]">{value}</dd></div>)}
+        </dl>
       </section>
     </div>
   );

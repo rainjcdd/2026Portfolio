@@ -100,9 +100,13 @@ export function UnileverCaseStudy() {
             <SectionIntro number="01" label="The Ask" title="Create strong emotional connections through personalized experiences">
               <p>Unilever wants to digitize the SuperSaver coupon program in order to reach a wider range of audiences. Through numerous discussions and collaboration sessions over a year, the ask evolved into creating a long-lasting relationship with their customers and driving incremental growth for all Unilever brands. We were excited to take on this challenge and bring this idea to life.</p>
             </SectionIntro>
-            <div className="bg-[#222222] px-4 py-8 md:p-10 lg:p-14">
-              <Asset index={1} alt="Five-phase delivery process: Initiate, Research, Solution, Create, Activate" />
-            </div>
+            <ol aria-label="Five-phase delivery process" className="grid grid-cols-2 gap-4 py-8 sm:grid-cols-5 sm:gap-0 lg:py-14">
+              {["Initiate", "Research", "Solution", "Create", "Activate"].map((phase, index) => (
+                <li key={phase} className={`flex aspect-square items-center justify-center rounded-full border text-small font-semibold uppercase tracking-wide ${index === 0 ? "border-[#dedede] bg-[#e9e9e7] text-text" : index === 1 ? "border-[#1246ed] bg-[#1246ed] text-white" : index === 4 ? "border-dashed border-[#9b9b9b] text-text" : "border-[#9b9b9b] text-text"}`}>
+                  {phase}
+                </li>
+              ))}
+            </ol>
           </section>
 
           <section aria-label="Research" className="space-y-10 lg:space-y-14">
@@ -196,9 +200,9 @@ export function UnileverCaseStudy() {
           </section>
 
           <nav aria-label="Project navigation" className="flex flex-wrap justify-between gap-8 border-t border-border pt-10 lg:pt-14">
-            <Link href="/work/short-form-video" className="group">
+            <Link href="/portfolio/mrs-meyer" className="group">
               <p className="mb-4 text-small text-text-muted">Previous project</p>
-              <span className="text-h3 transition-opacity group-hover:opacity-55">← Short Form Video</span>
+              <span className="text-h3 transition-opacity group-hover:opacity-55">← Mrs. Meyer’s Clean Day</span>
             </Link>
             <Link href="/portfolio/mercedes-benz" className="group">
               <p className="mb-4 text-small text-text-muted">Next project</p>

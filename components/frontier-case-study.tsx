@@ -135,7 +135,7 @@ export function FrontierCaseStudy() {
           </figure>
 
           <nav aria-label="Project navigation" className="flex flex-wrap justify-between gap-8">
-            <Link href="/portfolio/mrs-meyer" className="group"><p className="mb-4 text-small text-text-muted">Previous project</p><span className="text-h3 transition-opacity group-hover:opacity-55">← Mrs. Meyer’s Clean Day</span></Link>
+            <Link href="/portfolio/mercedes-benz" className="group"><p className="mb-4 text-small text-text-muted">Previous project</p><span className="text-h3 transition-opacity group-hover:opacity-55">← Mercedes-Benz Canada</span></Link>
             <Link href="/portfolio/plexus" className="group"><p className="mb-4 text-small text-text-muted">Next project</p><span className="text-h3 transition-opacity group-hover:opacity-55">Plexus →</span></Link>
           </nav>
         </div>

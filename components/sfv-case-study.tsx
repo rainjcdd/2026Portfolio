@@ -83,7 +83,7 @@ export function SfvCaseStudy() {
         </SectionIntro>
         <div className="grid md:grid-cols-4 md:gap-10 lg:gap-14">
           <div className="w-full max-w-[920px] md:col-span-3 md:col-start-2">
-            <Asset index={3} alt="Phased roadmap from the core video MVP through monetization, personalization, and a content hub" caption="A phased approach from MVP to a personalized content hub" sizes="(max-width: 767px) 90vw, 65vw" />
+            <Asset index={3} alt="Phased roadmap from the core video MVP through monetization, personalization, and a content hub" sizes="(max-width: 767px) 90vw, 65vw" />
           </div>
         </div>
       </section>

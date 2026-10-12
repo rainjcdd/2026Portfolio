@@ -407,11 +407,11 @@ export default async function WorkDetailPage({ params }: WorkDetailPageProps) {
         >
           <p className="mb-4 text-small uppercase tracking-[0.12em] text-text-muted">Next project</p>
           <Link
-            href={isShortFormVideo ? "/portfolio/unilever" : `/work/${nextProject.slug}`}
+            href={isShortFormVideo ? "/portfolio/mrs-meyer" : `/work/${nextProject.slug}`}
             className="group flex items-end justify-between gap-8"
           >
             <span className="max-w-[14ch] text-h2 transition-opacity duration-300 group-hover:opacity-55 lg:text-[3.5rem]">
-              {isShortFormVideo ? "Unilever" : nextProject.title}
+              {isShortFormVideo ? "Mrs. Meyer’s Clean Day" : nextProject.title}
             </span>
             <span className="pb-1 text-h3 transition-transform duration-300 group-hover:translate-x-1" aria-hidden="true">
               →
