@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="820" viewBox="0 0 1000 820" role="img" aria-labelledby="title">
+<title id="title">Mobile responsive modal concept</title>
+<rect x="1" y="1" width="998" height="818" rx="20" fill="#f4f6fa" stroke="#dce3ed"/>
+<g font-family="Arial,sans-serif">
+<text x="60" y="75" font-size="24" font-weight="600" fill="#102b50">Mobile · A compact room</text>
+<g transform="translate(65 110)" stroke="#0052cc" stroke-width="3" fill="none"><rect x="10" y="0" width="85" height="45" rx="9"/><rect x="20" y="20" width="27.5" height="25" rx="5"/><rect x="57.5" y="20" width="27.5" height="25" rx="5"/><rect y="43" width="105" height="30" rx="5"/><path d="M8 73 V84 H22 V73 M83 73 V84 H97 V73"/></g>
+<text x="205" y="151" font-size="20" fill="#6b6b6b">Same furniture. A tighter arrangement.</text>
+<rect x="297" y="235" width="406" height="470" rx="25" fill="#dce3ed" stroke="#bdc9d9"/><rect x="314" y="252" width="372" height="436" rx="14" fill="#e9edf3"/>
+<rect x="314" y="355" width="372" height="333" rx="14" fill="white"/>
+<circle cx="348" cy="392" r="11" fill="#00875a"/><path d="M342 392 l4 4 8 -9" fill="none" stroke="white" stroke-width="2"/><text x="370" y="399" font-size="21" font-weight="600" fill="#102b50">Changes saved</text><path d="M648 384 l12 12 m0 -12 -12 12" stroke="#344563" stroke-width="2"/>
+<text x="338" y="443" font-size="17" fill="#344563">Your preferences have been updated.</text>
+<text x="338" y="470" font-size="17" fill="#344563">You can change them again</text>
+<text x="338" y="497" font-size="17" fill="#344563">at any time.</text>
+<rect x="338" y="533" width="324" height="44" rx="22" fill="#0052cc" stroke="#0052cc"/><text x="500.0" y="561" text-anchor="middle" font-size="17" fill="white">Continue</text>
+<rect x="338" y="597" width="324" height="44" rx="22" fill="white" stroke="#0052cc"/><text x="500.0" y="625" text-anchor="middle" font-size="17" fill="#0052cc">Cancel</text>
+<text x="500" y="763" text-anchor="middle" font-size="19" fill="#6b6b6b">Narrower width · stacked actions · compact spacing</text></g></svg>

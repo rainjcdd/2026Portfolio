@@ -1,3 +1,4 @@
+import { DesignSystemCaseStudy, DesignSystemCaseStudyHero } from "@/components/design-system-case-study";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound, redirect } from "next/navigation";
@@ -6,14 +7,14 @@ import { NavigationCaseStudy, NavigationCaseStudyHero } from "@/components/navig
 import { SfvCaseStudy, SfvCaseStudyHero } from "@/components/sfv-case-study";
 import { ProjectVisual } from "@/components/project-visual";
 import { ScrollReveal } from "@/components/scroll-reveal";
-import { projects } from "@/data/projects";
+import { projects, isProjectAvailable } from "@/data/projects";
 
 type WorkDetailPageProps = {
   params: Promise<{ slug: string }>;
 };
 
 export function generateStaticParams() {
-  return projects.map(({ slug }) => ({ slug }));
+  return projects.filter(({ slug }) => isProjectAvailable(slug)).map(({ slug }) => ({ slug }));
 }
 
 export default async function WorkDetailPage({ params }: WorkDetailPageProps) {
@@ -21,20 +22,23 @@ export default async function WorkDetailPage({ params }: WorkDetailPageProps) {
   if (slug === "agency-work") redirect("/work#agency-work");
   const projectIndex = projects.findIndex((item) => item.slug === slug);
 
-  if (projectIndex === -1) notFound();
+  if (projectIndex === -1 || !isProjectAvailable(slug)) notFound();
 
   const project = projects[projectIndex];
-  const nextProject = projects[(projectIndex + 1) % projects.length];
+  const availableProjects = projects.filter(({ slug }) => isProjectAvailable(slug));
+  const availableIndex = availableProjects.findIndex((item) => item.slug === slug);
+  const nextProject = availableProjects[(availableIndex + 1) % availableProjects.length];
+  const isDesignSystem = project.slug === "ai-powered-design-system";
   const isNavigationRedesign = project.slug === "navigation-redesign";
+  const isTrackpoint = project.slug === "trackpoint";
   const isShortFormVideo = project.slug === "short-form-video";
   const usesAlternatingLayout = project.detailLayout === "alternating";
+  const usesIntroReveal = usesAlternatingLayout || isDesignSystem;
 
   return (
     <article className="bg-bg pb-section-mobile lg:pb-section">
       <header
-        className={`featured-content mx-auto max-w-content pt-12 lg:pt-20 ${
-          project.overview ? "pb-6 lg:pb-16" : "pb-section-mobile lg:pb-section"
-        }`}
+        className="featured-content mx-auto max-w-content pb-section-mobile pt-12 lg:pb-section lg:pt-20"
       >
         <div className="mb-10 flex flex-wrap items-center gap-3 text-small font-medium text-text-muted lg:mb-14">
           {project.tag ? (
@@ -53,7 +57,7 @@ export default async function WorkDetailPage({ params }: WorkDetailPageProps) {
               project.overview ? "text-[#333333] lg:col-span-7" : "lg:col-span-8"
             }`}
           >
-            {usesAlternatingLayout ? (
+            {usesIntroReveal ? (
               <span className="hero-line-mask">
                 <span className="trackpoint-intro-title block">{project.title}</span>
               </span>
@@ -64,7 +68,7 @@ export default async function WorkDetailPage({ params }: WorkDetailPageProps) {
           <div className={`max-w-text-measure lg:pb-2 ${project.overview ? "lg:col-span-5" : "lg:col-span-4"}`}>
             {project.overview ? (
               <p className="text-h3 font-light leading-[1.45] text-text-muted">
-                {usesAlternatingLayout ? (
+                {usesIntroReveal ? (
                   <span className="hero-line-mask">
                     <span className="trackpoint-intro-copy block">{project.overview.copy}</span>
                   </span>
@@ -84,7 +88,7 @@ export default async function WorkDetailPage({ params }: WorkDetailPageProps) {
       <div className="featured-content mx-auto max-w-content">
         <div className="mb-section-mobile lg:mb-section">
           <ScrollReveal direction="up" animateOnLoad={usesAlternatingLayout}>
-            {isNavigationRedesign ? <NavigationCaseStudyHero /> : isShortFormVideo ? <SfvCaseStudyHero /> : (
+            {isDesignSystem ? <DesignSystemCaseStudyHero /> : isNavigationRedesign ? <NavigationCaseStudyHero /> : isShortFormVideo ? <SfvCaseStudyHero /> : (
             <ProjectVisual
               variant={project.visual}
               image={project.image}
@@ -123,11 +127,14 @@ export default async function WorkDetailPage({ params }: WorkDetailPageProps) {
           ))}
         </dl>
 
-        {isNavigationRedesign ? <NavigationCaseStudy /> : isShortFormVideo ? <SfvCaseStudy /> : (
+        {isDesignSystem ? <DesignSystemCaseStudy /> : isNavigationRedesign ? <NavigationCaseStudy /> : isShortFormVideo ? <SfvCaseStudy /> : (
           <>
         <div className="py-section-mobile lg:py-section">
           {[
             { key: "problem", title: "Problem", copy: project.caseStudy.problem },
+            ...(isTrackpoint
+              ? [{ key: "competitive-landscape", title: "Competitive Landscape", copy: "We mapped the competitive landscape across two dimensions: vendor-neutral versus distributor-native platforms, and back-office procurement versus frontline workflows. The opportunity for TrackPoint was to connect supply ordering with the everyday work of managing stock and supporting care." }]
+              : []),
             {
               key: "process",
               title: project.processTitle ?? "Process",
@@ -182,9 +189,35 @@ export default async function WorkDetailPage({ params }: WorkDetailPageProps) {
                     {title}
                   </h2>
                 ) : null}
-                <p className={`${project.details ? "" : "mt-6"} max-w-text-measure text-body leading-relaxed text-text-muted lg:text-[1.125rem]`}>
+                {copy ? <p className={`${project.details ? "" : "mt-6"} max-w-text-measure text-body leading-relaxed text-text-muted lg:text-[1.125rem]`}>
                   {copy}
-                </p>
+                </p> : null}
+                {key === "competitive-landscape" ? (
+                  <>
+                  <figure className="mt-10 w-full max-w-[760px] lg:mt-14">
+                    <Image
+                      src="/images/projects/trackpoint/competitive-landscape.svg"
+                      alt="Competitive positioning: TrackPoint connects distributor-native supply services with frontline workflows, while Hybrent provides the vendor-neutral experience benchmark."
+                      width={1200}
+                      height={760}
+                      sizes="(max-width: 768px) 100vw, 75vw"
+                      className="h-auto w-full rounded-2xl"
+                    />
+                  </figure>
+                  <div className="mt-10 grid gap-8 border-t border-border pt-8 lg:mt-14 lg:grid-cols-3 lg:gap-10">
+                    {[
+                      { title: "Benchmark the experience", copy: "Our review included Oncare / Hybrent, Direct Supply (DSSI), Hospice Cloud Pro, and McKesson Supply Manager. Hybrent served as the benchmark for core functionality and ease of use." },
+                      { title: "Connect the daily workflow", copy: "TrackPoint’s intended focus combined self-service ordering, stock visibility, and per-patient-day cost control, bringing procurement closer to the needs of frontline teams." },
+                      { title: "Build on the Medline relationship", copy: "The strategy was to make Medline the default supply partner within a useful daily workflow, supporting adoption and continued use through practical value." },
+                    ].map((point) => (
+                      <div key={point.title}>
+                        <h3 className="text-body font-medium leading-snug text-text">{point.title}</h3>
+                        <p className="mt-3 text-body leading-relaxed text-text-muted">{point.copy}</p>
+                      </div>
+                    ))}
+                  </div>
+                  </>
+                ) : null}
                 {key === "problem" && project.problemPoints ? (
                   <div className="mt-10 grid gap-8 border-t border-border pt-8 md:grid-cols-3 lg:mt-14 lg:gap-10 lg:pt-10">
                     {project.problemPoints.map((point) => (
@@ -199,7 +232,7 @@ export default async function WorkDetailPage({ params }: WorkDetailPageProps) {
                 ) : null}
                 {key === "process" && project.processImage ? (
                   <figure className="mt-10 flex justify-start lg:mt-14">
-                    <ScrollReveal direction="up" className="w-full max-w-[760px]">
+                    <ScrollReveal direction="up" className="w-full max-w-[920px]">
                       <Image
                         src={project.processImage}
                         alt="Healthcare settings prioritized for TrackPoint customer research"
@@ -211,10 +244,57 @@ export default async function WorkDetailPage({ params }: WorkDetailPageProps) {
                     </ScrollReveal>
                   </figure>
                 ) : null}
+                {key === "process" && isTrackpoint ? (
+                  <>
+                  <div className="mt-10 grid gap-6 sm:grid-cols-3 lg:mt-14">
+                    {[
+                      { value: "14.7K", label: "Nursing homes", detail: "Estimated market · ~$4.5B TAM" },
+                      { value: "41.5K", label: "Assisted living communities", detail: "Estimated market · ~$1.1B TAM" },
+                      { value: "6.7K", label: "Medicare hospices", detail: "Estimated market · ~$0.8B TAM" },
+                    ].map((metric) => (
+                      <div key={metric.label} className="border-l border-border pl-5">
+                        <p className="text-4xl font-semibold tracking-tight text-text lg:text-5xl">{metric.value}</p>
+                        <h3 className="mt-3 text-body font-medium text-text">{metric.label}</h3>
+                        <p className="mt-2 text-small leading-relaxed text-text-muted">{metric.detail}</p>
+                      </div>
+                    ))}
+                  </div>
+                  <p className="mt-5 text-small leading-relaxed text-text-muted">Estimated size of our initial target markets.</p>
+                  <div className="mt-8 max-w-[920px] rounded-xl bg-[#eef3fa] p-6 lg:p-8">
+                    <h3 className="text-body font-semibold text-text">Key finding: simplicity is a strategic advantage</h3>
+                    <p className="mt-3 text-body leading-relaxed text-text-muted">With an estimated <strong className="font-semibold text-text">1.8% median margin for nursing homes</strong> and an average of <strong className="font-semibold text-text">33 beds per assisted living community</strong>, our target customers operate with limited resources. We focused on a practical, easy-to-adopt workflow that fits the needs of smaller care providers.</p>
+                  </div>
+                  </>
+                ) : null}
+                {key === "process" && isTrackpoint ? (
+                  <div className="mt-12 max-w-text-measure lg:mt-16">
+                    <h3 className="text-h3 text-text">Understanding the people behind the inventory</h3>
+                    <div className="mt-4 space-y-4 text-body leading-relaxed text-text-muted lg:text-[1.125rem]">
+                      <p>
+                        Our initial research included 10 participants across nursing homes, assisted living, surgery centers, and physician offices of different sizes. Through in-depth interviews, we explored daily responsibilities, how supplies were organized and moved, and where existing tools fell short.
+                      </p>
+                      <p>
+                        Supplies were spread across rooms and floors, with staff relying on personal knowledge, shared notes, and informal communication to keep work moving. The needs differed by role: administrators needed reliable stock and ordering information, clinicians needed quick access during patient care, and directors needed visibility across locations. These findings shaped the three personas below.
+                      </p>
+                    </div>
+                  </div>
+                ) : null}
                 {key === "process" && project.personas ? (
-                  <div className="mt-10 grid gap-8 border-t border-border pt-8 md:grid-cols-3 lg:mt-14 lg:gap-10 lg:pt-10">
-                    {project.personas.map((persona) => (
-                      <div key={persona.title}>
+                  <div className="mt-10 grid gap-5 md:grid-cols-3 lg:mt-14 lg:gap-6">
+                    <h3 className="text-h3 text-text md:col-span-3">Personas</h3>
+                    {project.personas.map((persona, index) => (
+                      <div key={persona.title} className="rounded-2xl border border-border bg-white p-6 lg:p-8">
+                        <div className="mb-6 flex h-12 w-12 items-center justify-center rounded-xl bg-[#eef3fa] text-[#164777]">
+                          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                            {index === 0 ? (
+                              <><path d="m12 3 9 5-9 5-9-5 9-5Z" /><path d="M3 8v9l9 5 9-5V8M12 13v9M7.5 5.5l9 5" /></>
+                            ) : index === 1 ? (
+                              <><path d="M6 3v5a4 4 0 0 0 8 0V3M4 3h3M13 3h3M10 12v3a5 5 0 0 0 10 0v-2" /><circle cx="20" cy="10" r="2" /></>
+                            ) : (
+                              <><rect x="3" y="3" width="18" height="18" rx="3" /><path d="M7 16v-4M12 16V8M17 16v-6" /></>
+                            )}
+                          </svg>
+                        </div>
                         <h3 className="text-body font-medium leading-snug text-text">
                           {persona.title}
                         </h3>
@@ -237,7 +317,7 @@ export default async function WorkDetailPage({ params }: WorkDetailPageProps) {
                   width={project.solutionImage.width}
                   height={project.solutionImage.height}
                   sizes="(max-width: 1024px) 100vw, 90vw"
-                  className="h-auto w-full"
+                  className={`h-auto w-full ${isTrackpoint ? "rounded-xl" : ""}`}
                 />
               </ScrollReveal>
             </figure>
@@ -262,21 +342,24 @@ export default async function WorkDetailPage({ params }: WorkDetailPageProps) {
                 aria-labelledby={`${project.slug}-feature-${index}`}
                 className="grid items-center gap-8 md:grid-cols-2 md:gap-12 lg:gap-20"
               >
-                <div className={index % 2 === 1 ? "md:col-start-2 md:row-start-1" : ""}>
-                  <h3 id={`${project.slug}-feature-${index}`} className="text-h2">
+                <div className={isTrackpoint ? "grid md:col-span-2 md:grid-cols-4 md:gap-10 lg:gap-14" : index % 2 === 1 ? "md:col-start-2 md:row-start-1" : ""}>
+                  <div className={isTrackpoint ? "md:col-span-3 md:col-start-2" : ""}>
+                  {isTrackpoint ? <p className="mb-3 text-small text-text-muted">{String(index + 1).padStart(2, "0")}</p> : null}
+                  <h3 id={`${project.slug}-feature-${index}`} className={isTrackpoint ? "text-h3 text-text" : "text-h2"}>
                     {visual.label}
                   </h3>
-                  <p className="mt-6 max-w-text-measure text-body leading-relaxed text-text-muted lg:text-[1.125rem]">
-                    {visual.copy}
-                  </p>
+                  <div className={`${isTrackpoint ? "mt-4 space-y-4" : "mt-6 space-y-5"} max-w-text-measure text-body leading-relaxed text-text-muted lg:text-[1.125rem]`}>
+                    {visual.copy?.split("\n\n").map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
+                  </div>
+                  </div>
                 </div>
                 <ScrollReveal
                   direction="up"
-                  className={index % 2 === 1 ? "md:col-start-1 md:row-start-1" : ""}
+                  className={isTrackpoint ? "mx-auto w-full max-w-[970px] md:col-span-2" : index % 2 === 1 ? "md:col-start-1 md:row-start-1" : ""}
                 >
                   {visual.image ? (
                     <a href={visual.image.src} target="_blank" rel="noreferrer" aria-label={`Open full-size image: ${visual.image.alt}`}>
-                      <Image {...visual.image} alt={visual.image.alt} sizes="(max-width: 767px) 90vw, 45vw" className="h-auto w-full" />
+                      <Image {...visual.image} alt={visual.image.alt} sizes={isTrackpoint ? "90vw" : "(max-width: 767px) 90vw, 45vw"} className={`h-auto w-full ${isTrackpoint ? "rounded-xl" : ""}`} />
                     </a>
                   ) : <ProjectVisual variant={visual.visual} />}
                 </ScrollReveal>
@@ -284,7 +367,7 @@ export default async function WorkDetailPage({ params }: WorkDetailPageProps) {
                   <div className="grid grid-cols-2 items-start gap-4 md:col-span-2 md:gap-12 lg:gap-20">
                     {visual.supportingImages.map((img) => (
                       <a key={img.src} href={img.src} target="_blank" rel="noreferrer" aria-label={`Open full-size image: ${img.alt}`}>
-                        <Image {...img} alt={img.alt} sizes="45vw" className="h-auto w-full" />
+                        <Image {...img} alt={img.alt} sizes="45vw" className={`w-full ${isTrackpoint ? "aspect-[4/3] h-auto rounded-xl object-cover object-top" : "h-auto"}`} />
                       </a>
                     ))}
                   </div>

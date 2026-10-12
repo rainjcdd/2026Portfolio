@@ -50,9 +50,9 @@ function SectionIntro({ number, label, title, children }: {
 }) {
   return (
     <div className="grid gap-6 border-t border-border pt-12 md:grid-cols-4 md:gap-10 lg:gap-14 lg:pt-20">
-      <p className="flex items-baseline gap-4 text-small text-text-muted"><span>{number}</span><span>{label}</span></p>
+      <div className="flex items-baseline gap-4"><p className="shrink-0 text-small uppercase tracking-[0.12em] text-text-muted">{number}</p><h2 className="text-h2 leading-[1.05]">{label}</h2></div>
       <div className="md:col-span-3">
-        <h2 className="max-w-[24ch] text-h2">{title}</h2>
+        <h3 className="max-w-[24ch] text-h3 text-text">{title}</h3>
         <div className="mt-6 max-w-text-measure space-y-5 text-body leading-relaxed text-text-muted lg:text-[1.125rem]">{children}</div>
       </div>
     </div>
@@ -62,7 +62,7 @@ function SectionIntro({ number, label, title, children }: {
 export function UnileverCaseStudy() {
   return (
     <article className="bg-bg pb-section-mobile lg:pb-section">
-      <header className="featured-content mx-auto max-w-content pb-6 pt-12 lg:pb-16 lg:pt-20">
+      <header className="featured-content mx-auto max-w-content pb-section-mobile pt-12 lg:pb-section lg:pt-20">
         <p className="mb-10 text-small font-medium lg:mb-14">Design Strategy, Creative Direction & UX</p>
         <div className="grid gap-10 lg:grid-cols-12 lg:items-end lg:gap-12">
           <h1 className="font-display text-[clamp(3.25rem,8vw,8.5rem)] font-extrabold leading-[0.9] tracking-[-0.06em] text-[#333333] lg:col-span-7">

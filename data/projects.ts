@@ -105,7 +105,7 @@ export const projects: Project[] = [
       },
     ],
     processTitle: "Our Customer & User",
-    processImage: "/images/projects/trackpoint/customer-segments.png",
+    processImage: "/images/projects/trackpoint/customer-segments-transparent.png",
     outcomeTitle: "Challenge",
     solutionImage: {
       src: "/images/projects/trackpoint/solution/solution-device-composition.png",
@@ -140,7 +140,7 @@ export const projects: Project[] = [
     gallery: [
       {
         label: "Customer Semantic Model: Product and Location",
-        copy: "Connect inventory tasks to the places where care happens. The workflow brings locations, supplies, and patient usage into a shared context for everyday work.",
+        copy: "We combined in-depth customer interviews and ride-alongs with broader service research to understand how inventory work fits into everyday care. We examined physical spaces, staff responsibilities, supply movement, and the operational challenges surrounding ordering, storage, and patient use.\n\nThe research revealed that product terminology was relatively consistent, while location names and storage practices varied across facilities. Supplies could live in central rooms, utility closets, carts, or patient-specific drawers. Finding and moving them often depended on staff knowledge, informal communication, and manual records.\n\nThese insights informed a customer semantic model connecting products to the places and tasks people already understood. Flexible location hierarchies and familiar terminology help represent each facility’s organization, while product transfers and patient usage connect inventory activity across those spaces. The aim was to make TrackPoint fit the way care teams work in the physical world.",
         visual: "path",
         image: {
           src: "/images/projects/trackpoint/solution/location-hierarchy.png",
@@ -165,7 +165,7 @@ export const projects: Project[] = [
       },
       {
         label: "Unit of Measure: Add, Track & Dispense",
-        copy: "Bring supply tracking into the flow of patient care. The mobile experience focuses on clear, simple tasks that support clinicians as they find supplies and record usage.",
+        copy: "The same product can be ordered, stored, and dispensed in different units. A nurse might order gloves by the case, stock them by the box, and record individual gloves when dispensing. Each unit reflects a different task, so a single unit of measure cannot represent the entire workflow.\n\nThe challenge extended beyond the interface. We had to account for how product, packaging, and quantity data were stored in the underlying system, and how those records related to the units customers used in practice. Ordering, tracking, and dispensing needed explicit relationships and reliable conversion rules so that a change in one unit could be reconciled with the others.\n\nOur design separates these settings and makes the relevant unit visible at each step. Staff can work in the terms that make sense for their task, while the system maintains the relationships needed to keep inventory and usage records aligned. The goal was to accommodate operational complexity without making users translate between the data model and their daily work.",
         visual: "grid",
         image: {
           src: "/images/projects/trackpoint/solution/dispense-service-units.png",
@@ -202,20 +202,30 @@ export const projects: Project[] = [
     visual: "grid",
   },
   {
-    title: "AI-Powered Design System",
+    title: "AI-enabled DSM",
     slug: "ai-powered-design-system",
+    overview: {
+      heading: "2024–2026",
+      copy: "A tokenized design system powering consistent experiences and AI-enabled workflows across Medline’s digital ecosystem.",
+    },
     timeframe: "2024–2026",
     summary:
-      "An internal design system augmented with AI tooling to auto-generate compliant component variants, cutting design-to-dev handoff time significantly.",
-    role: "Design Systems Lead",
-    tools: ["Figma", "Storybook", "Cursor"],
+      "A tokenized design system powering consistent experiences and AI-enabled workflows across Medline’s digital ecosystem.",
+    role: "Design Direction, Project Management",
+    tools: ["Figma", "Storybook", "Claude"],
+    details: [
+      { label: "Role", items: ["Design Direction", "Project Management"] },
+      { label: "Key Milestone", items: ["Base DSM", "Multi-brand", "Migration"] },
+      { label: "Key Tasks", items: ["Design Audit", "UX Design", "Migration"] },
+      { label: "Tools", items: ["Figma", "Storybook", "Claude"] },
+    ],
     caseStudy: {
       problem:
-        "Teams were recreating common patterns across products, producing inconsistent variants and avoidable review cycles. The system documented standards, but it did not actively help designers apply them.",
+        "Outdated technology and styling limited the design system’s ability to evolve across Medline’s digital ecosystem.",
       process:
-        "I audited component drift, defined a constrained generation model, and prototyped prompts that transformed product intent into system-compliant starting points. Designers and engineers reviewed outputs together to establish practical guardrails.",
+        "I initiated the modernization effort. We completed tokens, component bindings, and themes, and brought the Figma system into Storybook.",
       outcome:
-        "The pilot reduced repetitive setup work and made system decisions visible earlier in the design process. Handoff became more consistent while designers retained control over product-specific judgment.",
+        "The delivered foundation connects design and coded components with an AI-assisted workflow that references system components and tokens to build screens.",
     },
     gallery: [
       { label: "Component architecture", visual: "system" },
@@ -285,14 +295,14 @@ export const projects: Project[] = [
     detailLayout: "alternating",
     timeframe: "2021–2024",
     summary: "Reimagined the navigation system to elevate UX and brand digital presence.",
-    role: "Senior Product Designer",
+    role: "Product Design Direction, Creative Direction",
     tools: ["Figma", "Miro", "UserTesting"],
     overview: {
       heading: "Responsive Navigation & Information Architecture",
       copy: "Reimagined the navigation system to elevate UX and brand digital presence.",
     },
     details: [
-      { label: "Role", items: ["Senior Product Designer"] },
+      { label: "Role", items: ["Product Design Direction", "Creative Direction"] },
       { label: "Timeframe", items: ["2021–2024"] },
       { label: "Key Tasks", items: ["Information Architecture", "Content Inventory", "Tree Testing", "Prototyping"] },
       { label: "Tools", items: ["Figma", "Miro", "UserTesting"] },
@@ -407,3 +417,8 @@ export const projects: Project[] = [
     visual: "archive",
   },
 ];
+
+// Preserve draft projects while disabling their public navigation and routes.
+export function isProjectAvailable(slug: string): boolean {
+  return slug !== "hapio-app";
+}

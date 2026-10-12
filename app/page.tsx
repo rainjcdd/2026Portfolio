@@ -4,7 +4,6 @@ import { Fragment } from "react";
 import Aurora from "@/components/Aurora";
 import { ConsultingCarousel } from "@/components/consulting-carousel";
 import { DotGrid } from "@/components/dot-grid";
-import { HeadlineFlowerCursor } from "@/components/headline-flower-cursor";
 import { ProjectCard } from "@/components/project-card";
 import { TypewriterSubline } from "@/components/typewriter-subline";
 import { projects } from "@/data/projects";
@@ -41,7 +40,7 @@ export default function Home() {
           <DotGrid />
           <div className="pointer-events-none relative z-10 flex w-full items-center px-gutter py-section-mobile lg:py-section">
             <div className="translate-y-12">
-              <HeadlineFlowerCursor>
+              <div className="pointer-events-auto relative w-fit">
                 <h1 className="font-display text-[clamp(2.8rem,13vw,3.55rem)] font-extrabold leading-[0.94] tracking-[-0.065em] sm:text-[clamp(3.2rem,10vw,8.8rem)]">
                   <span className="hero-line-mask mb-[0.08em]">
                     <span className="hero-line-reveal hero-line-reveal-1">Curiosity</span>
@@ -53,7 +52,7 @@ export default function Home() {
                     <span className="hero-line-reveal hero-line-reveal-3">&amp; Connection</span>
                   </span>
                 </h1>
-              </HeadlineFlowerCursor>
+              </div>
               <TypewriterSubline />
             </div>
           </div>
@@ -79,7 +78,7 @@ export default function Home() {
 
                   <ProjectCard
                     project={project}
-                    comingSoon={project.slug === "hapio-app" || project.slug === "ai-powered-design-system"}
+                    comingSoon={project.slug === "hapio-app"}
                     layout="split"
                     showDivider={
                       project.slug !== "trackpoint" &&

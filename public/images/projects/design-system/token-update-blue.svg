@@ -1,0 +1,67 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1100" height="850" viewBox="0 0 1100 850" role="img" aria-labelledby="title desc">
+<title id="title">Blue brand values applied to button states</title>
+<desc id="desc">Brand values connect to mapped surface and text tokens, which style default, hover, and active buttons. White labels and regular font weight remain shared.</desc>
+<rect x="1" y="1" width="1098" height="848" rx="20" fill="#f4f6fa" stroke="#dce3ed"/>
+<g font-family="Arial, sans-serif" fill="#102b50">
+<text x="45" y="68" font-size="20" font-weight="600">Brand variables</text><text x="45" y="99" font-size="16" fill="#6b6b6b">The paint bucket</text>
+<text x="405" y="68" font-size="20" font-weight="600">Mapped tokens</text><text x="405" y="99" font-size="16" fill="#6b6b6b">The room manual</text>
+<text x="820" y="68" font-size="20" font-weight="600">Component variants</text><text x="820" y="99" font-size="16" fill="#6b6b6b">The room itself</text>
+<rect x="45" y="145" width="255" height="42" rx="21" fill="white" stroke="#bdc9d9"/>
+<circle cx="66" cy="166" r="13" fill="#0052cc" stroke="#bdc9d9"/>
+<text x="88" y="172" font-size="16" font-weight="400">Medline-Blue-500</text>
+<rect x="45" y="199" width="255" height="42" rx="21" fill="white" stroke="#bdc9d9"/>
+<circle cx="66" cy="220" r="13" fill="#3375d6" stroke="#bdc9d9"/>
+<text x="88" y="226" font-size="16" font-weight="400">Medline-Blue-400</text>
+<rect x="45" y="253" width="255" height="42" rx="21" fill="white" stroke="#bdc9d9"/>
+<circle cx="66" cy="274" r="13" fill="#00317a" stroke="#bdc9d9"/>
+<text x="88" y="280" font-size="16" font-weight="400">Medline-Blue-700</text>
+<rect x="45" y="307" width="255" height="42" rx="21" fill="white" stroke="#bdc9d9"/>
+<circle cx="66" cy="328" r="13" fill="#ffffff" stroke="#bdc9d9"/>
+<text x="88" y="334" font-size="16" font-weight="400">White</text>
+<rect x="45" y="361" width="255" height="42" rx="21" fill="white" stroke="#bdc9d9"/>
+<text x="61" y="388" font-size="16" font-weight="300">Font weight · Light</text>
+<rect x="45" y="415" width="255" height="42" rx="21" fill="white" stroke="#bdc9d9"/>
+<text x="61" y="442" font-size="16" font-weight="400">Font weight · Regular</text>
+<rect x="45" y="469" width="255" height="42" rx="21" fill="white" stroke="#bdc9d9"/>
+<text x="61" y="496" font-size="16" font-weight="600">Font weight · Semibold</text>
+<rect x="45" y="523" width="255" height="42" rx="21" fill="white" stroke="#bdc9d9"/>
+<text x="61" y="550" font-size="16" font-weight="700">Font weight · Bold</text>
+<rect x="45" y="577" width="255" height="42" rx="21" fill="white" stroke="#bdc9d9"/>
+<text x="61" y="604" font-size="16" font-weight="800">Font weight · Extrabold</text>
+<rect x="45" y="631" width="255" height="42" rx="21" fill="white" stroke="#bdc9d9"/>
+<circle cx="66" cy="652" r="13" fill="#327b56" stroke="#bdc9d9"/>
+<text x="88" y="658" font-size="16" font-weight="400">Medline-Green-500</text>
+<rect x="45" y="685" width="255" height="42" rx="21" fill="white" stroke="#bdc9d9"/>
+<circle cx="66" cy="706" r="13" fill="#4a9877" stroke="#bdc9d9"/>
+<text x="88" y="712" font-size="16" font-weight="400">Medline-Green-400</text>
+<rect x="45" y="739" width="255" height="42" rx="21" fill="white" stroke="#bdc9d9"/>
+<circle cx="66" cy="760" r="13" fill="#204e39" stroke="#bdc9d9"/>
+<text x="88" y="766" font-size="16" font-weight="400">Medline-Green-700</text>
+<rect x="405" y="145" width="300" height="42" rx="21" fill="white" stroke="#bdc9d9"/>
+<circle cx="426" cy="166" r="13" fill="#0052cc" stroke="#bdc9d9"/>
+<text x="448" y="172" font-size="16" font-weight="400">Primary / Surface</text>
+<path d="M300 166 H352 V166 H405" fill="none" stroke="#8294ac" stroke-width="1.5"/>
+<path d="M705 166 H820" stroke="#8294ac" stroke-width="1.5"/>
+<rect x="820" y="146" width="185" height="40" rx="20" fill="#0052cc"/><text x="912" y="172" fill="white" text-anchor="middle" font-size="16">Continue</text><text x="1015" y="172" font-size="12" fill="#6b6b6b">Default</text>
+<rect x="405" y="199" width="300" height="42" rx="21" fill="white" stroke="#bdc9d9"/>
+<circle cx="426" cy="220" r="13" fill="#3375d6" stroke="#bdc9d9"/>
+<text x="448" y="226" font-size="16" font-weight="400">Primary / Surface:Hover</text>
+<path d="M300 220 H352 V220 H405" fill="none" stroke="#8294ac" stroke-width="1.5"/>
+<path d="M705 220 H820" stroke="#8294ac" stroke-width="1.5"/>
+<rect x="820" y="200" width="185" height="40" rx="20" fill="#3375d6"/><text x="912" y="226" fill="white" text-anchor="middle" font-size="16">Continue</text><text x="1015" y="226" font-size="12" fill="#6b6b6b">Hover</text>
+<rect x="405" y="253" width="300" height="42" rx="21" fill="white" stroke="#bdc9d9"/>
+<circle cx="426" cy="274" r="13" fill="#00317a" stroke="#bdc9d9"/>
+<text x="448" y="280" font-size="16" font-weight="400">Primary / Surface:Active</text>
+<path d="M300 274 H352 V274 H405" fill="none" stroke="#8294ac" stroke-width="1.5"/>
+<path d="M705 274 H820" stroke="#8294ac" stroke-width="1.5"/>
+<rect x="820" y="254" width="185" height="40" rx="20" fill="#00317a"/><text x="912" y="280" fill="white" text-anchor="middle" font-size="16">Continue</text><text x="1015" y="280" font-size="12" fill="#6b6b6b">Active</text>
+<rect x="405" y="307" width="300" height="42" rx="21" fill="white" stroke="#bdc9d9"/>
+<circle cx="426" cy="328" r="13" fill="#ffffff" stroke="#bdc9d9"/>
+<text x="448" y="334" font-size="16" font-weight="400">Primary / Text</text>
+<path d="M300 328 H352 V328 H405" fill="none" stroke="#8294ac" stroke-width="1.5"/>
+<path d="M705 328 H750 V166 H820" fill="none" stroke="#8294ac" stroke-width="1.5"/>
+<rect x="405" y="361" width="300" height="42" rx="21" fill="white" stroke="#bdc9d9"/>
+<text x="421" y="388" font-size="16" font-weight="400">Primary / Font weight</text>
+<path d="M300 436 H352 V382 H405" fill="none" stroke="#8294ac" stroke-width="1.5"/>
+<path d="M705 382 H780 V166 H820" fill="none" stroke="#8294ac" stroke-width="1.5"/>
+<text x="405" y="506" font-size="18" font-weight="600">Same mappings. Updated appearance.</text><text x="405" y="541" font-size="16" fill="#6b6b6b">Surface values change together across states.</text><text x="405" y="569" font-size="16" fill="#6b6b6b">Label color and font weight stay consistent.</text></g></svg>

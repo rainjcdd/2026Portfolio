@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="820" viewBox="0 0 1600 820" role="img" aria-labelledby="title desc">
+<title id="title">Anatomy of a Medline mapped token</title>
+<desc id="desc">Components/Button/Variants/Primary/Surface:Hover. The name identifies scope, component, group, variant, and property with its interaction state.</desc>
+<rect x="1" y="1" width="1598" height="818" rx="22" fill="#f4f6fa" stroke="#dce3ed"/>
+<rect x="165" y="135" width="1270" height="106" rx="53" fill="white" stroke="#dce3ed"/>
+<g font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="27" fill="#102b50" text-anchor="middle">
+<text x="330" y="199">Components</text>
+<text x="570" y="199">Button</text>
+<text x="780" y="199">Variants</text>
+<text x="1000" y="199">Primary</text>
+<text x="1270" y="199">Surface:Hover</text>
+<text x="475" y="199" fill="#91a2b9">/</text>
+<text x="675" y="199" fill="#91a2b9">/</text>
+<text x="888" y="199" fill="#91a2b9">/</text>
+<text x="1105" y="199" fill="#91a2b9">/</text>
+</g><g fill="none" stroke="#91a2b9" stroke-width="2">
+<path d="M330 242 V285 Q330 305 275.0 305 H220 V378"/><path d="M214 370 L220 378 L226 370"/>
+<path d="M570 242 V285 Q570 305 540.0 305 H510 V378"/><path d="M504 370 L510 378 L516 370"/>
+<path d="M780 242 V285 Q780 305 790.0 305 H800 V378"/><path d="M794 370 L800 378 L806 370"/>
+<path d="M1000 242 V285 Q1000 305 1045.0 305 H1090 V378"/><path d="M1084 370 L1090 378 L1096 370"/>
+<path d="M1270 242 V285 Q1270 305 1325.0 305 H1380 V378"/><path d="M1374 370 L1380 378 L1386 370"/>
+</g>
+<text x="110" y="436" font-family="Arial, sans-serif" font-size="24" font-weight="600" fill="#111111">Scope</text>
+<text x="110" y="486" font-family="Arial, sans-serif" font-size="21" fill="#6b6b6b">Component-level</text>
+<text x="110" y="524" font-family="Arial, sans-serif" font-size="21" fill="#6b6b6b">design decisions</text>
+<text x="400" y="436" font-family="Arial, sans-serif" font-size="24" font-weight="600" fill="#111111">Component</text>
+<text x="400" y="486" font-family="Arial, sans-serif" font-size="21" fill="#6b6b6b">The interface element</text>
+<text x="400" y="524" font-family="Arial, sans-serif" font-size="21" fill="#6b6b6b">receiving the token</text>
+<text x="690" y="436" font-family="Arial, sans-serif" font-size="24" font-weight="600" fill="#111111">Group</text>
+<text x="690" y="486" font-family="Arial, sans-serif" font-size="21" fill="#6b6b6b">Variant styling</text>
+<text x="690" y="524" font-family="Arial, sans-serif" font-size="21" fill="#6b6b6b">Anatomy</text>
+<text x="690" y="562" font-family="Arial, sans-serif" font-size="21" fill="#6b6b6b">Typography</text>
+<text x="980" y="436" font-family="Arial, sans-serif" font-size="24" font-weight="600" fill="#111111">Variant</text>
+<text x="980" y="486" font-family="Arial, sans-serif" font-size="21" fill="#6b6b6b">The primary</text>
+<text x="980" y="524" font-family="Arial, sans-serif" font-size="21" fill="#6b6b6b">button style</text>
+<text x="1270" y="436" font-family="Arial, sans-serif" font-size="24" font-weight="600" fill="#111111">Property + state</text>
+<text x="1270" y="486" font-family="Arial, sans-serif" font-size="21" fill="#6b6b6b">Surface → background</text>
+<text x="1270" y="524" font-family="Arial, sans-serif" font-size="21" fill="#6b6b6b">Hover → interaction state</text>
+<line x1="110" y1="650" x2="1490" y2="650" stroke="#dce3ed"/><text x="110" y="704" font-family="Arial, sans-serif" font-size="21" fill="#6b6b6b">A structured name connects the component, its purpose, and its interaction state.</text></svg>

@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1880" height="1140" viewBox="0 0 1880 1140" role="img" aria-labelledby="title desc">
+<title id="title">AI-enabled workflow: drafts, review, and continuous improvement</title>
+<desc id="desc">Shared system context supports a brief, AI composition, design review, code generation, automated checks, PR review, and release. Failed checks return to code generation; recurring gaps improve the system. Code Connect and expanded automated checks are planned.</desc>
+<defs><marker id="arrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0 0 L8 4 L0 8" fill="#91a2b9"/></marker></defs>
+<rect x="1" y="1" width="1878" height="1138" rx="20" fill="#f4f6fa" stroke="#dce3ed"/>
+<g transform="translate(140 38)">
+<g font-family="Arial,sans-serif">
+<rect x="80" y="55" width="20" height="20" rx="4" fill="#e7f0ff" stroke="#0052cc"/><text x="113" y="72" font-size="19" fill="#6b6b6b">AI / automation</text><rect x="330" y="55" width="20" height="20" rx="4" fill="white" stroke="#bdc9d9"/><text x="363" y="72" font-size="19" fill="#6b6b6b">People</text>
+<rect x="80" y="110" width="1440" height="145" rx="16" fill="#e9edf3" stroke="#bdc9d9"/><text x="105" y="148" font-size="23" font-weight="600" fill="#102b50">Shared context</text>
+<rect x="105" y="175" width="330" height="52" rx="10" fill="white" stroke="#bdc9d9"/><text x="270" y="207" font-size="18" text-anchor="middle" fill="#344563">Figma library + modes</text>
+<rect x="458" y="175" width="330" height="52" rx="10" fill="white" stroke="#bdc9d9"/><text x="623" y="207" font-size="18" text-anchor="middle" fill="#344563">Code Connect · planned</text>
+<rect x="811" y="175" width="330" height="52" rx="10" fill="white" stroke="#bdc9d9"/><text x="976" y="207" font-size="18" text-anchor="middle" fill="#344563">Repository guidance</text>
+<rect x="1164" y="175" width="330" height="52" rx="10" fill="white" stroke="#bdc9d9"/><text x="1329" y="207" font-size="18" text-anchor="middle" fill="#344563">Storybook + tokens</text>
+<path d="M390 425 H450" fill="none" stroke="#91a2b9" stroke-width="2" marker-end="url(#arrow)"/>
+<path d="M760 425 H820" fill="none" stroke="#91a2b9" stroke-width="2" marker-end="url(#arrow)"/>
+<path d="M1130 425 H1190" fill="none" stroke="#91a2b9" stroke-width="2" marker-end="url(#arrow)"/>
+<path d="M1310 500 V590" fill="none" stroke="#91a2b9" stroke-width="2" marker-end="url(#arrow)"/>
+<path d="M1370 590 V510" fill="none" stroke="#91a2b9" stroke-width="2" marker-end="url(#arrow)"/>
+<path d="M1190 665 H1130" fill="none" stroke="#91a2b9" stroke-width="2" marker-end="url(#arrow)"/>
+<path d="M820 665 H760" fill="none" stroke="#91a2b9" stroke-width="2" marker-end="url(#arrow)"/>
+<path d="M975 740 V830" fill="none" stroke="#91a2b9" stroke-width="2" marker-end="url(#arrow)"/>
+<path d="M1345 740 V905 H1130" fill="none" stroke="#91a2b9" stroke-width="2" marker-end="url(#arrow)"/>
+<path d="M820 905 H390" fill="none" stroke="#91a2b9" stroke-width="2" marker-end="url(#arrow)"/>
+<path d="M80 905 H40 V185 H80" fill="none" stroke="#91a2b9" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1390" y="555" font-size="17" fill="#6b6b6b">Retry</text><text x="992" y="791" font-size="17" fill="#6b6b6b">Gaps</text>
+<rect x="80" y="350" width="310" height="150" rx="14" fill="white" stroke="#bdc9d9" stroke-width="1"/><text x="102" y="389" font-size="23" font-weight="600" fill="#102b50">01  Brief</text><text x="102" y="431" font-size="19" fill="#344563">Intent and target mode</text><text x="102" y="466" font-size="17" fill="#6b6b6b">PM / designer</text>
+<rect x="450" y="350" width="310" height="150" rx="14" fill="#e7f0ff" stroke="#0052cc" stroke-width="2"/><text x="472" y="389" font-size="23" font-weight="600" fill="#102b50">02  Compose in Figma</text><text x="472" y="431" font-size="19" fill="#344563">Draft from library parts</text><text x="472" y="466" font-size="17" fill="#6b6b6b">AI-assisted composition</text>
+<rect x="820" y="350" width="310" height="150" rx="14" fill="white" stroke="#bdc9d9" stroke-width="1"/><text x="842" y="389" font-size="23" font-weight="600" fill="#102b50">03  Design review</text><text x="842" y="431" font-size="19" fill="#344563">Refine and approve</text><text x="842" y="466" font-size="17" fill="#6b6b6b">Designer</text>
+<rect x="1190" y="350" width="310" height="150" rx="14" fill="#e7f0ff" stroke="#0052cc" stroke-width="2"/><text x="1212" y="389" font-size="23" font-weight="600" fill="#102b50">04  Generate code</text><text x="1212" y="431" font-size="19" fill="#344563">Use components and tokens</text><text x="1212" y="466" font-size="17" fill="#6b6b6b">AI coding agent</text>
+<rect x="1190" y="590" width="310" height="150" rx="14" fill="#e7f0ff" stroke="#0052cc" stroke-width="2"/><text x="1212" y="629" font-size="23" font-weight="600" fill="#102b50">05  Automated checks</text><text x="1212" y="671" font-size="19" fill="#344563">Lint, accessibility, visuals</text><text x="1212" y="706" font-size="17" fill="#6b6b6b">Expanded checks · planned</text>
+<rect x="820" y="590" width="310" height="150" rx="14" fill="white" stroke="#bdc9d9" stroke-width="1"/><text x="842" y="629" font-size="23" font-weight="600" fill="#102b50">06  PR review</text><text x="842" y="671" font-size="19" fill="#344563">Code and design QA</text><text x="842" y="706" font-size="17" fill="#6b6b6b">Engineer + designer</text>
+<rect x="450" y="590" width="310" height="150" rx="14" fill="white" stroke="#bdc9d9" stroke-width="1"/><text x="472" y="629" font-size="23" font-weight="600" fill="#102b50">07  Ship</text><text x="472" y="671" font-size="19" fill="#344563">Approve, merge, release</text><text x="472" y="706" font-size="17" fill="#6b6b6b">Product team</text>
+<rect x="820" y="830" width="310" height="150" rx="14" fill="white" stroke="#bdc9d9" stroke-width="1"/><text x="842" y="869" font-size="23" font-weight="600" fill="#102b50">08  Capture gaps</text><text x="842" y="911" font-size="19" fill="#344563">Identify recurring AI misses</text><text x="842" y="946" font-size="17" fill="#6b6b6b">Intake and triage</text>
+<rect x="80" y="830" width="310" height="150" rx="14" fill="white" stroke="#bdc9d9" stroke-width="1"/><text x="102" y="869" font-size="23" font-weight="600" fill="#102b50">09  Update system</text><text x="102" y="911" font-size="19" fill="#344563">Improve tokens, rules, docs</text><text x="102" y="946" font-size="17" fill="#6b6b6b">Design-system team</text>
+</g></g></svg>

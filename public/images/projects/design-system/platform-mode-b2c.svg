@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="700" viewBox="0 0 1000 700" role="img" aria-labelledby="title"><title id="title">B2C mode: shared components with predefined styling</title>
+ <rect x="1" y="1" width="998" height="698" rx="20" fill="#f4f6fa" stroke="#dce3ed"/>
+ <g font-family="Arial,sans-serif"><text x="65" y="80" font-size="24" font-weight="600" fill="#102b50">B2C mode</text>
+ <rect x="680" y="45" width="255" height="52" rx="26" fill="white" stroke="#bdc9d9"/><rect x="684" y="49" width="121" height="44" rx="22" fill="#0052cc"/><text x="744" y="78" font-size="18" text-anchor="middle" fill="white">B2C</text><text x="870" y="78" font-size="18" text-anchor="middle" fill="#6b6b6b">B2B</text>
+ <rect x="65" y="150" width="870" height="395" rx="16" fill="white" stroke="#dce3ed"/>
+ <g transform="translate(140 265) scale(1.4)">
+ <text y="0" font-size="14" font-weight="600" fill="#102b50">Label <tspan fill="#bf2600">*</tspan></text>
+ <circle cx="498" cy="-6" r="8" fill="#0052cc"/><text x="498" y="-2" text-anchor="middle" fill="white" font-size="12">i</text>
+ <rect y="16" width="510" height="38" rx="2" fill="white" stroke="#a5a9b1" stroke-width="2"/>
+ <text x="12" y="41" font-size="16" fill="#8c919b">Input placeholder</text><text y="74" font-size="12" fill="#344563">Input description</text>
+ <rect y="107" width="94" height="40" rx="20.0" fill="#0052cc"/><text x="47" y="132.0" text-anchor="middle" font-size="16" fill="white">Accept</text>
+ </g>
+ <g font-size="19" fill="#0052cc"><text x="240" y="211">16px text</text><text x="605" y="211">2px border</text><text x="305" y="449">40px button height</text></g>
+ <g fill="none" stroke="#91a2b9" stroke-width="1.5"><path d="M285 221 V282"/><path d="M657 221 V287"/><path d="M293 423 V471.0"/><path d="M288 423 H298 M288 471.0 H298"/></g>
+ <text x="500" y="606" text-anchor="middle" font-size="21" font-weight="600" fill="#102b50">Same components. Different mode values.</text>
+ <text x="500" y="643" text-anchor="middle" font-size="18" fill="#6b6b6b">Typography, borders, and sizing follow the selected context.</text></g></svg>
