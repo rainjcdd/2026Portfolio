@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Inter, Manrope } from "next/font/google";
-import { Analytics } from "@vercel/analytics/next";
 
+import { Analytics } from "@/components/analytics";
 import { LayoutShell } from "@/components/layout-shell";
 
 import "./globals.css";
