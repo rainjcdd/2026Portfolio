@@ -50,7 +50,7 @@ export function SiteHeader() {
 
   return (
     <header ref={headerRef} className={`site-header ${hasScrolledPastHero ? "site-header-scrolled" : ""}`}>
-      <div className="relative z-[1] flex w-full items-start justify-between px-gutter py-6 sm:items-center sm:py-8">
+      <div className="site-header-content relative z-[1] flex w-full items-start justify-between px-gutter py-6 sm:items-center sm:py-8">
         <Logo />
         <Nav />
       </div>

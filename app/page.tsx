@@ -1,59 +1,45 @@
 import Link from "next/link";
 import { Fragment } from "react";
 
-import Aurora from "@/components/Aurora";
+import { FloatingContact } from "@/components/floating-contact";
 import { ConsultingCarousel } from "@/components/consulting-carousel";
 import { DotGrid } from "@/components/dot-grid";
 import { ProjectCard } from "@/components/project-card";
 import { TypewriterSubline } from "@/components/typewriter-subline";
-import { projects } from "@/data/projects";
+import { projects, isProjectAvailable } from "@/data/projects";
 
 export default function Home() {
-  const featuredProjects = projects.filter((project) => project.featured);
-  const designSystemIndex = featuredProjects.findIndex(
-    (project) => project.slug === "ai-powered-design-system",
+  const featuredProjects = projects.filter(
+    (project) => project.featured && isProjectAvailable(project.slug),
   );
-  const hapioIndex = featuredProjects.findIndex((project) => project.slug === "hapio-app");
-
-  if (designSystemIndex !== -1 && hapioIndex !== -1) {
-    [featuredProjects[designSystemIndex], featuredProjects[hapioIndex]] = [
-      featuredProjects[hapioIndex],
-      featuredProjects[designSystemIndex],
-    ];
-  }
 
   return (
     <>
       <div className="home-page relative isolate">
-        <section className="hero-reveal relative flex overflow-hidden bg-bg-inverse text-white">
-          <div
-            className="pointer-events-none absolute inset-x-0 bottom-0 z-[1] h-[78%] origin-center scale-y-[-1] opacity-[0.52] sm:h-[84%]"
-            aria-hidden="true"
-          >
-            <Aurora
-              colorStops={["#ff2d24", "#ff6a34", "#ffad7a"]}
-              amplitude={1.26}
-              blend={0.5}
-              speed={0.82}
-            />
-          </div>
+        <section className="hero-reveal relative flex overflow-hidden bg-[#171715] text-white">
           <DotGrid />
-          <div className="pointer-events-none relative z-10 flex w-full items-center px-gutter py-section-mobile lg:py-section">
-            <div className="translate-y-12">
-              <div className="pointer-events-auto relative w-fit">
-                <h1 className="font-display text-[clamp(2.8rem,13vw,3.55rem)] font-extrabold leading-[0.94] tracking-[-0.065em] sm:text-[clamp(3.2rem,10vw,8.8rem)]">
-                  <span className="hero-line-mask mb-[0.08em]">
-                    <span className="hero-line-reveal hero-line-reveal-1">Curiosity</span>
-                  </span>
-                  <span className="hero-line-mask">
-                    <span className="hero-line-reveal hero-line-reveal-2">Creativity</span>
-                  </span>
-                  <span className="hero-line-mask">
-                    <span className="hero-line-reveal hero-line-reveal-3">&amp; Connection</span>
-                  </span>
-                </h1>
+          <div className="featured-content pointer-events-none relative z-10 mx-auto flex w-full max-w-content items-center py-section-mobile lg:py-section">
+            <div className="w-full translate-y-6 sm:translate-y-12">
+              <div className="relative">
+                <span aria-hidden="true" className="hero-annotation hero-annotation-headline">H1</span>
+                <TypewriterSubline />
               </div>
-              <TypewriterSubline />
+              <p className="relative mt-4 max-w-none md:whitespace-nowrap text-[clamp(1.125rem,1.8vw,1.75rem)] leading-relaxed tracking-[-0.02em] text-white sm:mt-5">
+                <span aria-hidden="true" className="hero-annotation hero-annotation-subline">P1</span>
+                I lead by doing. I learn by making.
+              </p>
+              <a
+                href="https://www.linkedin.com/in/shutang/"
+                target="_blank"
+                rel="noreferrer"
+                aria-label="Explore More on LinkedIn (opens in a new tab)"
+                className="pointer-events-auto group mt-8 inline-flex items-center gap-3 py-2 text-[clamp(1.125rem,1.8vw,1.75rem)] font-normal leading-relaxed tracking-[-0.02em] text-white underline-offset-8 hover:underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white"
+              >
+                Explore More
+                <svg aria-hidden="true" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" className="h-[0.75em] w-[0.75em]">
+                  <path d="M5 11 11 5M6 5h5v5" />
+                </svg>
+              </a>
             </div>
           </div>
         </section>
@@ -103,6 +89,7 @@ export default function Home() {
           </div>
         </section>
       </div>
+      <FloatingContact />
     </>
   );
 }

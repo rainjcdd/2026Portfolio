@@ -30,6 +30,7 @@ export type Project = {
     height: number;
   };
   personas?: Array<{
+    illustration?: { src: string; alt: string };
     title: string;
     copy: string;
   }>;
@@ -116,14 +117,17 @@ export const projects: Project[] = [
     personas: [
       {
         title: "Admin Adam",
+        illustration: { src: "/images/projects/trackpoint/persona-admin-adam.svg", alt: "Administrator avatar with a small identification badge" },
         copy: "A materials manager balancing supply availability and costs. Needs clearer stock visibility and reliable ordering information.",
       },
       {
         title: "Clinician Claire",
+        illustration: { src: "/images/projects/trackpoint/persona-clinician-claire.svg", alt: "Clinician avatar with a stethoscope" },
         copy: "A clinician juggling patient care and inventory tasks. Needs a simple way to find supplies and track changes without relying on memory or manual notes.",
       },
       {
         title: "Director Dan",
+        illustration: { src: "/images/projects/trackpoint/persona-director-dan.svg", alt: "Director avatar with jacket lapels" },
         copy: "A leadership persona representing oversight of care teams and facility operations.",
       },
     ],

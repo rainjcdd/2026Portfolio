@@ -13,12 +13,12 @@ const projectGroups = [
   {
     id: "2024-2026",
     label: "2024 — 2026",
-    projects: projects.filter((project) => project.timeframe === "2024–2026").map((project) => ({ ...project, href: `/work/${project.slug}` })),
+    projects: projects.filter((project) => project.timeframe === "2024–2026" && isProjectAvailable(project.slug)).map((project) => ({ ...project, href: `/work/${project.slug}` })),
   },
   {
     id: "2021-2024",
     label: "2021 — 2024",
-    projects: projects.filter((project) => project.timeframe === "2021–2024").map((project) => ({ ...project, href: `/work/${project.slug}` })),
+    projects: projects.filter((project) => project.timeframe === "2021–2024" && isProjectAvailable(project.slug)).map((project) => ({ ...project, href: `/work/${project.slug}` })),
   },
   {
     id: "agency-work",

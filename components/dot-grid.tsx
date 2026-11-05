@@ -7,7 +7,7 @@ const INFLUENCE_RADIUS = 275;
 const MAX_SHIFT = 50;
 const HEADLINE_CURSOR_EVENT = "headline-flower-cursor";
 
-export function DotGrid() {
+export function DotGrid({ showGrid = true }: { showGrid?: boolean }) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const cursorRef = useRef<HTMLDivElement>(null);
 
@@ -28,8 +28,9 @@ export function DotGrid() {
 
     const draw = () => {
       context.clearRect(0, 0, width, height);
+      if (!showGrid) return;
       context.lineWidth = 1;
-      context.strokeStyle = "rgba(255, 255, 255, 0.025)";
+      context.strokeStyle = "rgba(255, 255, 255, 0.012)";
 
       for (let x = GRID_GAP / 2; x < width; x += GRID_GAP) {
         context.beginPath();
@@ -65,7 +66,7 @@ export function DotGrid() {
 
           context.beginPath();
           context.fillStyle =
-            strength > 0.35 ? "rgba(105, 105, 105, 0.42)" : "rgba(75, 75, 75, 0.22)";
+            strength > 0.35 ? "rgba(85, 85, 85, 0.26)" : "rgba(65, 65, 65, 0.16)";
           context.arc(drawX, drawY, 1.25 + strength * 1.75, 0, Math.PI * 2);
           context.fill();
         }
@@ -126,7 +127,7 @@ export function DotGrid() {
       canvas.removeEventListener("pointerleave", handlePointerLeave);
       window.removeEventListener(HEADLINE_CURSOR_EVENT, handleHeadlineCursor);
     };
-  }, []);
+  }, [showGrid]);
 
   return (
     <>
@@ -137,7 +138,7 @@ export function DotGrid() {
       />
       <div
         ref={cursorRef}
-        className="pointer-events-none fixed left-0 top-0 z-[60] -ml-16 -mt-16 hidden h-32 w-32 opacity-0 transition-opacity duration-200 md:block"
+        className="pointer-events-none fixed left-0 top-0 z-[60] -ml-[72px] -mt-[72px] hidden h-36 w-36 opacity-0 transition-opacity duration-200 md:block"
         aria-hidden="true"
       >
         <svg className="h-full w-full animate-[spin_9s_linear_infinite] motion-reduce:animate-none" viewBox="0 0 128 128">

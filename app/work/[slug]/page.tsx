@@ -282,19 +282,13 @@ export default async function WorkDetailPage({ params }: WorkDetailPageProps) {
                 {key === "process" && project.personas ? (
                   <div className="mt-10 grid gap-5 md:grid-cols-3 lg:mt-14 lg:gap-6">
                     <h3 className="text-h3 text-text md:col-span-3">Personas</h3>
-                    {project.personas.map((persona, index) => (
+                    {project.personas.map((persona) => (
                       <div key={persona.title} className="rounded-2xl border border-border bg-white p-6 lg:p-8">
-                        <div className="mb-6 flex h-12 w-12 items-center justify-center rounded-xl bg-[#eef3fa] text-[#164777]">
-                          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-                            {index === 0 ? (
-                              <><path d="m12 3 9 5-9 5-9-5 9-5Z" /><path d="M3 8v9l9 5 9-5V8M12 13v9M7.5 5.5l9 5" /></>
-                            ) : index === 1 ? (
-                              <><path d="M6 3v5a4 4 0 0 0 8 0V3M4 3h3M13 3h3M10 12v3a5 5 0 0 0 10 0v-2" /><circle cx="20" cy="10" r="2" /></>
-                            ) : (
-                              <><rect x="3" y="3" width="18" height="18" rx="3" /><path d="M7 16v-4M12 16V8M17 16v-6" /></>
-                            )}
-                          </svg>
-                        </div>
+                        {persona.illustration ? (
+                          <div className="mb-6 flex h-14 w-14 items-center justify-center rounded-xl bg-[#eef3fa]">
+                            <Image src={persona.illustration.src} alt={persona.illustration.alt} width={32} height={32} className="h-8 w-8" />
+                          </div>
+                        ) : null}
                         <h3 className="text-body font-medium leading-snug text-text">
                           {persona.title}
                         </h3>

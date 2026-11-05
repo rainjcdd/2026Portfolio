@@ -3,13 +3,11 @@
 import Link from "next/link";
 import { useState } from "react";
 
+
 const navigation = [
   { label: "Work", href: "/work" },
-  { label: "Me", href: "/me" },
+  { label: "Me", href: "/about" },
 ] as const;
-
-// Restore these links when the Work and Me pages are ready.
-const showPageLinks = false;
 
 export function Nav() {
   const [isOpen, setIsOpen] = useState(false);
@@ -26,18 +24,7 @@ export function Nav() {
       <svg aria-hidden="true" className="h-[18px] w-[18px]" viewBox="0 0 24 24" fill="currentColor">
         <path d="M6.5 8.25H3.25V20H6.5V8.25ZM4.88 3A1.88 1.88 0 1 0 4.88 6.75 1.88 1.88 0 0 0 4.88 3ZM20.75 13.27c0-3.54-1.89-5.19-4.42-5.19a3.82 3.82 0 0 0-3.46 1.9V8.25H9.62V20h3.25v-5.82c0-1.53.29-3.02 2.19-3.02 1.87 0 1.89 1.75 1.89 3.12V20h3.25l.55-6.73Z" />
       </svg>
-      <svg
-        aria-hidden="true"
-        className="ml-1 h-3 w-3"
-        viewBox="0 0 16 16"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="1.6"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      >
-        <path d="M5 11 11 5M6 5h5v5" />
-      </svg>
+
     </a>
   );
 
@@ -65,7 +52,7 @@ export function Nav() {
         id="mobile-navigation"
         className={`mobile-nav-menu absolute right-0 top-12 flex min-w-40 flex-col items-end gap-1 rounded-2xl p-3 text-body transition-all duration-300 sm:hidden ${isOpen ? "visible translate-y-0 opacity-100" : "invisible -translate-y-2 opacity-0"}`}
       >
-        {showPageLinks && navigation.map((item) => (
+        {navigation.map((item) => (
           <li key={item.href}>
             <Link className="site-nav-link" href={item.href} onClick={() => setIsOpen(false)}>
               {item.label}
@@ -76,7 +63,7 @@ export function Nav() {
       </ul>
 
       <ul className="hidden items-center gap-4 text-body sm:flex">
-        {showPageLinks && navigation.map((item) => (
+        {navigation.map((item) => (
           <li key={item.href}>
             <Link className="site-nav-link" href={item.href}>
               {item.label}

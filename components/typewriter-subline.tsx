@@ -2,18 +2,17 @@
 
 import { useEffect, useState } from "react";
 
-const sentences = [
-  "I'm Shu Tang.",
-  "I build like an entrepreneur.",
-  "I stay curious like a creator.",
-] as const;
+const prefix = "I'm ";
+const endings = ["Shu", "a designer", "a builder"] as const;
+const sentences = endings.map((ending) => `${prefix}${ending}`);
 
-type Phase = "typing" | "pausing" | "deleting";
+type Phase = "starting" | "typing" | "pausing" | "deleting";
 
 export function TypewriterSubline() {
   const [sentenceIndex, setSentenceIndex] = useState(0);
-  const [text, setText] = useState("");
-  const [phase, setPhase] = useState<Phase>("typing");
+  const [text, setText] = useState<string>("");
+  const [phase, setPhase] = useState<Phase>("starting");
+  const [hasStarted, setHasStarted] = useState(false);
   const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
 
   useEffect(() => {
@@ -29,16 +28,15 @@ export function TypewriterSubline() {
   useEffect(() => {
     if (prefersReducedMotion) return;
 
-    const sentence = sentences[sentenceIndex];
-    let delay = 70;
-
-    if (phase === "typing" && text.length === sentence.length) {
-      delay = 1800;
-    } else if (phase === "deleting") {
-      delay = text.length === 0 ? 240 : 36;
-    }
+    const sentence = endings[sentenceIndex];
+    const delay = phase === "starting" ? (hasStarted ? 1000 : 2000) : phase === "pausing" ? 1500 : phase === "deleting" ? 65 : 100;
 
     const timeout = window.setTimeout(() => {
+      if (phase === "starting") {
+        setHasStarted(true);
+        setPhase("typing");
+        return;
+      }
       if (phase === "typing") {
         if (text.length < sentence.length) {
           setText(sentence.slice(0, text.length + 1));
@@ -56,23 +54,36 @@ export function TypewriterSubline() {
       if (text.length > 0) {
         setText(text.slice(0, -1));
       } else {
-        setSentenceIndex((current) => (current + 1) % sentences.length);
-        setPhase("typing");
+        setSentenceIndex((current) => (current + 1) % endings.length);
+        setPhase("starting");
       }
     }, delay);
 
     return () => window.clearTimeout(timeout);
-  }, [phase, prefersReducedMotion, sentenceIndex, text]);
+  }, [hasStarted, phase, prefersReducedMotion, sentenceIndex, text]);
 
-  const visibleText = prefersReducedMotion ? sentences[0] : text;
+  const visibleText = prefersReducedMotion ? endings[0] : text;
 
   return (
-    <div className="ml-1 mt-8 min-h-[1.4em] max-w-full text-left font-display text-[24px] font-extrabold leading-snug tracking-[-0.02em] text-white">
+    <h1 className="-ml-[0.045em] grid w-full max-w-[1200px] text-left font-display text-[clamp(2.75rem,7.75vw,8rem)] font-extrabold leading-[1.15] tracking-[-0.025em] text-white">
+      {sentences.map((sentence) => (
+        <span key={sentence} aria-hidden="true" className="invisible col-start-1 row-start-1 pointer-events-none">
+          {sentence}<span className="ml-[0.08em] inline-block">|</span>
+        </span>
+      ))}
       <span className="sr-only">{sentences.join(" ")}</span>
-      <span aria-hidden="true">
-        {visibleText}
-        {!prefersReducedMotion ? <span className="typewriter-cursor">|</span> : null}
+      <span aria-hidden="true" className="col-start-1 row-start-1">
+        {prefersReducedMotion || hasStarted ? prefix : null}
+        {prefersReducedMotion ? visibleText : Array.from(visibleText).map((letter, index) => (
+          <span
+            key={`${sentenceIndex}-${index}`}
+            className={phase === "deleting" && index === visibleText.length - 1 ? "typewriter-letter-out" : "typewriter-letter-in"}
+          >
+            {letter}
+          </span>
+        ))}
+        {!prefersReducedMotion ? <span key={sentenceIndex} className="typewriter-cursor">|</span> : null}
       </span>
-    </div>
+    </h1>
   );
 }
