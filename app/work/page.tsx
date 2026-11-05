@@ -60,7 +60,7 @@ export default function WorkPage() {
                       <span className="text-small text-text-muted">{String(index + 1).padStart(2, "0")}</span>
                       <div>
                         <div className="mb-3 flex flex-wrap items-center gap-3">
-                          <h3 className="text-h3 group-hover:text-accent">{project.title}</h3>
+                          <h3 className="text-h3 transition-colors duration-200 group-hover:text-[#a3a3a3]">{project.title}</h3>
                           {project.tag ? (
                             <span className="rounded-full border border-border px-2 py-1 text-small uppercase tracking-[0.08em] text-text-muted">
                               {project.tag}
@@ -69,7 +69,7 @@ export default function WorkPage() {
                         </div>
                         <p className="max-w-[62ch] text-body text-text-muted">{project.summary}</p>
                       </div>
-                      {isProjectAvailable(project.slug) ? <span className="hidden text-body group-hover:text-accent sm:block" aria-hidden="true">↗</span> : <span className="text-body text-text-muted">Coming soon</span>}
+                      {isProjectAvailable(project.slug) ? <span className="hidden text-body transition-colors duration-200 group-hover:text-[#a3a3a3] sm:block" aria-hidden="true">↗</span> : <span className="text-body text-text-muted">Coming soon</span>}
                     </ProjectRow>
                   </li>
                 ))}

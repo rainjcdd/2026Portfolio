@@ -63,7 +63,11 @@ export function ProjectCard({
             >
               <div
                 className={`transition-transform duration-700 ease-out ${
-                  project.homepageScreens
+                  project.slug === "navigation-redesign"
+                    ? "scale-[0.883] md:scale-[0.954] lg:scale-[0.989]"
+                    : project.slug === "short-form-video"
+                    ? "scale-[1.04] md:scale-[1.206] lg:scale-[1.29] xl:scale-[1.352]"
+                    : project.homepageScreens
                     ? "md:scale-[1.16] lg:scale-[1.24] xl:scale-[1.3]"
                     : project.slug === "hapio-app"
                       ? "md:scale-[1.16] lg:scale-[1.24] xl:scale-[1.28]"

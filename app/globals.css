@@ -528,3 +528,12 @@ body:has(.home-page) .mobile-nav-menu {
 @media (prefers-reduced-motion: reduce) {
   .consulting-grid-overlay, .consulting-grid-tag { transition: none; }
 }
+.hero-action-link, .hero-action-link:hover { text-decoration: none; }
+.hero-action-link:hover > svg, .hero-action-link:focus-visible > svg { animation: hero-arrow-bounce 850ms cubic-bezier(.45, 0, .3, 1) infinite; }
+@keyframes hero-arrow-bounce {
+  0%, 100% { transform: translate(0, 0); }
+  50% { transform: translate(3px, -3px); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero-action-link:hover > svg, .hero-action-link:focus-visible > svg { animation: none; }
+}

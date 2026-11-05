@@ -2,6 +2,8 @@ import Image from "next/image";
 
 import type { Project } from "@/data/projects";
 import { TrackpointPhone } from "@/components/trackpoint-phone";
+import { NavigationPreview } from "@/components/navigation-preview";
+import { HoverPhones } from "@/components/hover-phones";
 
 type ProjectVisualProps = {
   variant: Project["visual"];
@@ -39,6 +41,8 @@ export function ProjectVisual({
   preserveImageAspect = false,
   standardPhoneFrame = false,
 }: ProjectVisualProps) {
+  if (image === "/images/projects/navigation-redesign-thumbnail.jpg") return <NavigationPreview />;
+
   const renderScreen = (
     imageSizes = "(min-width: 768px) 48vw, 90vw",
     imageOverride?: string,
@@ -80,7 +84,7 @@ export function ProjectVisual({
       aria-hidden={image || desktopImage || mobileImage ? undefined : "true"}
     >
       {flatPhoneScreens ? (
-        <div className="flex h-[90%] w-full items-center justify-center gap-[5%]">
+        <HoverPhones>
           {flatPhoneScreens.map((screen) => (
             <div
               key={screen}
@@ -98,7 +102,7 @@ export function ProjectVisual({
               </div>
             </div>
           ))}
-        </div>
+        </HoverPhones>
       ) : device === "phone" ? (
         <div
           className={`relative aspect-[9/19] rounded-[2rem] bg-[#111] p-[5px] shadow-[0_24px_55px_rgba(17,17,17,0.24)] sm:rounded-[2.5rem] sm:p-[7px] ${

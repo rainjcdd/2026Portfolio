@@ -1,0 +1,4 @@
+.phones { display: flex; height: 90%; width: 100%; align-items: center; justify-content: center; gap: 5%; }
+.phones > div { transform-origin: center center; transition: transform 550ms cubic-bezier(.22,1,.36,1); transform: perspective(900px) rotateY(calc(var(--x,0) * 12deg)) rotateX(calc(var(--y,0) * -3deg)); }
+.phones > div:nth-child(2) { transform: perspective(900px) rotateY(calc(var(--x,0) * -12deg)) rotateX(calc(var(--y,0) * -3deg)); }
+@media (prefers-reduced-motion: reduce) { .phones > div, .phones > div:nth-child(2) { transform: none; transition: none; } }

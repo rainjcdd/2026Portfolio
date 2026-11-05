@@ -345,16 +345,16 @@ export const projects: Project[] = [
     visual: "path",
   },
   {
-    title: "Short Form Video",
+    title: "Shoppable Video",
     slug: "short-form-video",
     detailLayout: "alternating",
     timeframe: "2021–2024",
-    summary: "Bringing social buying to life.",
+    summary: "TikTok-style shoppable video bringing social buying to life.",
     role: "Product Designer",
     tools: ["Figma", "After Effects", "Principle"],
     overview: {
       heading: "Creator-Led Video Commerce",
-      copy: "Bringing social buying to life.",
+      copy: "TikTok-style shoppable video bringing social buying to life.",
     },
     details: [
       { label: "Role", items: ["Product Designer"] },

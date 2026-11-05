@@ -1,0 +1,78 @@
+.position { position: absolute; z-index: 10; inset-inline: 0; bottom: 48px; pointer-events: none; }
+.drawing { display: block; width: 90px; height: 120px; color: #a6a6a0; overflow: visible; }
+.soil { opacity: .45; }
+.plant { transform-origin: 90px 212px; animation: lifecycle 22s ease-in-out infinite; }
+.stem path, .branches path { stroke-dasharray: 1; stroke-dashoffset: 1; }
+.stem path { animation: stem 22s ease-in-out infinite; }
+.branches path { animation: branches 22s ease-in-out infinite; }
+.leaf, .lateLeaf, .flower, .lateFlower { transform-origin: 0 0; }
+.leaf { animation: leaf 22s ease-in-out infinite; }
+.lateLeaf { animation: late-leaf 22s ease-in-out infinite; }
+.flower { animation: flower 22s ease-in-out infinite; }
+.lateFlower { animation: late-flower 22s ease-in-out infinite; }
+.seed { transform-origin: 90px 208px; animation: seed 22s ease-in-out infinite; }
+
+@keyframes seed {
+  0%, 9% { opacity: 1; transform: scale(1); }
+  17%, 87% { opacity: 0; transform: scale(.5); }
+  91% { opacity: 0; transform: translateY(-5px) scale(.65); }
+  97%, 100% { opacity: 1; transform: scale(1); }
+}
+@keyframes stem {
+  0%, 12% { stroke-dashoffset: 1; }
+  34%, 100% { stroke-dashoffset: 0; }
+}
+@keyframes branches {
+  0%, 28% { stroke-dashoffset: 1; }
+  49%, 100% { stroke-dashoffset: 0; }
+}
+@keyframes leaf {
+  0%, 23% { opacity: 0; transform: scale(0); }
+  39%, 80% { opacity: 1; transform: scale(1); }
+  86%, 100% { opacity: 0; transform: scale(.6); }
+}
+@keyframes late-leaf {
+  0%, 35% { opacity: 0; transform: scale(0); }
+  49%, 81% { opacity: 1; transform: scale(1); }
+  87%, 100% { opacity: 0; transform: scale(.6); }
+}
+@keyframes flower {
+  0%, 48% { opacity: 0; transform: scale(0) rotate(-18deg); }
+  60%, 80% { opacity: 1; transform: scale(1) rotate(0deg); }
+  86%, 100% { opacity: 0; transform: scale(.6) rotate(10deg); }
+}
+@keyframes late-flower {
+  0%, 54% { opacity: 0; transform: scale(0) rotate(15deg); }
+  65%, 81% { opacity: 1; transform: scale(1) rotate(0deg); }
+  87%, 100% { opacity: 0; transform: scale(.6) rotate(-10deg); }
+}
+@keyframes lifecycle {
+  0%, 65% { opacity: 1; transform: rotate(0deg); }
+  69% { opacity: 1; transform: rotate(-3.5deg); }
+  73% { opacity: 1; transform: rotate(4deg); }
+  77% { opacity: 1; transform: rotate(-3deg); }
+  81% { opacity: 1; transform: rotate(2deg); }
+  83% { opacity: .65; transform: rotate(0deg); }
+  87%, 100% { opacity: 0; transform: rotate(0deg); }
+}
+.grain { opacity: 0; animation: return-to-soil 22s ease-in infinite; animation-delay: var(--dust-delay); }
+@keyframes return-to-soil {
+  0%, 80% { opacity: 0; transform: translate(0, 0) scale(.7); }
+  83% { opacity: .8; transform: translate(0, 0) scale(1); }
+  89% { opacity: .65; transform: translate(var(--gust), var(--half-fall)) scale(.85); }
+  94% { opacity: .5; transform: translate(var(--landing), var(--fall)) scale(.65); }
+  98%, 100% { opacity: 0; transform: translate(var(--landing), var(--fall)) scale(.2); }
+}
+@media (min-width: 640px) {
+  .position { bottom: 56px; }
+  .drawing { width: 110px; height: 146.67px; }
+}
+@media (max-height: 650px) {
+  .drawing { width: 70px; height: 93.33px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .plant, .stem path, .branches path, .leaf, .lateLeaf, .flower, .lateFlower, .seed { animation: none; }
+  .stem path, .branches path { stroke-dashoffset: 0; }
+  .seed { opacity: 0; }
+  .dust { display: none; }
+}

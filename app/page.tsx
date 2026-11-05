@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { Fragment } from "react";
 
+import { HeroGrowth } from "@/components/hero-growth";
 import { FloatingContact } from "@/components/floating-contact";
 import { ConsultingGrid } from "@/components/consulting-grid";
 import { DotGrid } from "@/components/dot-grid";
@@ -18,6 +19,7 @@ export default function Home() {
       <div className="home-page relative isolate">
         <section className="hero-reveal relative flex overflow-hidden bg-[#171715] text-white">
           <DotGrid />
+          <HeroGrowth />
           <div className="featured-content pointer-events-none relative z-10 mx-auto flex w-full max-w-content items-center py-section-mobile lg:py-section">
             <div className="w-full translate-y-6 sm:translate-y-12">
               <div className="relative">
@@ -33,7 +35,7 @@ export default function Home() {
                 target="_blank"
                 rel="noreferrer"
                 aria-label="Explore More on LinkedIn (opens in a new tab)"
-                className="pointer-events-auto group mt-8 inline-flex items-center gap-3 py-2 text-[clamp(1.125rem,1.8vw,1.75rem)] font-normal leading-relaxed tracking-[-0.02em] text-white underline-offset-8 hover:underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white"
+                className="hero-action-link pointer-events-auto group mt-8 inline-flex items-center gap-3 py-2 text-[clamp(1.125rem,1.8vw,1.75rem)] font-normal leading-relaxed tracking-[-0.02em] text-white transition-colors duration-200 hover:text-[#c4c4c1] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white"
               >
                 Explore More
                 <svg aria-hidden="true" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" className="h-[0.75em] w-[0.75em]">

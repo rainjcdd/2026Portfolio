@@ -23,7 +23,7 @@ export function ContactForm() {
 
   return (
     <>
-      <button type="button" className="pointer-events-auto inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-[#171715] px-6 py-3 text-[clamp(1.125rem,1.8vw,1.75rem)] text-[#687df0] shadow-[0_8px_30px_rgba(0,0,0,0.2)] transition-colors hover:text-[#899dff]" onClick={open}>Contact
+      <button type="button" className="hero-action-link pointer-events-auto inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-[#171715] px-6 py-3 text-[clamp(1.125rem,1.8vw,1.75rem)] text-[#687df0] shadow-[0_8px_30px_rgba(0,0,0,0.2)] transition-colors hover:text-[#899dff]" onClick={open}>Contact
       <svg
         aria-hidden="true"
         className="h-[0.75em] w-[0.75em]"

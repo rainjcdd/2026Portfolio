@@ -142,7 +142,7 @@ export function MeyerCaseStudy() {
           </section>
 
           <nav aria-label="Project navigation" className="flex flex-wrap justify-between gap-8 border-t border-border pt-10 lg:pt-14">
-            <Link href="/work/short-form-video" className="group"><p className="mb-4 text-small text-text-muted">Previous project</p><span className="text-h3 transition-opacity group-hover:opacity-55">← Short Form Video</span></Link>
+            <Link href="/work/short-form-video" className="group"><p className="mb-4 text-small text-text-muted">Previous project</p><span className="text-h3 transition-opacity group-hover:opacity-55">← Shoppable Video</span></Link>
             <Link href="/portfolio/unilever" className="group"><p className="mb-4 text-small text-text-muted">Next project</p><span className="text-h3 transition-opacity group-hover:opacity-55">Unilever →</span></Link>
           </nav>
         </div>

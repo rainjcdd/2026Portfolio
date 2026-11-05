@@ -40,7 +40,7 @@ export function SfvCaseStudy() {
     <div className="space-y-section-mobile pt-section-mobile lg:space-y-section lg:pt-section">
       <section aria-label="Background" className="space-y-10 lg:space-y-14">
         <SectionIntro number="01" label="Background" title="Bite-size, TikTok-style video creates a new way to explore and shop grocery.">
-          <p>As a grocery e-commerce retailer, helping customers discover new items matters when they shop with us week after week. Short Form Video is one component of a larger effort to bring inspiration and personalized content into the shopping experience.</p>
+          <p>As a grocery e-commerce retailer, helping customers discover new items matters when they shop with us week after week. Shoppable Video is one component of a larger effort to bring inspiration and personalized content into the shopping experience.</p>
           <p>These studies and tests led us to explore the potential of this capability.</p>
         </SectionIntro>
         <div className="grid md:grid-cols-4 md:gap-10 lg:gap-14">
@@ -101,7 +101,7 @@ export function SfvCaseStudy() {
           <p>Together, we defined processes, responsibilities, and timing, while exploring potential monetization opportunities with consumer packaged goods vendors.</p>
         </SectionIntro>
         <div className="grid gap-x-8 gap-y-10 md:grid-cols-2 lg:gap-x-12 lg:gap-y-14">
-          {["Brand incorporation & production milestones", "Content production workflow", "Content planning & mix", "Trending, featured & seasonal calendar"].map((caption, index) => <Asset key={caption} index={index + 5} pairedWith={index % 2 === 0 ? index + 6 : index + 4} alt={`Short Form Video content strategy: ${caption}`} caption={caption} sizes="(max-width: 767px) 90vw, 45vw" />)}
+          {["Brand incorporation & production milestones", "Content production workflow", "Content planning & mix", "Trending, featured & seasonal calendar"].map((caption, index) => <Asset key={caption} index={index + 5} pairedWith={index % 2 === 0 ? index + 6 : index + 4} alt={`Shoppable Video content strategy: ${caption}`} caption={caption} sizes="(max-width: 767px) 90vw, 45vw" />)}
         </div>
       </section>
 
