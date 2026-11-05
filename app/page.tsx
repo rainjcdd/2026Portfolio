@@ -30,18 +30,16 @@ export default function Home() {
                 <span aria-hidden="true" className="hero-annotation hero-annotation-subline">P1</span>
                 I lead by doing. I learn by making.
               </p>
-              <a
-                href="https://www.linkedin.com/in/shutang/"
-                target="_blank"
-                rel="noreferrer"
-                aria-label="Explore More on LinkedIn (opens in a new tab)"
+              <Link
+                href="/about"
+                aria-label="Explore More about me"
                 className="hero-action-link pointer-events-auto group mt-8 inline-flex items-center gap-3 py-2 text-[clamp(1.125rem,1.8vw,1.75rem)] font-normal leading-relaxed tracking-[-0.02em] text-white transition-colors duration-200 hover:text-[#c4c4c1] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white"
               >
                 Explore More
                 <svg aria-hidden="true" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" className="h-[0.75em] w-[0.75em]">
                   <path d="M5 11 11 5M6 5h5v5" />
                 </svg>
-              </a>
+              </Link>
             </div>
           </div>
         </section>
