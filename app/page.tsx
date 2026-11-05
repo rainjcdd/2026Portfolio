@@ -2,7 +2,7 @@ import Link from "next/link";
 import { Fragment } from "react";
 
 import { FloatingContact } from "@/components/floating-contact";
-import { ConsultingCarousel } from "@/components/consulting-carousel";
+import { ConsultingGrid } from "@/components/consulting-grid";
 import { DotGrid } from "@/components/dot-grid";
 import { ProjectCard } from "@/components/project-card";
 import { TypewriterSubline } from "@/components/typewriter-subline";
@@ -85,7 +85,7 @@ export default function Home() {
               ))}
             </div>
 
-            <ConsultingCarousel />
+            <ConsultingGrid />
           </div>
         </section>
       </div>

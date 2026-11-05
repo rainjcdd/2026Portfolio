@@ -5,6 +5,7 @@ import { notFound, redirect } from "next/navigation";
 
 import { NavigationCaseStudy, NavigationCaseStudyHero } from "@/components/navigation-case-study";
 import { SfvCaseStudy, SfvCaseStudyHero } from "@/components/sfv-case-study";
+import { CaseStudyHero } from "@/components/case-study-hero";
 import { ProjectVisual } from "@/components/project-visual";
 import { ScrollReveal } from "@/components/scroll-reveal";
 import { projects, isProjectAvailable } from "@/data/projects";
@@ -34,6 +35,21 @@ export default async function WorkDetailPage({ params }: WorkDetailPageProps) {
   const isShortFormVideo = project.slug === "short-form-video";
   const usesAlternatingLayout = project.detailLayout === "alternating";
   const usesIntroReveal = usesAlternatingLayout || isDesignSystem;
+
+  const heroArtwork = (
+    isDesignSystem ? <DesignSystemCaseStudyHero /> : isNavigationRedesign ? <NavigationCaseStudyHero /> : isShortFormVideo ? <SfvCaseStudyHero /> : (
+          <ProjectVisual
+            variant={project.visual}
+            image={project.image}
+            desktopImage={project.desktopImage}
+            mobileImage={project.mobileImage}
+            alt={`${project.title} hero image`}
+            device={project.device}
+            size="large"
+            standardPhoneFrame={isTrackpoint}
+          />
+        )
+  );
 
   return (
     <article className="bg-bg pb-section-mobile lg:pb-section">
@@ -85,23 +101,21 @@ export default async function WorkDetailPage({ params }: WorkDetailPageProps) {
         </div>
       </header>
 
-      <div className="featured-content mx-auto max-w-content">
-        <div className="mb-section-mobile lg:mb-section">
-          <ScrollReveal direction="up" animateOnLoad={usesAlternatingLayout}>
-            {isDesignSystem ? <DesignSystemCaseStudyHero /> : isNavigationRedesign ? <NavigationCaseStudyHero /> : isShortFormVideo ? <SfvCaseStudyHero /> : (
-            <ProjectVisual
-              variant={project.visual}
-              image={project.image}
-              desktopImage={project.desktopImage}
-              mobileImage={project.mobileImage}
-              alt={`${project.title} hero image`}
-              device={project.device}
-              size="large"
-            />
-            )}
-          </ScrollReveal>
+      {isTrackpoint || isDesignSystem ? (
+        <div className="featured-content mx-auto max-w-content">
+          <div className="mb-section-mobile lg:mb-section">
+            <ScrollReveal direction="up" animateOnLoad={usesAlternatingLayout}>
+              {heroArtwork}
+            </ScrollReveal>
+          </div>
         </div>
+      ) : (
+        <CaseStudyHero animateOnLoad={usesAlternatingLayout}>
+          {heroArtwork}
+        </CaseStudyHero>
+      )}
 
+      <div className="featured-content mx-auto max-w-content">
         <dl
           className={`grid gap-x-8 gap-y-10 border-border py-10 lg:py-14 ${
             project.details

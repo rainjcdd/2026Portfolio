@@ -1,0 +1,42 @@
+/* Canonical geometry. No viewport breakpoints or thumbnail-specific rules. */
+.phone {
+  --phone-header: #021840;
+  position: absolute;
+  top: 0;
+  left: 0;
+  box-sizing: border-box;
+  padding: 7px;
+  border-radius: 48px;
+  background: #17181b;
+  box-shadow: inset 0 0 0 1px #75767b, inset 0 0 0 3px #292a2e, 0 24px 55px rgba(17,17,17,.28);
+}
+.viewport { position: relative; display: flex; flex-direction: column; width: 100%; height: 100%; overflow: hidden; border-radius: 41.6px; background: var(--phone-header); }
+.hardware { position: absolute; inset: 0; pointer-events: none; }
+.hardware span { position: absolute; width: 2px; background: #44454b; }
+.mute { left: -2px; top: 16%; height: 4%; border-radius: 2px 0 0 2px; }
+.volumeUp { left: -2px; top: 24%; height: 7%; border-radius: 2px 0 0 2px; }
+.volumeDown { left: -2px; top: 34%; height: 7%; border-radius: 2px 0 0 2px; }
+.power { right: -2px; top: 27%; height: 11%; border-radius: 0 2px 2px 0; }
+.status { position: relative; z-index: 20; display: flex; flex: 0 0 34px; align-items: center; justify-content: space-between; padding: 0 20px; background: var(--phone-header); color: white; font-size: 9px; line-height: 1.5; font-weight: 600; pointer-events: none; }
+.island { position: absolute; left: 50%; top: 8px; transform: translateX(-50%); display: flex; align-items: center; justify-content: flex-end; width: 29%; height: 20px; padding-right: 6px; border-radius: 999px; background: #070709; }
+.camera { width: 6px; height: 6px; border-radius: 50%; background: #142034; box-shadow: inset 0 0 0 1px #202c42; }
+.statusIcons { display: flex; align-items: center; gap: 6px; }
+.signal { width: 12px; height: 8px; fill: currentColor; }
+.wifi { width: 14px; height: 10px; fill: currentColor; }
+.battery { position: relative; display: block; width: 20px; height: 10px; border: 1px solid currentColor; border-radius: 2px; }
+.battery > span { position: absolute; inset: 1px 2px 1px 1px; border-radius: 1px; background: currentColor; }
+.battery::after { content: ""; position: absolute; right: -2px; top: 50%; width: 1px; height: 4px; transform: translateY(-50%); background: currentColor; }
+.homeIndicator { position: absolute; z-index: 20; bottom: 8px; left: 50%; width: 34%; height: 4px; transform: translateX(-50%); border-radius: 999px; background: rgba(17,17,17,.7); pointer-events: none; }
+
+/* Explicit non-overlapping status regions within the canonical device. */
+.time { position: absolute; left: 24px; top: 11px; width: 36px; font-size: 9px; line-height: 12px; white-space: nowrap; text-align: left; }
+.statusIcons { position: absolute; right: 20px; top: 12px; }
+
+.app { position: relative; flex: 1 1 0; min-height: 0; overflow: hidden; background: var(--phone-header); }
+.appContent { position: absolute; inset: 0; overflow: hidden; background: var(--phone-header); }
+.appImage { display: block; width: 100%; height: auto; max-width: none; }
+/* The screenshot continues under this overlay; it never pushes the toolbar away. */
+.toolbar { position: absolute; z-index: 10; left: 0; right: 0; bottom: 0; background: #eff3fa; }
+.toolbarViewport { position: relative; width: 100%; aspect-ratio: 776 / 166; overflow: hidden; }
+.toolbarImage { position: absolute; left: 0; bottom: 0; display: block; width: 100%; height: auto; max-width: none; }
+.safeArea { height: 16px; background: #eff3fa; }

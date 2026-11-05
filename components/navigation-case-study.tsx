@@ -31,7 +31,7 @@ function SectionIntro({ number, label, title, children }: {
 }
 
 export function NavigationCaseStudyHero() {
-  return <Asset index={0} alt="Navigation redesign shown across desktop and mobile grocery shopping experiences" priority />;
+  return <Asset index={0} alt="Navigation redesign shown across desktop and mobile grocery shopping experiences" priority sizes="100vw" />;
 }
 
 export function NavigationCaseStudy() {

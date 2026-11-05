@@ -32,7 +32,7 @@ function SectionIntro({ number, label, title, children }: {
 }
 
 export function SfvCaseStudyHero() {
-  return <Asset index={0} alt="Short-form grocery videos featuring recipes, fresh ingredients, and drinks on a blue background" priority />;
+  return <Asset index={0} alt="Short-form grocery videos featuring recipes, fresh ingredients, and drinks on a blue background" priority sizes="100vw" />;
 }
 
 export function SfvCaseStudy() {

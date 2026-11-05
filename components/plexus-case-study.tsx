@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import type { ReactNode } from "react";
 
-import { ScrollReveal } from "@/components/scroll-reveal";
+import { CaseStudyHero } from "@/components/case-study-hero";
 import assets from "@/data/plexus-assets.json";
 
 const research = ["Primary research plan", "Interview questionnaire", "Usability, service & content findings", "Customer relationships", "Customer motivations", "Recurring research themes", "Product detail benchmarks", "Competitive benchmarks"];
@@ -48,10 +48,11 @@ export function PlexusCaseStudy() {
           <p className="max-w-text-measure text-h3 font-light leading-[1.45] text-text-muted lg:col-span-5 lg:pb-2">Plexus Worldwide is more than a health company.</p>
         </div>
       </header>
+      <CaseStudyHero>
+        <Asset index={0} alt="Plexus Worldwide campaign featuring a smiling woman outdoors in warm sunlight" priority sizes="100vw" />
+      </CaseStudyHero>
+
       <div className="featured-content mx-auto max-w-content">
-        <ScrollReveal direction="up" animateOnLoad className="mb-section-mobile lg:mb-section">
-          <Asset index={0} alt="Plexus Worldwide campaign featuring a smiling woman outdoors in warm sunlight" priority />
-        </ScrollReveal>
         <dl className="grid gap-x-8 gap-y-10 border-t border-border py-10 sm:grid-cols-2 lg:grid-cols-4 lg:py-14">
           {[
             { label: "My Role", items: ["Creative Lead", "Researcher", "UX / UI"] },

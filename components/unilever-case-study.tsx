@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import type { ReactNode } from "react";
 
-import { ScrollReveal } from "@/components/scroll-reveal";
+import { CaseStudyHero } from "@/components/case-study-hero";
 import assets from "@/data/unilever-assets.json";
 
 const researchCaptions = [
@@ -24,8 +24,8 @@ const interactions = [
   { title: "Micro-interaction & animation", asset: 17, copy: ["Lead the user’s eyes to the next important content.", "A human-like element creates an emotional connection."] },
 ];
 
-function Asset({ index, alt, caption, className = "", priority = false }: {
-  index: number; alt: string; caption?: string; className?: string; priority?: boolean;
+function Asset({ index, alt, caption, className = "", priority = false, sizes }: {
+  index: number; alt: string; caption?: string; className?: string; priority?: boolean; sizes?: string;
 }) {
   const asset = assets[index];
   return (
@@ -37,7 +37,7 @@ function Asset({ index, alt, caption, className = "", priority = false }: {
         height={asset.height}
         priority={priority}
         unoptimized={asset.src.endsWith(".gif")}
-        sizes={caption ? "(max-width: 767px) 90vw, 45vw" : "(max-width: 767px) 90vw, 80vw"}
+        sizes={sizes ?? (caption ? "(max-width: 767px) 90vw, 45vw" : "(max-width: 767px) 90vw, 80vw")}
         className="h-auto w-full"
       />
       {caption ? <figcaption className="mt-4 border-t border-border pt-4 text-small text-text-muted">{caption}</figcaption> : null}
@@ -74,11 +74,11 @@ export function UnileverCaseStudy() {
         </div>
       </header>
 
-      <div className="featured-content mx-auto max-w-content">
-        <ScrollReveal direction="up" animateOnLoad className="mb-section-mobile lg:mb-section">
-          <Asset index={0} alt="Unilever loyalty experience with colorful illustrations of people connecting" priority />
-        </ScrollReveal>
+      <CaseStudyHero>
+        <Asset index={0} alt="Unilever loyalty experience with colorful illustrations of people connecting" priority sizes="100vw" />
+      </CaseStudyHero>
 
+      <div className="featured-content mx-auto max-w-content">
         <dl className="grid gap-x-8 gap-y-10 border-t border-border py-10 sm:grid-cols-2 lg:grid-cols-4 lg:py-14">
           {[
             ["My Role", ["Creative Director", "Project Lead"]],

@@ -82,6 +82,7 @@ export function ProjectCard({
                   device={project.homepageImage ? undefined : project.device}
                   size="large"
                   preserveImageAspect={Boolean(project.homepageImage)}
+                  standardPhoneFrame={project.slug === "trackpoint"}
                 />
               </div>
             </ScrollReveal>

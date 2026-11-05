@@ -1,6 +1,7 @@
 import Image from "next/image";
 
 import type { Project } from "@/data/projects";
+import { TrackpointPhone } from "@/components/trackpoint-phone";
 
 type ProjectVisualProps = {
   variant: Project["visual"];
@@ -12,6 +13,7 @@ type ProjectVisualProps = {
   device?: Project["device"];
   size?: "default" | "large";
   preserveImageAspect?: boolean;
+  standardPhoneFrame?: boolean;
 };
 
 const variantStyles: Record<Project["visual"], string> = {
@@ -35,6 +37,7 @@ export function ProjectVisual({
   device,
   size = "default",
   preserveImageAspect = false,
+  standardPhoneFrame = false,
 }: ProjectVisualProps) {
   const renderScreen = (
     imageSizes = "(min-width: 768px) 48vw, 90vw",
@@ -136,6 +139,9 @@ export function ProjectVisual({
             </div>
           </div>
 
+          {standardPhoneFrame && mobileImage ? (
+            <TrackpointPhone src={mobileImage} />
+          ) : (
           <div className="absolute bottom-[1%] right-[5%] h-[calc(75%-6px)] aspect-[776/1925] rounded-[1.25rem] bg-[#111] p-[4px] shadow-[0_24px_55px_rgba(17,17,17,0.28)] sm:rounded-[2.5rem] sm:p-[7px]">
             <div className="relative flex h-full flex-col overflow-hidden rounded-[1.05rem] bg-white sm:rounded-[2.15rem]">
               <div className="pointer-events-none relative z-20 flex h-[22px] shrink-0 items-center justify-between bg-[#081f43] px-3 text-[5px] font-semibold text-white sm:h-[34px] sm:px-5 sm:text-[9px]">
@@ -166,6 +172,7 @@ export function ProjectVisual({
               </div>
             </div>
           </div>
+          )}
         </div>
       ) : (
         renderScreen()

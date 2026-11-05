@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import type { ReactNode } from "react";
 
-import { ScrollReveal } from "@/components/scroll-reveal";
+import { CaseStudyHero } from "@/components/case-study-hero";
 import assets from "@/data/meyer-assets.json";
 
 const researchCaptions = [
@@ -52,11 +52,11 @@ export function MeyerCaseStudy() {
         </div>
       </header>
 
-      <div className="featured-content mx-auto max-w-content">
-        <ScrollReveal direction="up" animateOnLoad className="mb-section-mobile lg:mb-section">
-          <Asset index={0} alt="Mrs. Meyer’s spring hand soap campaign with botanical illustrations on a coral background" priority />
-        </ScrollReveal>
+      <CaseStudyHero>
+        <Asset index={0} alt="Mrs. Meyer’s spring hand soap campaign with botanical illustrations on a coral background" priority sizes="100vw" />
+      </CaseStudyHero>
 
+      <div className="featured-content mx-auto max-w-content">
         <dl className="grid gap-x-8 gap-y-10 border-t border-border py-10 sm:grid-cols-2 lg:grid-cols-4 lg:py-14">
           {[
             { label: "My Role", items: ["Creative Lead", "Researcher", "UX Design"] },
