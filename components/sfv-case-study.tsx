@@ -89,11 +89,44 @@ export function SfvCaseStudy() {
         </div>
       </section>
 
-      <section aria-label="UX and usability" className="space-y-10 lg:space-y-14">
+      <section id="ux-usability" aria-label="UX and usability" className="space-y-10 lg:space-y-14">
         <SectionIntro number="04" label="Phase 1.0" title="UX & usability">
           <p>The mobile experience connects video discovery, immersive viewing, and shoppable products. Customers can explore content, open a video, and add featured grocery items from the product panel.</p>
         </SectionIntro>
         <Asset index={4} alt="Three mobile screens showing video discovery, recipe playback, and a shoppable product panel" />
+        <div className="grid md:grid-cols-4 md:gap-10 lg:gap-14">
+          <div className="space-y-4 md:col-span-3 md:col-start-2">
+            <h3 className="text-h3 text-text">Inspiration that fits the desktop experience</h3>
+            <p className="max-w-text-measure text-body leading-relaxed text-text-muted lg:text-[1.125rem]">
+              On desktop, photography and bite-sized videos bring recipes and food stories into the shopping journey. In 30–60 seconds, customers can discover a meal idea, see it come together, and shop the ingredients alongside the content. Recipe spotlights offer another way in, pairing videos with relevant products and a direct path to adding ingredients to the cart.
+            </p>
+          </div>
+        </div>
+        <figure className="mx-auto w-full max-w-[680px]">
+          <Image
+            src="/images/projects/shoppable-video/riceselect-shopping-demo.gif"
+            alt="Animated RiceSelect shoppable video with a product panel for adding featured rice products to the cart"
+            width={830}
+            height={737}
+            unoptimized
+            className="h-auto w-full rounded-xl"
+          />
+        </figure>
+        <div className="grid md:grid-cols-4 md:gap-10 lg:gap-14">
+          <p className="max-w-text-measure text-body leading-relaxed text-text-muted md:col-span-3 md:col-start-2 lg:text-[1.125rem]">
+            Recipe spotlights offer another way to inspire customers with new meal ideas. By pairing recipe content with the ingredients needed to make it, customers can move easily from discovering a dish to adding its ingredients to their cart.
+          </p>
+        </div>
+        <figure className="mx-auto w-full max-w-[960px]">
+          <Image
+            src="/images/projects/shoppable-video/recipe-inspiration-products.webp"
+            alt="Recipe inspiration module pairing a strawberry recipe video with ingredients customers can add to their cart"
+            width={1500}
+            height={1009}
+            sizes="(max-width: 767px) 100vw, (max-width: 1200px) 85vw, 960px"
+            className="h-auto w-full"
+          />
+        </figure>
       </section>
 
       <section aria-label="Content strategy" className="space-y-10 lg:space-y-14">
