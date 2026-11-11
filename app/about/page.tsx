@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Outfit } from "next/font/google";
+import localFont from "next/font/local";
 import Link from "next/link";
 
 import { CareerSketch } from "@/components/about/career-sketch";
@@ -7,7 +7,7 @@ import { LifeGallery } from "@/components/about/life-gallery";
 import { AboutMotion, ShapePlayground } from "@/components/about/about-motion";
 import "./about.css";
 
-const outfit = Outfit({ subsets: ["latin"], weight: ["300", "400", "500", "600"], display: "swap" });
+const outfit = localFont({ src: "../fonts/outfit-latin.woff2", weight: "300 600", display: "swap" });
 
 export const metadata: Metadata = {
   title: "Me | Shu Tang",
