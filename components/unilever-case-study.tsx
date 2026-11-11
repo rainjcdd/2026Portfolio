@@ -1,3 +1,4 @@
+import { ImpactCountUp } from "@/components/impact-count-up";
 import Image from "next/image";
 import Link from "next/link";
 import type { ReactNode } from "react";
@@ -192,7 +193,7 @@ export function UnileverCaseStudy() {
               ].map(([value, label]) => (
                 <div key={label} className="flex flex-col gap-4">
                   <dt className="text-small text-text-muted">{label}</dt>
-                  <dd className="order-first font-display text-[clamp(2.5rem,5vw,4.5rem)] font-bold leading-none tracking-[-0.05em]">{value}</dd>
+                  <dd className="order-first font-display text-[clamp(2.5rem,5vw,4.5rem)] font-bold leading-none tracking-[-0.05em]"><ImpactCountUp value={value} /></dd>
                 </div>
               ))}
             </dl>

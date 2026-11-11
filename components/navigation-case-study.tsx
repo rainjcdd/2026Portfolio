@@ -2,6 +2,10 @@ import Image from "next/image";
 import type { ReactNode } from "react";
 import assets from "@/data/navigation-assets.json";
 import { NavigationInspirationWireframes } from "@/components/navigation-inspiration-wireframes";
+import heroStyles from "./navigation-hero.module.css";
+import { ImpactCountUp } from "@/components/impact-count-up";
+import { BrandIconography } from "@/components/brand-iconography";
+import { BrandIconographySwitcher } from "@/components/brand-iconography-switcher";
 
 function Asset({ index, alt, priority = false, sizes = "90vw" }: {
   index: number; alt: string; caption?: string; priority?: boolean; sizes?: string;
@@ -31,7 +35,60 @@ function SectionIntro({ number, label, title, children }: {
 }
 
 export function NavigationCaseStudyHero() {
-  return <Asset index={0} alt="Navigation redesign shown across desktop and mobile grocery shopping experiences" priority sizes="100vw" />;
+  const brands = [
+    { name: "Stop & Shop", logo: "stop-shop", width: 209, colors: ["#ec004b", "#ed3980", "#fadbe5"] },
+    { name: "Food Lion", logo: "food-lion", width: 199, colors: ["#004c79", "#00436c", "#e5edf2"] },
+    { name: "Giant", logo: "giant", width: 134, colors: ["#602866", "#521654", "#e9deed"] },
+    { name: "Martins", logo: "martins", width: 178, colors: ["#e51b08", "#bc0e00", "#fadddc"] },
+  ];
+  const artwork = (name: string, width: number, height: number, alt: string) => (
+    <Image src={`/images/projects/navigation-redesign/hero-${name}.png`} alt={alt} width={width} height={height} preload sizes="(max-width: 767px) 46vw, (max-width: 1099px) 31vw, 22vw" className={heroStyles.artwork} />
+  );
+  return (
+    <div className={`featured-content mx-auto max-w-content ${heroStyles.hero}`}>
+      <div className={heroStyles.upper}>
+      <div className={heroStyles.collage}>
+        <div className={heroStyles.column}>
+          {artwork("brand-hd", 827, 510, "Stop & Shop logo and brand colors")}
+          {artwork("produce", 518, 585, "Fresh carrots and broccoli against cool dark green foliage")}
+        </div>
+        <div className={heroStyles.column}>
+          {artwork("type-hd", 829, 1006, "Effra Bold typography on Stop & Shop magenta")}
+          {artwork("snacks-hd", 829, 430, "Pale blue Stop & Shop snack promotion")}
+        </div>
+        <div className={heroStyles.column}>
+          {artwork("tart", 413, 488, "Berry tart topped with fresh raspberries and blackberries")}
+          <div className={heroStyles.motion}>
+            <Image src="/images/projects/navigation-redesign/hero-grocery-motion.gif" alt="Animated grocery illustrations with milk and eggs, tomato, a New badge, shopping bag, and bread" width={960} height={814} unoptimized className={heroStyles.artwork} />
+          </div>
+        </div>
+      </div>
+      <figure className={heroStyles.colorSystem} aria-label="Color system across Stop & Shop, Food Lion, Giant, and Martins">
+        <div className={heroStyles.brands}>
+          {brands.map((brand) => (
+            <div key={brand.name} className={heroStyles.brand}>
+              <div className={heroStyles.brandLogo}>
+                <Image src={`/images/projects/navigation-redesign/logo-${brand.logo}.png`} alt={brand.name} width={brand.width} height={49} sizes="(max-width: 767px) 20vw, 7vw" />
+              </div>
+              {brand.colors.map((color, index) => <span key={color} className={heroStyles.swatch} style={{ backgroundColor: color }} aria-label={`${brand.name} ${["primary", "secondary", "tertiary"][index]} color`} />)}
+            </div>
+          ))}
+        </div>
+        <div className={heroStyles.colorGroup}>
+          <p>Global Neutrals</p>
+          {["#000000", "#626568", "#929292", "#ededed", "#f5f5f5", "#ffffff"].map((color) => <span key={color} className={heroStyles.colorBar} style={{ backgroundColor: color }} />)}
+        </div>
+        <div className={heroStyles.colorGroup}>
+          <p>Global Messaging</p>
+          {["#940800", "#d25c0b", "#007a26", "#0066b9"].map((color, index) => <span key={color} className={heroStyles.colorBar} style={{ backgroundColor: color }} aria-label={["Error", "Warning", "Success", "Information"][index]} />)}
+        </div>
+      </figure>
+      </div>
+      <figure className={heroStyles.navigation}>
+        <Image src="/images/projects/navigation-redesign/hero-navigation-vector.svg" alt="Stop & Shop desktop navigation with product search, primary shopping links, and illustrated grocery categories" width={1443} height={220} unoptimized sizes="(max-width: 767px) 100vw, (max-width: 1776px) calc(100vw - 96px), 1680px" className={heroStyles.navigationImage} />
+      </figure>
+    </div>
+  );
 }
 
 export function NavigationCaseStudy() {
@@ -140,13 +197,56 @@ export function NavigationCaseStudy() {
         <SectionIntro number="06" label="The Solution" title="The winning solution">
           <p>The final design exposes Browse Aisle categories upon landing on the homepage, helping users quickly drill down to the category they want. High-revenue pages remain in the primary navigation and are easy to access throughout the experience. Iconography draws attention and elevates the digital brand experience.</p>
         </SectionIntro>
-        <div className="grid items-start gap-8 md:grid-cols-2 lg:gap-12">
-          <Asset index={10} alt="Final mobile navigation with visible shopping categories and icons" caption="Mobile navigation" sizes="(max-width: 767px) 90vw, 45vw" />
-          <Asset index={11} alt="Final desktop grocery homepage with primary navigation and category shortcuts" caption="Desktop navigation" sizes="(max-width: 767px) 90vw, 45vw" />
+        <figure>
+          <Image
+            src="/images/projects/navigation-redesign/solution-mobile-mockup-seamless.png"
+            alt="Stop & Shop mobile homepage and two slide-out navigation menus over a dimmed homepage, shown in three phone mockups"
+            width={3600}
+            height={2240}
+            sizes="(max-width: 767px) 100vw, 85vw"
+            className="h-auto w-full"
+          />
+        </figure>
+        <div className="grid md:grid-cols-4 md:gap-10 lg:gap-14">
+          <p className="max-w-text-measure text-body leading-relaxed text-text-muted md:col-span-3 md:col-start-2 lg:text-[1.125rem]">
+            On desktop, visible shopping categories give customers a direct path to products, while frequently used pages like Past Purchases, Weekly Ad, Coupons, and Rewards remain easy to reach in the primary navigation. Distinctive icons make categories easier to scan and encourage discovery of new and seasonal products. In usability testing, customers described a more focused browsing experience with less need to search.
+          </p>
         </div>
+        <figure className="grid md:grid-cols-4 md:gap-10 lg:gap-14">
+          <div className="border-l-4 border-[#00c81d] py-2 pl-6 md:col-span-3 md:col-start-2 lg:pl-10">
+            <blockquote className="max-w-[25ch] font-display text-[clamp(1.5rem,3vw,2.75rem)] font-medium italic leading-[1.3] tracking-[-0.035em] text-[#005653]">
+              “It’s easier just to see and go right to it. I think it would keep me from doing more searches.”
+            </blockquote>
+            <figcaption className="mt-6 text-small text-text-muted">Quote from a usability test participant</figcaption>
+          </div>
+        </figure>
+        <figure>
+          <Image
+            src="/images/projects/navigation-redesign/solution-desktop-mockup.png"
+            alt="Stop & Shop desktop homepage in a laptop mockup, showing exposed grocery categories, primary navigation, and the snack promotion"
+            width={4400}
+            height={2800}
+            sizes="(max-width: 767px) 100vw, 85vw"
+            className="h-auto w-full"
+          />
+        </figure>
+        <section id="brand-expressions" aria-label="Brand expressions" className="space-y-8 lg:space-y-12">
+          <div className="grid md:grid-cols-4 md:gap-10 lg:gap-14">
+            <div className="space-y-5 md:col-span-3 md:col-start-2">
+              <h3 className="text-h3 text-text">One UX solution. Distinct brand expressions.</h3>
+              <p className="max-w-text-measure text-body leading-relaxed text-text-muted lg:text-[1.125rem]">
+                A shared navigation structure gives customers a consistent way to browse, while each brand’s iconography brings its own visual character. Category icons adapt to each brand’s colors and illustration style, expressing the same shopping functions through distinct visual identities.
+              </p>
+            </div>
+          </div>
+          <BrandIconographySwitcher>
+            <BrandIconography brand="stop-and-shop" />
+            <BrandIconography brand="food-lion" />
+          </BrandIconographySwitcher>
+        </section>
       </section>
 
-      <section aria-label="Impact" className="space-y-10 lg:space-y-14">
+      <section id="impact" aria-label="Impact" className="space-y-10 lg:space-y-14">
         <SectionIntro number="07" label="The Impact" title="Measured through three rounds of A/B testing.">
           <p>We worked closely with engineering and analytics teams to launch three rounds of full-stack A/B tests. Each test split site traffic equally between control and test groups.</p>
         </SectionIntro>
@@ -161,7 +261,7 @@ export function NavigationCaseStudy() {
         </div>
         </div>
         <dl className="grid gap-5 py-6 sm:grid-cols-2 lg:grid-cols-4 lg:gap-6 lg:py-10">
-          {[["+12.48%", "Primary navigation click-through"], ["+73.19%", "Category page views"], ["+48%", "Category page add-to-carts"], ["+4.12%", "Seasonal page views"]].map(([value, label]) => <div key={label} className="flex flex-col gap-6 rounded-2xl border border-border bg-white px-6 py-10 lg:px-8 lg:py-14"><dt className="text-small leading-relaxed text-text-muted">{label}</dt><dd className="order-first font-display text-[clamp(2rem,3.5vw,3.5rem)] font-bold leading-none tracking-[-0.05em]">{value}</dd></div>)}
+          {[["+12.48%", "Primary navigation click-through"], ["+73.19%", "Category page views"], ["+48%", "Category page add-to-carts"], ["+4.12%", "Seasonal page views"]].map(([value, label]) => <div key={label} className="flex flex-col gap-6 rounded-2xl border border-border bg-white px-6 py-10 lg:px-8 lg:py-14"><dt className="text-small leading-relaxed text-text-muted">{label}</dt><dd className="order-first font-display text-[clamp(2rem,3.5vw,3.5rem)] font-bold leading-none tracking-[-0.05em]"><ImpactCountUp value={value} /></dd></div>)}
         </dl>
       </section>
     </div>

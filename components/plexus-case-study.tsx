@@ -1,3 +1,4 @@
+import { ImpactCountUp } from "@/components/impact-count-up";
 import Image from "next/image";
 import Link from "next/link";
 import type { ReactNode } from "react";
@@ -108,7 +109,7 @@ export function PlexusCaseStudy() {
             <p className="mb-6 text-small text-text-muted">05 · Delivery</p>
             <h2 id="plexus-completed" className="text-h2">We’ve completed</h2>
             <dl className="mt-10 grid grid-cols-2 gap-x-8 gap-y-12 lg:mt-14 lg:grid-cols-4">
-              {[["11", "Stakeholder interviews"], ["291", "Designs"], ["8", "Preferred customer interviews"], ["2", "New product line rollouts"], ["8", "Ambassador interviews"], ["1", "Live launch conference"], ["2", "Experiences: public + back-office"], ["10", "Months go to market"]].map(([value, label]) => <div key={label} className="flex flex-col gap-4"><dt className="text-small text-text-muted">{label}</dt><dd className="order-first font-display text-[clamp(2.5rem,5vw,4.5rem)] font-bold leading-none tracking-[-0.05em]">{value}</dd></div>)}
+              {[["11", "Stakeholder interviews"], ["291", "Designs"], ["8", "Preferred customer interviews"], ["2", "New product line rollouts"], ["8", "Ambassador interviews"], ["1", "Live launch conference"], ["2", "Experiences: public + back-office"], ["10", "Months go to market"]].map(([value, label]) => <div key={label} className="flex flex-col gap-4"><dt className="text-small text-text-muted">{label}</dt><dd className="order-first font-display text-[clamp(2.5rem,5vw,4.5rem)] font-bold leading-none tracking-[-0.05em]"><ImpactCountUp value={value} /></dd></div>)}
             </dl>
           </section>
 
@@ -117,7 +118,7 @@ export function PlexusCaseStudy() {
             <div className="grid gap-10 md:grid-cols-2 lg:gap-20">
               <div><p className="mb-4 text-small text-text-muted">Social Campaign · 10 weeks</p><h3 className="text-h2">What Have You Got To Lose</h3></div>
               <dl className="grid grid-cols-2 gap-8">
-                {[["24,000", "Participants"], ["40,000", "Unique participant posts"]].map(([value, label]) => <div key={label}><dt className="text-small text-text-muted">{label}</dt><dd className="mt-4 font-display text-[clamp(2rem,4vw,4rem)] font-bold leading-none tracking-[-0.05em]">{value}</dd></div>)}
+                {[["24,000", "Participants"], ["40,000", "Unique participant posts"]].map(([value, label]) => <div key={label}><dt className="text-small text-text-muted">{label}</dt><dd className="mt-4 font-display text-[clamp(2rem,4vw,4rem)] font-bold leading-none tracking-[-0.05em]"><ImpactCountUp value={value} /></dd></div>)}
               </dl>
             </div>
             <div className="border-t border-border pt-10 lg:pt-14">
@@ -126,7 +127,7 @@ export function PlexusCaseStudy() {
                 <p className="max-w-text-measure text-body leading-relaxed text-text-muted lg:text-[1.125rem]">When the site went live, the event sold out in less than a day. During the launch month, the site saw increased time on site, more pages viewed per session, and an improved bounce rate.</p>
               </div>
               <dl className="mt-10 grid gap-10 sm:grid-cols-3 lg:mt-14">
-                {[["+105%", "Total time on site"], ["60%", "More pages viewed per session"], ["35%", "Better bounce rate"]].map(([value, label]) => <div key={label} className="flex flex-col gap-4"><dt className="text-small text-text-muted">{label}</dt><dd className="order-first font-display text-[clamp(2.5rem,5vw,4.5rem)] font-bold leading-none tracking-[-0.05em]">{value}</dd></div>)}
+                {[["+105%", "Total time on site"], ["60%", "More pages viewed per session"], ["35%", "Better bounce rate"]].map(([value, label]) => <div key={label} className="flex flex-col gap-4"><dt className="text-small text-text-muted">{label}</dt><dd className="order-first font-display text-[clamp(2.5rem,5vw,4.5rem)] font-bold leading-none tracking-[-0.05em]"><ImpactCountUp value={value} /></dd></div>)}
               </dl>
             </div>
           </section>

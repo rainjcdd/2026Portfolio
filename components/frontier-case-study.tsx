@@ -1,3 +1,4 @@
+import { ImpactCountUp } from "@/components/impact-count-up";
 import Image from "next/image";
 import Link from "next/link";
 import type { ReactNode } from "react";
@@ -124,7 +125,7 @@ export function FrontierCaseStudy() {
             <p className="mb-6 text-small text-text-muted">05 · Delivery</p>
             <h2 id="frontier-completed" className="text-h2">We’ve completed</h2>
             <dl className="mt-10 grid grid-cols-2 gap-x-8 gap-y-12 lg:mt-14 lg:grid-cols-4">
-              {[["1", "BuildKit"], ["105", "Wireframes"], ["2", "Templates"], ["149", "Visual designs"], ["5", "Websites"], ["10", "Months to launch"], ["2", "Marketplaces"], ["55", "Awesome teammates"]].map(([value, label]) => <div key={label} className="flex flex-col gap-4"><dt className="text-small text-text-muted">{label}</dt><dd className="order-first font-display text-[clamp(2.5rem,5vw,4.5rem)] font-bold leading-none tracking-[-0.05em]">{value}</dd></div>)}
+              {[["1", "BuildKit"], ["105", "Wireframes"], ["2", "Templates"], ["149", "Visual designs"], ["5", "Websites"], ["10", "Months to launch"], ["2", "Marketplaces"], ["55", "Awesome teammates"]].map(([value, label]) => <div key={label} className="flex flex-col gap-4"><dt className="text-small text-text-muted">{label}</dt><dd className="order-first font-display text-[clamp(2.5rem,5vw,4.5rem)] font-bold leading-none tracking-[-0.05em]"><ImpactCountUp value={value} /></dd></div>)}
             </dl>
           </section>
 

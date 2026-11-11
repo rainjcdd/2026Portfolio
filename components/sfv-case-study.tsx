@@ -1,3 +1,4 @@
+import { ImpactCountUp } from "@/components/impact-count-up";
 import Image from "next/image";
 import type { ReactNode } from "react";
 import assets from "@/data/sfv-assets.json";
@@ -115,7 +116,7 @@ export function SfvCaseStudy() {
             ["12.34%", "Add-to-cart rate among users who viewed products"],
             ["5.27", "Average number of items added to cart per user"],
             ["52.4%", "Users who added items to cart and also placed an order"],
-          ].map(([value, label]) => <div key={label} className="flex flex-col gap-5 border-t border-border pt-6"><dt className="max-w-[30ch] text-body text-text-muted">{label}</dt><dd className="order-first font-display text-[clamp(2rem,3.5vw,3.5rem)] font-bold leading-none tracking-[-0.05em]">{value}</dd></div>)}
+          ].map(([value, label]) => <div key={label} className="flex flex-col gap-5 border-t border-border pt-6"><dt className="max-w-[30ch] text-body text-text-muted">{label}</dt><dd className="order-first font-display text-[clamp(2rem,3.5vw,3.5rem)] font-bold leading-none tracking-[-0.05em]"><ImpactCountUp value={value} /></dd></div>)}
         </dl>
         </div>
       </section>

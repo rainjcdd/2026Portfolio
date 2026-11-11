@@ -299,14 +299,14 @@ export const projects: Project[] = [
     detailLayout: "alternating",
     timeframe: "2021–2024",
     summary: "Reimagined the navigation system to elevate UX and brand digital presence.",
-    role: "Product Design Direction, Creative Direction",
+    role: "Product Design, Creative Direction, UX Design",
     tools: ["Figma", "Miro", "UserTesting"],
     overview: {
       heading: "Responsive Navigation & Information Architecture",
       copy: "Reimagined the navigation system to elevate UX and brand digital presence.",
     },
     details: [
-      { label: "Role", items: ["Product Design Direction", "Creative Direction"] },
+      { label: "Role", items: ["Product Design", "Creative Direction", "UX Design"] },
       { label: "Timeframe", items: ["2021–2024"] },
       { label: "Key Tasks", items: ["Information Architecture", "Content Inventory", "Tree Testing", "Prototyping"] },
       { label: "Tools", items: ["Figma", "Miro", "UserTesting"] },
